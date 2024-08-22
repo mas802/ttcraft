@@ -2,7 +2,7 @@
 
 function create () {
   VOICE="${3:-Yannick}"
-  if ! grep -q "$VOICE:$2" Audio/$1.txt; then
+  if ! grep -qw "$VOICE:$2" Audio/$1.txt; then
     say -v $VOICE $2 -o Audio/src/temp.aiff && ffmpeg -y -i Audio/src/temp.aiff Audio/$1.ogg
     echo "$VOICE:$2" > Audio/$1.txt
   fi
@@ -56,6 +56,43 @@ create item_${v_item.v_id}_more "mehr als ${v_maxitems} ${v_item.v_infos}."
 #foreach($i in $range)
 create item_${v_item.v_id}_inventory_${i} "Du hast ${i} ${v_item.v_infos}."
 create item_${v_item.v_id}_${i} "${i} ${v_item.v_infos}"
+#end
+
+#if (${v_item.v_drops})
+#set($v_dropcounter = 0)
+#foreach($v_drop in ${v_item.v_drops})
+#set($range = [${v_drop.v_min}..${v_drop.v_max}])
+#foreach($i in $range)
+#if ($i==0)
+create ${v_item.v_id}_attack_drop_$v_dropcounter "Du erhältst kein ${v_items[${v_drop.v_item}].v_info}"
+#elseif ($i==1)
+create ${v_item.v_id}_attack_drop_$v_dropcounter "Du erhältst ein $v_items[${v_drop.v_item}].v_info"
+#else
+create ${v_item.v_id}_attack_drop_$v_dropcounter "Du erhältst ${i} $v_items[${v_drop.v_item}].v_infos"
+#end
+#set($v_dropcounter = $v_dropcounter+1)
+#end
+#end
+#end
+
+
+#if (${v_item.v_needs})
+#set($v_losscounter = 0)
+#foreach($v_loss in ${v_item.v_needs})
+#if (${v_loss.v_min})
+#set($range = [${v_loss.v_min}..${v_loss.v_max}])
+#foreach($i in $range)
+#if ($i==0)
+create ${v_item.v_id}_attack_loss_$v_losscounter "Und du verlierst kein ${v_items[${v_loss.v_src}].v_info}"
+#elseif ($i==1)
+create ${v_item.v_id}_attack_loss_$v_losscounter "Und du verlierst ein $v_items[${v_loss.v_src}].v_info"
+#else
+create ${v_item.v_id}_attack_loss_$v_losscounter "Und du verlierst ${i} $v_items[${v_loss.v_src}].v_infos"
+#end
+#set($v_losscounter = $v_losscounter+1)
+#end
+#end
+#end
 #end
 
 #end

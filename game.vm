@@ -70,11 +70,44 @@ scripts:
 #end
 #if($v_item.v_limit) 
     - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_inventory)
+    - $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_rnd)
 #else
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} P(${v_item.v_id}_attack) J(${v_item.v_id}_inventory)
+    - P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_rnd)
 #end
 #end
+
+#set($v_dropcounter = 0)
+#set($v_losscounter = 0)
+
+    ${v_item.v_id}_attack_drop:
+#if (${v_item.v_drops})
+#foreach($v_drop in ${v_item.v_drops})
+#set($range = [${v_drop.v_min}..${v_drop.v_max}])
+#foreach($i in $range)
+    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss)
+#set($v_dropcounter = $v_dropcounter+1)
+#end
+#end
+#end
+    - J(${v_item.v_id}_attack_loss)
+
+    ${v_item.v_id}_attack_loss:
+#if (${v_item.v_needs})
+#foreach($v_loss in ${v_item.v_needs})
+#if(${v_loss.v_min})
+#set($range = [${v_loss.v_min}..${v_loss.v_max}])
+#foreach($i in $range)
+    - $loss_rnd==$v_losscounter? $inventory_${v_loss.v_src}-=${i} P(${v_item.v_id}_attack_loss_$v_losscounter) J(${v_item.v_id}_inventory)
+#set($v_losscounter = $v_losscounter+1)
+#end
+#end
+#end
+#end
+    - J(${v_item.v_id}_inventory)
+
+    ${v_item.v_id}_attack_rnd:
+    - #if (${v_item.v_drops}) $attack_rnd:=$rnd $attack_rnd%=${v_dropcounter} #end J(${v_item.v_id}_attack_drop)
+
 #end
 
 
@@ -109,9 +142,9 @@ scripts:
     ${v_item.v_id}_inventory:
 #set($range = [0..${v_maxitems}])
 #foreach($i in $range)
-    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_inventory_${i})
+    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_inventory_${i}) J(random2)
 #end
-    - P(item_${v_item.v_id}_inventory_more)
+    - P(item_${v_item.v_id}_inventory_more) J(random2)
 
 
     ${v_item.v_id}_no:

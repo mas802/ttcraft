@@ -40,7 +40,7 @@ v_modi:
    v_code: 78  # UNUSED
 
 v_items:
-  creeper:
+  gunpowder:
     v_id: gunpowder
     v_code: 27
     v_mode: attack
@@ -59,12 +59,22 @@ v_items:
     v_limited: "Hier hat es keine Creeper mehr." 
     v_quantity: 3
     v_txts:
-      attack: "Creeper besiegt, du bekommst 3 Schiesspulver. "
+      attack: "Creeper besiegt. "
     v_needs:
       0:
         v_src: sword
         v_quantity: 1
-        v_tool: true    
+        v_tool: true  
+      1:
+        v_src: hearts
+        v_quantity: 2
+        v_min: 1
+        v_max: 2
+    v_drops:
+      0:
+        v_item: gunpowder
+        v_min: 0
+        v_max: 3
   goatmeat:
     v_id: goatmeat
     v_code: 30
