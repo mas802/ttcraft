@@ -1,0 +1,65 @@
+#!/bin/bash
+
+function create () {
+  VOICE="${3:-Yannick}"
+  if ! grep -q "$VOICE:$2" Audio/$1.txt; then
+    say -v $VOICE $2 -o Audio/src/temp.aiff && ffmpeg -y -i Audio/src/temp.aiff Audio/$1.ogg
+    echo "$VOICE:$2" > Audio/$1.txt
+  fi
+}
+
+function copy () {
+  cp Audio/src/$2.$3 Audio/$1.$3
+}
+
+function copyn () {
+  ffmpeg -y -i Audio/src/$2.$3 -af 'dynaudnorm=n=0:c=1' Audio/$1.ogg
+}
+
+#set ( $d = "${")
+##cd Audio/src/; for i in *.mp3; do ffmpeg -y -i "$i" -af 'dynaudnorm=n=0:c=1' "../${d}i%.*}.ogg"; done; cd ../..
+
+#foreach($v_item in $v_general)
+create ${v_item.v_id} "${v_item.v_text}" $!{v_item.v_voice}
+#end
+
+#foreach($v_item in $v_info)
+create ${v_item.v_id} "${v_item.v_text}" $!{v_item.v_voice}
+#end
+
+#foreach($v_item in $v_modi)
+create modus_${v_item.v_id}_selected "Was willst du ${v_item.v_info}?" $!{v_item.v_voice}
+#end
+
+#foreach($v_item in $v_items)
+#foreach($v_modus in $v_modi)
+
+create ${v_item.v_id}_${v_modus.v_id} #if(${v_item.v_txts[${v_modus.v_id}]}) "${v_item.v_txts[${v_modus.v_id}]}" #else "${v_item.v_info} ${v_modus.v_info}" #end 
+
+create ${v_item.v_id}_no${v_modus.v_id} "Du kannst ${v_item.v_info} so nicht ${v_modus.v_info}.  $!{v_item.v_infotxt}" 
+#end
+
+create ${v_item.v_id}_infotxt #if(${v_item.v_infotxt}) "${v_item.v_infotxt}" #else "${v_item.v_info}" #end
+
+create ${v_item.v_id}_limited #if($v_item.v_limited) "${v_item.v_limited}" #else "Hier hat es keine ${v_item.v_info} mehr." #end
+
+create item_${v_item.v_id}_selectednoinv "Du hast kein ${v_item.v_info}. $!{v_item.v_infotxt} Was willst du als nächstes machen?"
+create item_${v_item.v_id}_selected "Was willst du mit dem ${v_item.v_info} machen?"
+create item_${v_item.v_id}_need "Du hast nicht genug ${v_item.v_info}. $!{v_item.v_infotxt}"
+create item_${v_item.v_id}_inventory_0 "Du hast kein ${v_item.v_info}. $!{v_item.v_infotxt}"
+create item_${v_item.v_id}_inventory_1 "Du hast ein ${v_item.v_info}."
+create item_${v_item.v_id}_0 "kein ${v_item.v_info}"
+create item_${v_item.v_id}_1 "ein ${v_item.v_info}"
+create item_${v_item.v_id}_inventory_more "Du hast mehr als ${v_maxitems} ${v_item.v_infos}."
+create item_${v_item.v_id}_more "mehr als ${v_maxitems} ${v_item.v_infos}."
+#set($range = [2..${v_maxitems}])
+#foreach($i in $range)
+create item_${v_item.v_id}_inventory_${i} "Du hast ${i} ${v_item.v_infos}."
+create item_${v_item.v_id}_${i} "${i} ${v_item.v_infos}"
+#end
+
+#end
+
+create item_inventory "Du hast"
+create item_need "Du brauchst"
+create item_inventory_more "Du hast mehr als "

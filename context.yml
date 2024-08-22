@@ -1,0 +1,446 @@
+v_game_code: 998
+v_cheat_inventory_code: 1
+v_cheat_mode_code: 109 # UNUSED
+
+v_maxitems: 25
+
+v_general:
+  v_willkommen:
+    v_id: willkommen
+    v_text: "Willkommen zu Tip-toy-Craft! Tippe auf das rote Portal um zu erfahren was du machen musst."
+
+v_info:
+  v_game_info:
+    v_id: game_info
+    v_text: "Info."
+    v_code: 100 # UNUSED
+
+v_modus_code: 101  # UNUSED
+
+v_modi:
+  1:
+   v_id: attack
+   v_info: "angreifen"
+   v_code: 25  # UNUSED
+  2:
+   v_id: craft
+   v_info: "crafften"
+   v_code: 23
+  3:
+   v_id: info
+   v_info: "abfragen" 
+   v_code: 60 
+  4:
+   v_id: harvest
+   v_info: "abbauen" 
+   v_code: 43  # UNUSED
+  5:
+   v_id: eat
+   v_info: "essen"
+   v_code: 78  # UNUSED
+
+v_items:
+  creeper:
+    v_id: gunpowder
+    v_code: 27
+    v_mode: attack
+    v_codes: 
+      1: 11 
+      2: 41
+      7: 82
+      8: 84
+      11: 83
+      9: 87001
+      10: 87002
+    v_info: "Schiesspulver"
+    v_infos: "Schiesspulver"
+    v_infotxt: "Wenn du einen Creeper besiegst bekommst du drei Schiesspulver. Um den Creeper anzugreifen brauchst du ein Schwert. Die Creeper treiben sich in den Ebenen und den Hügeln herum."
+    v_limit: 2    
+    v_limited: "Hier hat es keine Creeper mehr." 
+    v_quantity: 3
+    v_txts:
+      attack: "Creeper besiegt, du bekommst 3 Schiesspulver. "
+    v_needs:
+      0:
+        v_src: sword
+        v_quantity: 1
+        v_tool: true    
+  goatmeat:
+    v_id: goatmeat
+    v_code: 30
+    v_mode: attack
+    v_codes: 
+      1: 66
+    v_attackee: "Ziege"
+    v_info: "Ziegenfleisch"
+    v_infos: "Ziegenfleisch"
+    v_infotxt: "Von einer Ziege bekommst du Fleisch zum essen. Du brauchst ein Schwert um die Ziege anzugreifen."
+    v_txts:
+      attack: "Ziege angreifen."    
+    v_quantity: 1
+    v_hearts: 1
+    v_needs:
+      0:
+        v_src: sword
+        v_quantity: 1
+        v_tool: true
+  fish:
+    v_id: fish
+    v_code: 29 # (30)
+    v_mode: attack
+    v_codes: 
+      1: 32
+    v_attackee: "Fisch"
+    v_info: "Fisch"
+    v_infos: "Fische"
+    v_infotxt: "Von einem Fisch bekommst du Nahrung zum essen. Du brauchst eine Angel um einen Fisch zu fangen."
+    v_txts:
+      attack: "Fisch fangen."    
+    v_quantity: 1
+    v_hearts: 1
+    v_needs:
+      0:
+        v_src: fishingrod
+        v_quantity: 1
+        v_tool: true
+  ironore: 
+    v_id: ironore
+    v_code: 89
+    v_mode: harvest
+    v_codes: 
+      2: 39
+      3: 45
+    v_info: "Eisenerz"
+    v_infos: "Eisen-Erze"
+    v_infotxt: "Eisen-Erze findest du in den Bergen und an der Steinküste. Du brauchst eine Steinpickel um sie abzubauen."
+    v_quantity: 1
+    v_needs:
+      0:
+        v_src: stonepickaxe
+        v_quantity: 1
+        v_tool: true
+  stone: 
+    v_id: stone
+    v_code: 69
+    v_mode: harvest
+    v_codes: 
+      1: 17
+      2: 80
+    v_info: "Stein"
+    v_infos: "Steine"
+    v_infotxt: "Steine findest du in den Bergen. Du brauchst eine Holzpickel um sie abzubauen."
+    v_quantity: 1
+    v_needs:
+      0:
+        v_src: woodpickaxe
+        v_quantity: 1
+        v_tool: true
+  log: 
+    v_id: log
+    v_code: 98 
+    v_mode: harvest
+    v_codes: 
+      1: 16
+      2: 18
+      3: 19
+    v_info: "Baumstamm"
+    v_infos: "Baumstämme"
+    v_limit: 10
+    v_infotxt: "Bäume findest du im Wald."
+    v_quantity: 1
+  coal:
+    v_id: coal
+    v_code: 20
+    v_mode: harvest
+    v_codes: 
+      1: 21
+    v_info: "Stück Kohle"
+    v_infos: "Stück Kohle"
+    v_infotxt: "Kohle findest du in den Bergen."
+    v_quantity: 1
+  flint:
+    v_id: flint
+    v_code: 16
+    v_mode: harvest
+    v_codes: 
+      1: 15
+    v_info: "Flint"
+    v_infos: "Flint"
+    v_infotxt: "Flint findest zwischen Steinküste und Strand."
+    v_quantity: 1
+  sand:
+    v_id: sand
+    v_code: 24
+    v_mode: harvest
+    v_codes: 
+      1: 57
+    v_info: "Sand"
+    v_infos: "Sand"
+    v_infotxt: "Sand findest du im am Strand und auf der Insel."
+    v_quantity: 3
+  plank:
+    v_id: plank
+    v_code: 6 
+    v_info: "Holzbrett"
+    v_infos: "Holzbretter"
+    v_quantity: 4
+    v_mode: "craft"
+    v_craftcode: 109 # UNUSED
+    v_infotxt: "Du brauchst zwei Baumstämme um vier Bretter herzustellen."
+    v_needs:
+      0:
+        v_src: log 
+        v_quantity: 2
+  stick:
+    v_id: stick
+    v_code: 86
+    v_info: "Stock"
+    v_infos: "Stöcke"
+    v_mode: "craft"
+    v_craftcode: 108 # UNUSED
+    v_infotxt: "Du brauchst zwei Bretter um vier Stöcke herzustellen."
+    v_needs:
+      0:
+        v_src: plank
+        v_quantity: 2
+    v_quantity: 4
+  sword:
+    v_id: sword
+    v_code: 9 
+    v_mode: "craft"
+    v_craftcode: 103 # UNUSED
+    v_info: "Schwert"
+    v_infos: "Schwerter"
+    v_quantity: 1
+    v_infotxt: "Du brauchst zwei Eisenbarren und ein Stock um ein Schwert herzustellen."
+    v_needs:
+      0:
+        v_src: stick
+        v_quantity: 1
+      1:
+        v_src: iron
+        v_quantity: 2
+      9:
+        v_src: crafting_table
+        v_quantity: 1
+  woodpickaxe:
+    v_id: woodpickaxe
+    v_code: 7 
+    v_mode: "craft"
+    v_craftcode: 104 # UNUSED
+    v_info: "Holzpickel"
+    v_infos: "Holzpickel"
+    v_quantity: 1
+    v_infotxt: "Du brauchst drei Holzbretter und zwei Stöcke um einen Holzpickel herzustellen."
+    v_needs:
+      0:
+        v_src: stick
+        v_quantity: 2
+      1:
+        v_src: plank
+        v_quantity: 3
+      9:
+        v_src: crafting_table
+        v_quantity: 1
+  stonepickaxe:
+    v_id: stonepickaxe
+    v_code: 42
+    v_craftcode: 105 # UNUSED
+    v_mode: "craft"
+    v_info: "Steinpickel"
+    v_infos: "Steinpickel"
+    v_quantity: 1
+    v_infotxt: "Du brauchst drei Steine und zwei Stöcke um einen Steinpickel herzustellen."
+    v_needs:
+      0:
+        v_src: stick
+        v_quantity: 2
+      1:
+        v_src: stone
+        v_quantity: 3
+      9:
+        v_src: crafting_table
+        v_quantity: 1
+  iron:
+    v_id: iron
+    v_code: 28
+    v_craftcode: 106 # UNUSED
+    v_mode: "craft"
+    v_info: "Eisenbarren"
+    v_infos: "Eisenbarren"
+    v_quantity: 1
+    v_infotxt: "Du brauchst ein Eisenerz und eine Kohle um ein Eisenbarren herzustellen."
+    v_needs:
+      0:
+        v_src: coal
+        v_quantity: 1
+      1:
+        v_src: ironore
+        v_quantity: 1
+      9:
+        v_src: crafting_table
+        v_quantity: 1
+  hearts:
+    v_id: hearts
+    v_code: 72
+    v_info: "Herz"
+    v_infos: "Herzen"
+    v_quantity: 1
+    v_infotxt: "Du musst Fleisch essen um mehr Herzen zu erhalten."
+    v_needs:
+      0:
+        v_src: goatmeat
+        v_quantity: 1
+  tnt:
+    v_id: tnt
+    v_code: 10 
+    v_craftcode: 107 # UNUSED
+    v_mode: "craft"
+    v_info: "TNT"
+    v_infos: "TNT"
+    v_quantity: 1
+    v_infotxt: "Du brauchst vier Sand und fünf Schiesspulver um ein TNT herzustellen."
+    v_needs:
+      0:
+        v_src: sand
+        v_quantity: 4
+      1:
+        v_src: gunpowder
+        v_quantity: 5
+      9:
+        v_src: crafting_table
+        v_quantity: 1
+  portal:
+    v_id: portal
+    v_code:   108 # UNUSED
+    v_mode: attack
+    v_codes: 
+      1: 61
+    v_info: "Portal"
+    v_infos: "Portal"
+    v_quantity: 1
+    v_infotxt: "Das ist ein Portal, die Inschrift sagt du brauchst 5 TNT um es zu durchqueren."
+    v_txts:
+      attack: "Du hast es geschaft. Du kannst das Portal durchqueren. Es rumpelt und kracht. Du bist am gleichen Ort aber die Welt hat sich verändert. Es hat nun weniger Resourcen und einen neune Auftrag."
+    v_limit: 1
+    v_limited: "Das ist ein Portal, die Inschrift sagt du brauchts 200 Gold um es zu durchqueren."
+    v_needs:
+      0:
+        v_src: tnt
+        v_quantity: 5
+  crafting_table:
+    v_id: crafting_table
+    v_code:   74
+    v_mode: "craft"
+    v_craftcode: 117 # UNUSED
+    v_info: "Craffting Täbel"
+    v_infos: "Craffting Täbel"
+    v_quantity: 1
+    v_infotxt: "Du braucht vier Bretter um eine Craffting Täbel herzustellen."
+    v_needs:
+      0:
+        v_src: plank
+        v_quantity: 4
+
+v_mcode:
+  1: 09818
+  4: 9999
+  5: 09834  
+  6: 09846 # braun | gemuesekoerbe
+  7: 09845 # jacke,rot kopf,braun | lauch
+  9: 09843 # gelb | banana
+  9001: 09844 #  mädchen bei banana
+  10: 09850 # orange, rot, gruen, gemuese
+  11: 09849
+  12: 09871 # weiss hintergrund, blau wasser, grau bananen
+  13: 09872 # gelb/gruen grosse bananenfigur
+  14: 09873 # white strpes 
+  15: 09874 # check 
+  16: 09892 # bub
+  16: 09893 # brot
+  17: 09895 # grey/white Maschine
+  18: 09897 # frau/brot
+  19: 09896 # kind brot
+  20: 09894 # braun,gelb,weiss brote
+  21: 09917 # girl face
+  23: 09922 # orange honey
+  24: 09923 # zopf
+  25: 09924 # WHITE Milk
+  27: 09949 #
+  28: 09951 #
+  29: 09950 #
+  30: 09970 # check 
+  31: 09971 # fisch
+  32: 09973 # boot
+  33: 09974 # check
+  34: 09975 # fisch
+  36: 09992 #
+  37: 09993 # Girl with Milk |
+  38: 09994 # orange, green, red, yellow, blue Yoghurt |
+  39: 09995 # grey sink/combo
+  40: 09996 # yellow chees
+  41: 10017 # cow
+  42: 10018 # BLUE, GREY TRUCK
+  43: 10019 # GIRL
+  45: 10022
+  47: 10038 # Woman
+  47001: 10039 # braun Bags
+  47002: 10040 # Womans purse
+  49: 10043 # Man hooverboard NO GREEN
+  50001: 10044 #orange, others regal
+  50002: 10045 # klammerarm
+  51001: 10046 # bird
+  51002: 10047 # M-Bag
+  53: 10075 #rot frau
+  54: 10076 #haut Kid
+  55: 10077 #mixed Regal
+  56: 10075
+  57: 10107 #LIGHT-BROWN Bread-Head
+  59: 10110 #pattern white brown Cookies?
+  60: 10111 #violet Milka?
+  61: 10127 #packung violet Milka?
+  63: 10129 #BLAU others packungen
+  66: 10149 #mixed brown dog (incomplete) |
+  67: 10149 #mixed brown HAMSTERS |
+  68: 10150 #mixed grey RAT |
+  69: 10151 #grey ELEPHANT |
+  70: 10152 #mixed CAT? |
+  72: 10169 #mixed girl
+  73: 10168 # DINO
+  74: 10171 
+  77: 10193 #mixed Groceries |
+  78: 10194 #automat weiss
+  80: 10196
+  81: 10217 #
+  82: 10218 #
+  83: 10219 #hellgrün junge feld
+  84: 10220
+  86: 10320 
+  87001: 10246
+  87002: 10247
+  88: 10248 #mixed Boy face asleep |
+  89: 10150
+  91: 10278 #mixed Guy
+  97: 10302 #white/orange Ballons
+  98: 10303
+
+  100: 8890
+  101: 8891
+  102: 8892
+  103: 8893
+  104: 8894
+  105: 8895
+  106: 8896
+  107: 8897
+  108: 8898
+  109: 8899
+  110: 8890
+  111: 8891
+  112: 8892
+  113: 8893
+  114: 8894
+  115: 8895
+  116: 8896
+  117: 8897
+  118: 8898
+  119: 8899

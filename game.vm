@@ -1,0 +1,173 @@
+product-id: ${v_game_code} 
+comment: Tiptoi-Craft
+welcome: willkommen
+media-path: ../Audio/%s
+gme-lang: GERMAN
+
+init: $mode:=0 $location:=0 $wuerfel:=1 $gamemodus:=99 $currentitem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
+
+scripts:
+
+    cheat_inventory:
+    #foreach($v_item in $v_items) 
+    - $currentitem==${velocityCount}? $inventory_${v_item.v_id}:=99  J(${v_item.v_id}_inventory)
+    #end
+
+    cheat_mode:
+    - $mode:=1
+
+
+
+#foreach($v_item in $v_items)
+
+
+    ${v_item.v_id}_item_script:
+#foreach($v_modus in $v_modi)
+    - $gamemodus==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})
+#end
+    - $inventory_${v_item.v_id}==0? $currentitem:=${velocityCount} P(item_${v_item.v_id}_selectednoinv)
+    - $currentitem:=${velocityCount} P(item_${v_item.v_id}_selected) J(${v_item.v_id}_inventory)
+
+
+## HARVEST ##
+
+    ${v_item.v_id}_harvest:
+    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
+    - P(${v_item.v_id}_noharvest) $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+
+#foreach($v_code in ${v_item.v_codes}) 
+#if(${v_item.v_mode}=="harvest")
+    ${v_item.v_id}_${v_code}_harvest:
+#if(${v_item.v_needs})
+    #foreach($v_need in ${v_item.v_needs}) 
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(${v_item.v_id}_infotxt)
+    #end
+#end
+#if($v_item.v_limit) 
+    - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)
+#else
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)
+#end
+#end
+#end
+
+
+## ATTACK ##
+
+    ${v_item.v_id}_attack:
+    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+    - P(${v_item.v_id}_noattack) $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+
+#foreach($v_code in ${v_item.v_codes}) 
+#if(${v_item.v_mode}=="attack")
+    ${v_item.v_id}_${v_code}_attack:
+    - $gamemodus==3? J(${v_item.v_id}_info) 
+#if(${v_item.v_needs})
+#foreach($v_need in ${v_item.v_needs}) 
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(${v_item.v_id}_infotxt)
+#end
+#end
+#if($v_item.v_limit) 
+    - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_inventory)
+#else
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} P(${v_item.v_id}_attack) J(${v_item.v_id}_inventory)
+#end
+#end
+#end
+
+
+## CRAFTING AND EATING ##
+
+    ${v_item.v_id}_craft:
+    - $gamemodus==3?  $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+#if(${v_item.v_needs} && ${v_item.v_mode}=="craft")
+#foreach($v_need in ${v_item.v_needs}) 
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? $currentitem:=${velocityCount} P(${v_item.v_id}_infotxt) P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity})
+#end
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} #foreach($v_need in ${v_item.v_needs}) #if($v_need.v_tool) #else $inventory_${v_need.v_src}-=${v_need.v_quantity} #end #end  $currentitem:=${velocityCount} P(${v_item.v_id}_craft) J(${v_item.v_id}_inventory) 
+#else
+    -  $currentitem:=${velocityCount} $currentitem:=${velocityCount} P(${v_item.v_id}_nocraft) 
+#end
+
+
+    ${v_item.v_id}_eat:
+    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
+#if(${v_item.v_hearts})
+    - $inventory_${v_item.v_id}>=1? $inventory_${v_item.v_id}-=1 $inventory_hearts+=1 $currentitem:=${velocityCount} P(${v_item.v_id}_eat) 
+#else
+    - $currentitem:=${velocityCount} P(${v_item.v_id}_noeat) 
+#end
+
+
+## ITEM INFO ##
+
+    ${v_item.v_id}_info:
+       - P(${v_item.v_id}_infotxt) $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
+
+    ${v_item.v_id}_inventory:
+#set($range = [0..${v_maxitems}])
+#foreach($i in $range)
+    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_inventory_${i})
+#end
+    - P(item_${v_item.v_id}_inventory_more)
+
+
+    ${v_item.v_id}_no:
+#set($range = [0..${v_maxitems}])
+#foreach($i in $range)
+    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_${i})
+#end
+    - P(item_${v_item.v_id}_more)
+
+
+#end
+
+## GENERAL ##
+
+#foreach($v_item in $v_info)
+    ${v_item.v_id}_info_script:
+    - P(${v_item.v_id})
+#end
+
+
+#foreach($v_modus in $v_modi)
+    ${v_modus.v_id}_modus_script:
+#foreach($v_item in $v_items)
+    - $currentitem==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})
+#end
+    - $gamemodus:=${velocityCount} P(modus_${v_modus.v_id}_selected)
+
+#end
+
+
+    random:
+    - $gamemodus:=99 $currentitem:=99 J(random2)
+
+    random2:
+    - T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $wuerfel:=$rnd $wuerfel%=3 $wuerfel+=1
+
+language: de
+
+scriptcodes:
+
+    cheat_inventory: $v_mcode[$v_cheat_inventory_code]
+    cheat_mode: $v_mcode[$v_cheat_mode_code]
+
+#foreach($v_item in $v_info)
+    ${v_item.v_id}_info_script: $v_mcode[${v_item.v_code}]
+#end
+
+#foreach($v_item in $v_modi)
+    ${v_item.v_id}_modus_script: $v_mcode[${v_item.v_code}]
+#end
+
+#foreach($v_item in $v_items)
+    ${v_item.v_id}_item_script: $v_mcode[${v_item.v_code}]
+#if(${v_item.v_codes})
+#foreach(${v_code} in ${v_item.v_codes}) 
+    ${v_item.v_id}_${v_code}_${v_item.v_mode}: $v_mcode[${v_code}] 
+#end
+#end
+#end
