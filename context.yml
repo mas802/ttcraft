@@ -21,22 +21,27 @@ v_modi:
   1:
    v_id: attack
    v_info: "angreifen"
+   v_do: "anzugreifen"
    v_code: 25  # UNUSED
   2:
    v_id: craft
    v_info: "crafften"
+   v_do: "zu crafften"
    v_code: 23
   3:
    v_id: info
    v_info: "abfragen" 
+   v_do: "abzufragen" 
    v_code: 60 
   4:
    v_id: harvest
    v_info: "abbauen" 
+   v_do: "abzubauen" 
    v_code: 43  # UNUSED
   5:
    v_id: eat
    v_info: "essen"
+   v_do: "zu essen"
    v_code: 78  # UNUSED
 
 v_items:
@@ -108,6 +113,19 @@ v_items:
       attack: "Fisch fangen."    
     v_quantity: 1
     v_hearts: 1
+    v_needs:
+      0:
+        v_src: fishingrod
+        v_quantity: 1
+        v_tool: true
+  fishingrod:
+    v_id: fishingrod
+    v_code: 115 
+    v_mode: craft
+    v_info: "Fischerrute"
+    v_infos: "Fischerruten"
+    v_infotxt: "Fischerruten gibts noch nicht."   
+    v_quantity: 1
     v_needs:
       0:
         v_src: fishingrod
@@ -233,6 +251,7 @@ v_items:
       9:
         v_src: crafting_table
         v_quantity: 1
+        v_tool: true
   woodpickaxe:
     v_id: woodpickaxe
     v_code: 7 
@@ -252,6 +271,7 @@ v_items:
       9:
         v_src: crafting_table
         v_quantity: 1
+        v_tool: true
   stonepickaxe:
     v_id: stonepickaxe
     v_code: 42
@@ -271,6 +291,7 @@ v_items:
       9:
         v_src: crafting_table
         v_quantity: 1
+        v_tool: true
   iron:
     v_id: iron
     v_code: 28
@@ -290,6 +311,7 @@ v_items:
       9:
         v_src: crafting_table
         v_quantity: 1
+        v_tool: true
   hearts:
     v_id: hearts
     v_code: 72
@@ -320,6 +342,7 @@ v_items:
       9:
         v_src: crafting_table
         v_quantity: 1
+        v_tool: true
   portal:
     v_id: portal
     v_code:   108 # UNUSED

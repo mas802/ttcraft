@@ -17,30 +17,29 @@ scripts:
     - $mode:=1
 
 
-
 #foreach($v_item in $v_items)
-
+    #set( $v_currentitem = $velocityCount)
 
     ${v_item.v_id}_item_script:
 #foreach($v_modus in $v_modi)
     - $gamemodus==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})
 #end
-    - $inventory_${v_item.v_id}==0? $currentitem:=${velocityCount} P(item_${v_item.v_id}_selectednoinv)
-    - $currentitem:=${velocityCount} P(item_${v_item.v_id}_selected) J(${v_item.v_id}_inventory)
+    - $inventory_${v_item.v_id}==0? #foreach($v_need in ${v_item.v_needs}) $inventory_${v_need.v_src} < ${v_need.v_quantity}?#end $currentitem:=$v_currentitem P(item_${v_item.v_id}_selectednoinv)
+    - $currentitem:=$v_currentitem P(item_${v_item.v_id}_selected) J(${v_item.v_id}_inventory)
 
 
 ## HARVEST ##
 
     ${v_item.v_id}_harvest:
-    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
-    - P(${v_item.v_id}_noharvest) $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+    - $gamemodus==3? $currentitem:=$v_currentitem J(${v_item.v_id}_inventory)
+    - P(${v_item.v_id}_noharvest) $currentitem:=$v_currentitem J(${v_item.v_id}_info)
 
 #foreach($v_code in ${v_item.v_codes}) 
 #if(${v_item.v_mode}=="harvest")
     ${v_item.v_id}_${v_code}_harvest:
 #if(${v_item.v_needs})
     #foreach($v_need in ${v_item.v_needs}) 
-    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(${v_item.v_id}_infotxt)
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity}) P(${v_item.v_id}_to_harvest)
     #end
 #end
 #if($v_item.v_limit) 
@@ -56,8 +55,8 @@ scripts:
 ## ATTACK ##
 
     ${v_item.v_id}_attack:
-    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_info)
-    - P(${v_item.v_id}_noattack) $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+    - $gamemodus==3? $currentitem:=$v_currentitem J(${v_item.v_id}_info)
+    - P(${v_item.v_id}_noattack) $currentitem:=$v_currentitem J(${v_item.v_id}_info)
 
 #foreach($v_code in ${v_item.v_codes}) 
 #if(${v_item.v_mode}=="attack")
@@ -65,14 +64,14 @@ scripts:
     - $gamemodus==3? J(${v_item.v_id}_info) 
 #if(${v_item.v_needs})
 #foreach($v_need in ${v_item.v_needs}) 
-    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(${v_item.v_id}_infotxt)
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity}) P(${v_item.v_id}_to_attack)
 #end
 #end
 #if($v_item.v_limit) 
     - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
-    - $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_rnd)
+    - $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)
 #else
-    - P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_rnd)
+    - P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)
 #end
 #end
 
@@ -84,12 +83,12 @@ scripts:
 #foreach($v_drop in ${v_item.v_drops})
 #set($range = [${v_drop.v_min}..${v_drop.v_max}])
 #foreach($i in $range)
-    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss)
+    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss_rnd)
 #set($v_dropcounter = $v_dropcounter+1)
 #end
 #end
 #end
-    - J(${v_item.v_id}_attack_loss)
+    - J(${v_item.v_id}_attack_loss_rnd)
 
     ${v_item.v_id}_attack_loss:
 #if (${v_item.v_needs})
@@ -105,39 +104,41 @@ scripts:
 #end
     - J(${v_item.v_id}_inventory)
 
-    ${v_item.v_id}_attack_rnd:
-    - #if (${v_item.v_drops}) $attack_rnd:=$rnd $attack_rnd%=${v_dropcounter} #end J(${v_item.v_id}_attack_drop)
+    ${v_item.v_id}_attack_drop_rnd:
+    - #if (${v_item.v_drops}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=${v_dropcounter} #end J(${v_item.v_id}_attack_drop)
 
+    ${v_item.v_id}_attack_loss_rnd:
+    - #if (${v_item.v_needs}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=${v_losscounter} #end J(${v_item.v_id}_attack_loss)
 #end
 
 
 ## CRAFTING AND EATING ##
 
     ${v_item.v_id}_craft:
-    - $gamemodus==3?  $currentitem:=${velocityCount} J(${v_item.v_id}_info)
+    - $gamemodus==3?  $currentitem:=$v_currentitem J(${v_item.v_id}_info)
 #if(${v_item.v_needs} && ${v_item.v_mode}=="craft")
 #foreach($v_need in ${v_item.v_needs}) 
-    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? $currentitem:=${velocityCount} P(${v_item.v_id}_infotxt) P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity})
+    - $inventory_${v_need.v_src} < ${v_need.v_quantity}? $currentitem:=$v_currentitem P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity}) P(${v_item.v_id}_to_craft)
 #end
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} #foreach($v_need in ${v_item.v_needs}) #if($v_need.v_tool) #else $inventory_${v_need.v_src}-=${v_need.v_quantity} #end #end  $currentitem:=${velocityCount} P(${v_item.v_id}_craft) J(${v_item.v_id}_inventory) 
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} #foreach($v_need in ${v_item.v_needs}) #if($v_need.v_tool) #else $inventory_${v_need.v_src}-=${v_need.v_quantity} #end #end  $currentitem:=$v_currentitem P(${v_item.v_id}_craft) J(${v_item.v_id}_inventory) 
 #else
-    -  $currentitem:=${velocityCount} $currentitem:=${velocityCount} P(${v_item.v_id}_nocraft) 
+    -  $currentitem:=$v_currentitem P(${v_item.v_id}_nocraft) 
 #end
 
 
     ${v_item.v_id}_eat:
-    - $gamemodus==3? $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
+    - $gamemodus==3? $currentitem:=$v_currentitem J(${v_item.v_id}_inventory)
 #if(${v_item.v_hearts})
-    - $inventory_${v_item.v_id}>=1? $inventory_${v_item.v_id}-=1 $inventory_hearts+=1 $currentitem:=${velocityCount} P(${v_item.v_id}_eat) 
+    - $inventory_${v_item.v_id}>=1? $inventory_${v_item.v_id}-=1 $inventory_hearts+=1 $currentitem:=$v_currentitem P(${v_item.v_id}_eat) 
 #else
-    - $currentitem:=${velocityCount} P(${v_item.v_id}_noeat) 
+    - $currentitem:=$v_currentitem P(${v_item.v_id}_noeat) 
 #end
 
 
 ## ITEM INFO ##
 
     ${v_item.v_id}_info:
-       - P(${v_item.v_id}_infotxt) $currentitem:=${velocityCount} J(${v_item.v_id}_inventory)
+       - P(${v_item.v_id}_infotxt) $currentitem:=$v_currentitem J(${v_item.v_id}_inventory)
 
     ${v_item.v_id}_inventory:
 #set($range = [0..${v_maxitems}])
