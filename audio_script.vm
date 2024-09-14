@@ -3,7 +3,7 @@
 function create () {
   VOICE="${3:-Yannick}"
   if ! grep -qw "$VOICE:$2" Audio/$1.txt; then
-    say -v $VOICE $2 -o gen/temp.aiff && ffmpeg -y -i gen/temp.aiff Audio/$1.ogg
+    say -v $VOICE $2 $4 -o gen/temp.aiff && ffmpeg -y -i gen/temp.aiff Audio/$1.ogg
     echo "$VOICE:$2" > Audio/$1.txt
   fi
 }
@@ -97,8 +97,20 @@ create ${v_item.v_id}_attack_loss_$v_losscounter "Und du verlierst ${i} $v_items
 #end
 #end
 
+create item_${v_item.v_id}_name_p "${v_item.v_infos}"
+create item_${v_item.v_id}_name_s "${v_item.v_info}"
+
+## END ITEM LOOP
+#end
+
+create  quantity_0 "kein"
+create  quantity_1 "ein"
+#set($range = [2..64])
+#foreach($i in $range)
+create  quantity_${i} "$i" "Yannick" "-r 200"
 #end
 
 create item_inventory "Du hast"
 create item_need "Du brauchst"
 create item_inventory_more "Du hast mehr als "
+create goal_to_pass " um das Portal zu durchschreiten!"
