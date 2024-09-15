@@ -10,4 +10,3 @@ This is a Minecraft™-inspired game designed to be played with a Tiptoi™ pen.
 - put variable names in proper namespaces (c_, v_, t_)
 - randomize goal
 - refactor random2 / reset and selecting current item
-- add P(5ms) where needed for gen2 pen

@@ -8,23 +8,40 @@ init: $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item
 
 scripts:
 
+## GOAL / PORTAL ##
+
+    script_goal_check:
+#foreach($v_goal in $c_goals)
+#set($v_currentgoal = $velocityCount)
+    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=0 P(goal_reached)
+#set($range = [1..10])
+#foreach($i in $range)    
+    - $currentgoalnumber==$v_currentgoal? $i==$currentgoalquantity? P(goal_need) J(${v_goal.c_itemname}_no_$i) P(5ms)
+#end
+#end
+    - J(script_next_level) P(5ms)
+
+    script_next_level:
+    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} $tmp+=1 $currentgoalnumber%=$tmp $currentgoalquantity+=1 P(goal_next_level) J(script_goal_check) P(5ms)
+
+
 # START ITEMS MAIN LOOP
 #foreach($v_item in $v_items)
     #set( $v_currentitem = $velocityCount)
 
     ${v_item.v_id}_item_script:
 #foreach($v_modus in $v_modi)
-    - $gamemodus==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})
+    - $gamemodus==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id}) P(5ms)
 #end
     - $inventory_${v_item.v_id}==0? #foreach($v_need in ${v_item.v_needs}) $inventory_${v_need.v_src} < ${v_need.v_quantity}?#end $selecteditem:=$v_currentitem P(item_${v_item.v_id}_selectednoinv)
-    - $selecteditem:=$v_currentitem P(item_${v_item.v_id}_selected) J(${v_item.v_id}_inventory)
+    - $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)  P(5ms)
 
 
 ## HARVEST ##
 
     ${v_item.v_id}_harvest:
-    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)
-    - P(${v_item.v_id}_noharvest) $selecteditem:=$v_currentitem J(${v_item.v_id}_info)
+    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)  P(5ms)
+    - P(${v_item.v_id}_noharvest) $selecteditem:=$v_currentitem J(${v_item.v_id}_info)  P(5ms)
 
 #foreach($v_code in ${v_item.v_codes}) 
 #if(${v_item.v_mode}=="harvest")
@@ -36,9 +53,9 @@ scripts:
 #end
 #if($v_item.v_limit) 
     - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)  P(5ms)
 #else
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} P(${v_item.v_id}_harvest) J(${v_item.v_id}_inventory)  P(5ms)
 #end
 #end
 #end
@@ -47,13 +64,13 @@ scripts:
 ## ATTACK ##
 
     ${v_item.v_id}_attack:
-    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_info)
-    - P(${v_item.v_id}_noattack) $selecteditem:=$v_currentitem J(${v_item.v_id}_info)
+    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_info)  P(5ms)
+    - P(${v_item.v_id}_noattack) $selecteditem:=$v_currentitem J(${v_item.v_id}_info)  P(5ms)
 
 #foreach($v_code in ${v_item.v_codes}) 
 #if(${v_item.v_mode}=="attack")
     ${v_item.v_id}_${v_code}_attack:
-    - $gamemodus==3? J(${v_item.v_id}_info) 
+    - $gamemodus==3? J(${v_item.v_id}_info)  P(5ms)
 #if(${v_item.v_needs})
 #foreach($v_need in ${v_item.v_needs}) 
     - $inventory_${v_need.v_src} < ${v_need.v_quantity}? P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity}) P(${v_item.v_id}_to_attack)
@@ -61,9 +78,9 @@ scripts:
 #end
 #if($v_item.v_limit) 
     - $limit_${v_item.v_id}_${v_code}<1? P(${v_item.v_id}_limited)
-    - $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)
+    - $limit_${v_item.v_id}_${v_code}-=1  P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)  P(5ms)
 #else
-    - P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)
+    - P(${v_item.v_id}_attack) J(${v_item.v_id}_attack_drop_rnd)  P(5ms)
 #end
 #end
 
@@ -75,7 +92,7 @@ scripts:
 #foreach($v_drop in ${v_item.v_drops})
 #set($range = [${v_drop.v_min}..${v_drop.v_max}])
 #foreach($i in $range)
-    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss_rnd)
+    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss_rnd)  P(5ms)
 #set($v_dropcounter = $v_dropcounter+1)
 #end
 #end
@@ -88,38 +105,38 @@ scripts:
 #if(${v_loss.v_min})
 #set($range = [${v_loss.v_min}..${v_loss.v_max}])
 #foreach($i in $range)
-    - $loss_rnd==$v_losscounter? $inventory_${v_loss.v_src}-=${i} P(${v_item.v_id}_attack_loss_$v_losscounter) J(${v_item.v_id}_inventory)
+    - $loss_rnd==$v_losscounter? $inventory_${v_loss.v_src}-=${i} P(${v_item.v_id}_attack_loss_$v_losscounter) J(${v_item.v_id}_inventory)  P(5ms)
 #set($v_losscounter = $v_losscounter+1)
 #end
 #end
 #end
 #end
-    - J(${v_item.v_id}_inventory)
+    - J(${v_item.v_id}_inventory)  P(5ms)
 
     ${v_item.v_id}_attack_drop_rnd:
-    - #if (${v_item.v_drops}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=${v_dropcounter} #end J(${v_item.v_id}_attack_drop)
+    - #if (${v_item.v_drops}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=${v_dropcounter} #end J(${v_item.v_id}_attack_drop)  P(5ms)
 
     ${v_item.v_id}_attack_loss_rnd:
-    - #if (${v_item.v_needs}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=${v_losscounter} #end J(${v_item.v_id}_attack_loss)
+    - #if (${v_item.v_needs}) T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=${v_losscounter} #end J(${v_item.v_id}_attack_loss)  P(5ms)
 #end
 
 
 ## CRAFTING AND EATING ##
 
     ${v_item.v_id}_craft:
-    - $gamemodus==3?  $selecteditem:=$v_currentitem J(${v_item.v_id}_info)
+    - $gamemodus==3?  $selecteditem:=$v_currentitem J(${v_item.v_id}_info)  P(5ms)
 #if(${v_item.v_needs} && ${v_item.v_mode}=="craft")
 #foreach($v_need in ${v_item.v_needs}) 
     - $inventory_${v_need.v_src} < ${v_need.v_quantity}? $selecteditem:=$v_currentitem P(item_need) P(item_${v_need.v_src}_${v_need.v_quantity}) P(${v_item.v_id}_to_craft)
 #end
-    - $inventory_${v_item.v_id}+=${v_item.v_quantity} #foreach($v_need in ${v_item.v_needs}) #if($v_need.v_tool) #else $inventory_${v_need.v_src}-=${v_need.v_quantity} #end #end  $selecteditem:=$v_currentitem P(${v_item.v_id}_craft) J(${v_item.v_id}_inventory) 
+    - $inventory_${v_item.v_id}+=${v_item.v_quantity} #foreach($v_need in ${v_item.v_needs}) #if($v_need.v_tool) #else $inventory_${v_need.v_src}-=${v_need.v_quantity} #end #end  $selecteditem:=$v_currentitem P(${v_item.v_id}_craft) J(${v_item.v_id}_inventory)  P(5ms) 
 #else
     -  $selecteditem:=$v_currentitem P(${v_item.v_id}_nocraft) 
 #end
 
 
     ${v_item.v_id}_eat:
-    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)
+    - $gamemodus==3? $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)  P(5ms)
 #if(${v_item.v_hearts})
     - $inventory_${v_item.v_id}>=1? $inventory_${v_item.v_id}-=1 $inventory_hearts+=1 $selecteditem:=$v_currentitem P(${v_item.v_id}_eat) 
 #else
@@ -130,19 +147,19 @@ scripts:
 ## ITEM INFO ##
 
     ${v_item.v_id}_info:
-       - P(${v_item.v_id}_infotxt) $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)
+       - P(${v_item.v_id}_infotxt) $selecteditem:=$v_currentitem J(${v_item.v_id}_inventory)  P(5ms)
 
     ${v_item.v_id}_inventory:
 #set($v_rangeend=$v_maxitems - 1)
 #set($range = [0..$v_rangeend])
 #foreach($i in $range)
-    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_inventory_${i}) J(random2)
+    - $inventory_${v_item.v_id}==${i}? P(item_${v_item.v_id}_inventory_${i}) J(random2) P(5ms)
 #end
-    - P(item_${v_item.v_id}_inventory_more) J(random2)
+    - P(item_${v_item.v_id}_inventory_more) J(random2) P(5ms)
 
     ${v_item.v_id}_inventory_bycode:
-    - $inventory_${v_item.v_id}>=${v_maxitems}? P(item_${v_item.v_id}_inventory_more) J(random2)
-    - $t_scriptcode:=$v_currentitem $t_scriptcode*=$v_maxitems $t_scriptcode+=$inventory_${v_item.v_id}  $t_scriptcode+=$v_script_offset_itemname_quantity  P(item_inventory) J($t_scriptcode)
+    - $inventory_${v_item.v_id}>=${v_maxitems}? P(item_${v_item.v_id}_inventory_more) J(random2) P(5ms)
+    - $t_scriptcode:=$v_currentitem $t_scriptcode*=$v_maxitems $t_scriptcode+=$inventory_${v_item.v_id}  $t_scriptcode+=$v_script_offset_itemname_quantity  P(item_inventory) J($t_scriptcode) P(5ms)
 
     ${v_item.v_id}_no:
 #set($v_rangeend=$v_maxitems - 1)
@@ -158,6 +175,10 @@ scripts:
     ${v_item.v_id}_no_${i}:
     - P(item_${v_item.v_id}_${i})
 #end
+
+    ${v_item.v_id}_no_by_scriptquantity:
+    - $scriptquantity>=${v_maxitems}? P(item_${v_item.v_id}_inventory_more)
+    - $t_scriptcode:=$v_currentitem $t_scriptcode*=$v_maxitems $t_scriptcode+=$scriptquantity $t_scriptcode+=$v_script_offset_itemname_quantity  J($t_scriptcode)  P(5ms)
 
     item_${v_item.v_id}_name_s:
     - P(item_${v_item.v_id}_name_s)
@@ -176,21 +197,8 @@ scripts:
 #foreach($i in $range)
 #set($v_scriptcode=$i+$v_script_offset_quantity)
     quantity_${v_scriptcode}:
-    - P(quantity_${i}) J($scriptcallback)
+    - P(quantity_${i})
 #end
-
-    item_quantity_name_s:
-    - $itemnamescriptcode:=$v_script_offset_quantity $itemnamescriptcode+=$itemquantity $scriptcallback:=10 J($itemnamescriptcode)
-
-    item_name_s:
-    - $itemnamescriptcode:=$v_script_offset_itemname_s $itemnamescriptcode+=$itemnameselected J($itemnamescriptcode)
-
-    item_quantity_name_p:
-    - $itemnamescriptcode:=$v_script_offset_quantity $itemnamescriptcode+=$itemquantity $scriptcallback:=11 J($itemnamescriptcode)
-
-    item_name_p:
-    - $itemnamescriptcode:=$v_script_offset_itemname_p $itemnamescriptcode+=$itemnameselected J($itemnamescriptcode)
-
 
 
 ## GENERAL ##
@@ -202,7 +210,7 @@ scripts:
 #foreach($v_modus in $v_modi)
     ${v_modus.v_id}_modus_script:
 #foreach($v_item in $v_items)
-    - $selecteditem==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})
+    - $selecteditem==${velocityCount}? J(${v_item.v_id}_${v_modus.v_id})  P(5ms)
 #end
     - $gamemodus:=${velocityCount} P(modus_${v_modus.v_id}_selected)
 
@@ -211,11 +219,11 @@ scripts:
 
     cheat_inventory:
     #foreach($v_item in $v_items) 
-    - $selecteditem==${velocityCount}? $inventory_${v_item.v_id}:=99  J(${v_item.v_id}_inventory)
+    - $selecteditem==${velocityCount}? $inventory_${v_item.v_id}:=99  J(${v_item.v_id}_inventory)  P(5ms)
     #end
 
     random:
-    - $gamemodus:=99 $selecteditem:=99 J(random2)
+    - $gamemodus:=99 $selecteditem:=99 J(random2)  P(5ms)
 
     random2:
     - T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $wuerfel:=$rnd $wuerfel%=3 $wuerfel+=1
@@ -236,10 +244,6 @@ scriptcodes:
     ${v_item.v_id}_${v_code}_${v_item.v_mode}: $v_mcode[${v_code}] 
 #end
 #end
-#set($v_scriptcode=$v_script_offset_itemname_p+$velocityCount)
-    item_${v_item.v_id}_name_p: $v_scriptcode
-#set($v_scriptcode=$v_script_offset_itemname_s+$velocityCount)
-    item_${v_item.v_id}_name_s: $v_scriptcode
 
 #set($v_rangeend=$v_maxitems - 1)
 #set($range = [0..$v_rangeend])
@@ -250,9 +254,6 @@ scriptcodes:
 
 #end
 # END ITEMS SCRIPT LOOP
-
-    item_name_s: $c_item_name_s_code
-    item_name_p: $c_item_name_p_code
 
 #set($v_rangeend=$v_maxitems - 1)
 #set($range = [0..$v_rangeend])
@@ -271,3 +272,6 @@ scriptcodes:
 #foreach($v_item in $v_modi)
     ${v_item.v_id}_modus_script: $v_mcode[${v_item.v_code}]
 #end
+
+## override protal v_code
+    script_goal_check: $v_mcode[61]

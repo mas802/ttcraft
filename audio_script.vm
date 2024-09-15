@@ -45,7 +45,7 @@ create ${v_item.v_id}_infotxt #if(${v_item.v_infotxt}) "${v_item.v_infotxt}" #el
 
 create ${v_item.v_id}_limited #if($v_item.v_limited) "${v_item.v_limited}" #else "Hier hat es keine ${v_item.v_info} mehr." #end
 
-create item_${v_item.v_id}_selectednoinv "Du hast kein ${v_item.v_info}. Was willst du als nächstes machen?"
+create item_${v_item.v_id}_selectednoinv "Du hast kein ${v_item.v_info}."
 create item_${v_item.v_id}_selected "Was willst du mit dem ${v_item.v_info} machen?"
 create item_${v_item.v_id}_need "Du hast nicht genug ${v_item.v_info}. $!{v_item.v_infotxt}"
 create item_${v_item.v_id}_inventory_0 "Du hast kein ${v_item.v_info}."
@@ -114,3 +114,7 @@ create item_inventory "Du hast"
 create item_need "Du brauchst"
 create item_inventory_more "Du hast mehr als "
 create goal_to_pass " um das Portal zu durchschreiten!"
+
+create goal_next_level "Das Portal schimmert und scheint verschlossen zu sein. Die Inschrift auf dem Portal sagt:"
+create goal_need "Um das Portal zu durchqueren brauchst du: "
+create goal_reached "Super, du hast alle benötigten items, du kannst das Portal durchqueren und erreichst das nächste level."
