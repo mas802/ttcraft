@@ -4,7 +4,7 @@ welcome: willkommen
 media-path: ../Audio/%s
 gme-lang: GERMAN
 
-init: $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
+init: $currentgoalnumber:=0 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
 
 scripts:
 
@@ -13,8 +13,8 @@ scripts:
     script_goal_check:
 #foreach($v_goal in $c_goals)
 #set($v_currentgoal = $velocityCount)
-    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=0 P(goal_reached)
-#set($range = [1..10])
+    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=0 $inventory_${v_goal.c_itemname}=-$currentgoalquantity P(goal_reached)
+#set($range = [10..1])
 #foreach($i in $range)    
     - $currentgoalnumber==$v_currentgoal? $i==$currentgoalquantity? P(goal_need) J(${v_goal.c_itemname}_no_$i) P(5ms)
 #end
@@ -22,7 +22,7 @@ scripts:
     - J(script_next_level) P(5ms)
 
     script_next_level:
-    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} $tmp+=1 $currentgoalnumber%=$tmp $currentgoalquantity+=1 P(goal_next_level) J(script_goal_check) P(5ms)
+    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} $currentgoalnumber%=$tmp $currentgoalquantity+=1 P(goal_next_level)
 
 
 # START ITEMS MAIN LOOP

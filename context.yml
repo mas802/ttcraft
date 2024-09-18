@@ -29,9 +29,13 @@ c_goals:
   1:
    c_itemname: stick
   2:
-   c_itemname: coal
+   c_itemname: stone
   3:
+   c_itemname: iron
+  4:
    c_itemname: tnt
+  5:
+   c_itemname: fish
 
 
 v_modi:
@@ -77,7 +81,7 @@ v_items:
     v_info: "Schiesspulver"
     v_infos: "Schiesspulver"
     v_infotxt: "Wenn du einen Creeper besiegst bekommst du drei Schiesspulver. Um den Creeper anzugreifen brauchst du ein Schwert. Die Creeper treiben sich in den Ebenen und den Hügeln herum."
-    v_limit: 2    
+    v_limit: 100   
     v_limited: "Hier hat es keine Creeper mehr." 
     v_quantity: 3
     v_txts:
@@ -87,15 +91,10 @@ v_items:
         v_src: sword
         v_quantity: 1
         v_tool: true  
-      1:
-        v_src: hearts
-        v_quantity: 2
-        v_min: 1
-        v_max: 2
     v_drops:
       0:
         v_item: gunpowder
-        v_min: 0
+        v_min: 1
         v_max: 3
   goatmeat:
     v_id: goatmeat
@@ -190,7 +189,7 @@ v_items:
       3: 19
     v_info: "Baumstamm"
     v_infos: "Baumstämme"
-    v_limit: 10
+    v_limit: 100
     v_infotxt: "Bäume findest du im Wald."
     v_quantity: 1
   coal:
@@ -257,7 +256,7 @@ v_items:
     v_info: "Schwert"
     v_infos: "Schwerter"
     v_quantity: 1
-    v_infotxt: "Du brauchst zwei Eisenbarren und ein Stock um ein Schwert herzustellen."
+    v_infotxt: "Du brauchst einen Craffting Täbel sowie zwei Eisenbarren und ein Stock um ein Schwert herzustellen."
     v_needs:
       0:
         v_src: stick
@@ -277,7 +276,7 @@ v_items:
     v_info: "Holzpickel"
     v_infos: "Holzpickel"
     v_quantity: 1
-    v_infotxt: "Du brauchst drei Holzbretter und zwei Stöcke um einen Holzpickel herzustellen."
+    v_infotxt: "Du brauchst einen Craffting Täbel sowie drei Holzbretter und zwei Stöcke um einen Holzpickel herzustellen."
     v_needs:
       0:
         v_src: stick
@@ -297,7 +296,7 @@ v_items:
     v_info: "Steinpickel"
     v_infos: "Steinpickel"
     v_quantity: 1
-    v_infotxt: "Du brauchst drei Steine und zwei Stöcke um einen Steinpickel herzustellen."
+    v_infotxt: "Du brauchst einen Craffting Täbel sowie drei Steine und zwei Stöcke um einen Steinpickel herzustellen."
     v_needs:
       0:
         v_src: stick
