@@ -3,6 +3,11 @@
 ## Description
 ttcraft is a Minecraft™-inspired game designed to be played with a Tiptoi™ pen. Initially, the game was a treasure hunt through the city, but it is now evolving into a board game-like experience. The project makes use of `tttool` and Velocity templates for generating the necessary game artifacts.
 
+See it in action on youtube:
+
+[![YOUTUBE: ttcraft - Tiptoi crafting game](http://img.youtube.com/vi/cKd6dLe2bEc/mqdefault.jpg)](http://www.youtube.com/watch?v=cKd6dLe2bEc "YOUTUBE: ttcraft - Tiptoi crafting game")
+
+
 ## Quirks and Features
 
 ### Bash Script-Based Build
