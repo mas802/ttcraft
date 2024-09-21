@@ -4,14 +4,6 @@ v_cheat_mode_code: 109 # UNUSED
 
 v_maxitems: 25
 
-v_script_offset_quantity: 1100
-v_script_offset_itemname_s: 1200
-v_script_offset_itemname_p: 1300
-v_script_offset_itemname_quantity: 1400
-
-c_item_name_s_code: 10
-c_item_name_p_code: 11
-
 v_general:
   v_willkommen:
     v_id: willkommen

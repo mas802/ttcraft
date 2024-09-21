@@ -2,9 +2,9 @@
 
 function create () {
   VOICE="${3:-Yannick}"
-  if ! grep -qw "$VOICE:$2" Audio/$1.txt; then
+  if ! grep -qw "$VOICE:$2:end" Audio/$1.txt; then
     say -v $VOICE $2 $4 -o gen/temp.aiff && ffmpeg -y -i gen/temp.aiff Audio/$1.ogg
-    echo "$VOICE:$2" > Audio/$1.txt
+    echo "$VOICE:$2:end" > Audio/$1.txt
   fi
 }
 
@@ -115,6 +115,6 @@ create item_need "Du brauchst"
 create item_inventory_more "Du hast mehr als "
 create goal_to_pass " um das Portal zu durchschreiten!"
 
-create goal_next_level "Das Portal schimmert und scheint verschlossen zu sein. Es hat eine Inschrift, tippe nochmals um sie zu lesen."
-create goal_need "Die Inschrift sagt: Um das Portal zu durchqueren brauchst du: "
+create goal_next_level "Das Portal schimmert und scheint verschlossen zu sein. "
+create goal_need "Die Inschrift auf dem Portal sagt: Um das Portal zu durchqueren brauchst du: "
 create goal_reached "Super, du hast alle benötigten items, du kannst das Portal durchqueren und erreichst das nächste level."

@@ -160,10 +160,6 @@ scripts:
 #end
     - P(item_${v_item.v_id}_inventory_more) J(random2) P(5ms)
 
-    ${v_item.v_id}_inventory_bycode:
-    - $inventory_${v_item.v_id}>=${v_maxitems}? P(item_${v_item.v_id}_inventory_more) J(random2) P(5ms)
-    - $t_scriptcode:=$v_currentitem $t_scriptcode*=$v_maxitems $t_scriptcode+=$inventory_${v_item.v_id}  $t_scriptcode+=$v_script_offset_itemname_quantity  P(item_inventory) J($t_scriptcode) P(5ms)
-
     ${v_item.v_id}_no:
 #set($v_rangeend=$v_maxitems - 1)
 #set($range = [0..$v_rangeend])
@@ -179,10 +175,6 @@ scripts:
     - P(item_${v_item.v_id}_${i})
 #end
 
-    ${v_item.v_id}_no_by_scriptquantity:
-    - $scriptquantity>=${v_maxitems}? P(item_${v_item.v_id}_inventory_more)
-    - $t_scriptcode:=$v_currentitem $t_scriptcode*=$v_maxitems $t_scriptcode+=$scriptquantity $t_scriptcode+=$v_script_offset_itemname_quantity  J($t_scriptcode)  P(5ms)
-
     item_${v_item.v_id}_name_s:
     - P(item_${v_item.v_id}_name_s)
 
@@ -191,17 +183,6 @@ scripts:
 
 #end
 # END ITEMS MAIN LOOP
-
-
-
-## QUANTITY AND INVENTORY HELPERS
-
-#set($range = [0..64])
-#foreach($i in $range)
-#set($v_scriptcode=$i+$v_script_offset_quantity)
-    quantity_${v_scriptcode}:
-    - P(quantity_${i})
-#end
 
 
 ## GENERAL ##
@@ -239,13 +220,6 @@ scriptcodes:
 #foreach($v_item in $v_items)
 #set($v_currentitem=$velocityCount)
 
-#set($v_rangeend=$v_maxitems - 1)
-#set($range = [0..$v_rangeend])
-#foreach($i in $range)
-#set($v_scriptcode=$v_script_offset_itemname_quantity+$v_currentitem*$v_maxitems+$i)
-    ${v_item.v_id}_no_${i}: $v_scriptcode
-#end
-
 #end
 # END QUANTITY SCRIPT LOOP
 
@@ -263,13 +237,6 @@ scriptcodes:
 
 #end
 # END ITEMS SCRIPT LOOP
-
-#set($v_rangeend=$v_maxitems - 1)
-#set($range = [0..$v_rangeend])
-#foreach($i in $range)
-#set($v_scriptcode=$i+$v_script_offset_quantity)
-    quantity_${v_scriptcode}: $v_scriptcode
-#end
 
     cheat_inventory: $v_mcode[$v_cheat_inventory_code]
     cheat_mode: $v_mcode[$v_cheat_mode_code]
