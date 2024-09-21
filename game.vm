@@ -4,7 +4,7 @@ welcome: willkommen
 media-path: ../Audio/%s
 gme-lang: GERMAN
 
-init: $currentgoalnumber:=0 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
+init: $currentgoalnumber:=65000 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
 
 scripts:
 
@@ -12,9 +12,9 @@ scripts:
 
     script_goal_check:
 #foreach($v_goal in $c_goals)
-#set($v_currentgoal = $velocityCount)
-    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=0 $inventory_${v_goal.c_itemname}=-$currentgoalquantity P(goal_reached)
-#set($range = [10..1])
+#set($v_currentgoal = $velocityCount - 1)
+    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_${v_goal.c_itemname}-=$currentgoalquantity P(goal_reached)
+#set($range = [24..1])
 #foreach($i in $range)    
     - $currentgoalnumber==$v_currentgoal? $i==$currentgoalquantity? P(goal_need) J(${v_goal.c_itemname}_no_$i) P(5ms)
 #end
@@ -22,7 +22,10 @@ scripts:
     - J(script_next_level) P(5ms)
 
     script_next_level:
-    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} $currentgoalnumber%=$tmp $currentgoalquantity+=1 P(goal_next_level)
+    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} J(script_next_level_split) P(5ms)
+
+    script_next_level_split:
+    - $currentgoalquantity+=1 $currentgoalquantity%=24 P(goal_next_level) J(script_goal_check) P(5ms)
 
 
 # START ITEMS MAIN LOOP
@@ -92,7 +95,7 @@ scripts:
 #foreach($v_drop in ${v_item.v_drops})
 #set($range = [${v_drop.v_min}..${v_drop.v_max}])
 #foreach($i in $range)
-    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) J(${v_item.v_id}_attack_loss_rnd)  P(5ms)
+    - $attack_rnd==$v_dropcounter? $inventory_${v_item.v_id}+=${i} P(${v_item.v_id}_attack_drop_$v_dropcounter) P(5ms)
 #set($v_dropcounter = $v_dropcounter+1)
 #end
 #end
@@ -232,6 +235,19 @@ language: de
 
 scriptcodes:
 
+# START QUANTITY SCRIPT LOOP
+#foreach($v_item in $v_items)
+#set($v_currentitem=$velocityCount)
+
+#set($v_rangeend=$v_maxitems - 1)
+#set($range = [0..$v_rangeend])
+#foreach($i in $range)
+#set($v_scriptcode=$v_script_offset_itemname_quantity+$v_currentitem*$v_maxitems+$i)
+    ${v_item.v_id}_no_${i}: $v_scriptcode
+#end
+
+#end
+# END QUANTITY SCRIPT LOOP
 
 
 # START ITEMS SCRIPT LOOP
@@ -243,13 +259,6 @@ scriptcodes:
 #foreach(${v_code} in ${v_item.v_codes}) 
     ${v_item.v_id}_${v_code}_${v_item.v_mode}: $v_mcode[${v_code}] 
 #end
-#end
-
-#set($v_rangeend=$v_maxitems - 1)
-#set($range = [0..$v_rangeend])
-#foreach($i in $range)
-#set($v_scriptcode=$v_script_offset_itemname_quantity+$v_currentitem*$v_maxitems+$i)
-    ${v_item.v_id}_no_${i}: $v_scriptcode
 #end
 
 #end
@@ -273,5 +282,5 @@ scriptcodes:
     ${v_item.v_id}_modus_script: $v_mcode[${v_item.v_code}]
 #end
 
-## override protal v_code
+## override portal v_code
     script_goal_check: $v_mcode[61]
