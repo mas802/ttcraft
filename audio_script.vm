@@ -115,6 +115,6 @@ create item_need "Du brauchst"
 create item_inventory_more "Du hast mehr als "
 create goal_to_pass " um das Portal zu durchschreiten!"
 
-create goal_next_level "Das Portal schimmert und scheint verschlossen zu sein. "
+create goal_next_level "Das Portal schimmert blau und scheint verschlossen zu sein. "
 create goal_need "Die Inschrift auf dem Portal sagt: Um das Portal zu durchqueren brauchst du: "
 create goal_reached "Super, du hast alle benötigten items, du kannst das Portal durchqueren und erreichst das nächste level."

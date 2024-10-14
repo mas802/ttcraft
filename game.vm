@@ -4,7 +4,7 @@ welcome: willkommen
 media-path: ../Audio/%s
 gme-lang: GERMAN
 
-init: $currentgoalnumber:=65000 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
+init: $currentgoalnumber:=65000 $currentgoalquantity:=0 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99 #foreach($v_item in $v_items) #if($v_item.v_limit) #if($v_item.v_codes) #foreach($v_code in $v_item.v_codes) $limit_${v_item.v_id}_${v_code}:=$v_item.v_limit #end #end #end #end $inventory_hearts:=10
 
 scripts:
 
@@ -13,19 +13,26 @@ scripts:
     script_goal_check:
 #foreach($v_goal in $c_goals)
 #set($v_currentgoal = $velocityCount - 1)
-    - $currentgoalnumber==$v_currentgoal? $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_${v_goal.c_itemname}-=$currentgoalquantity P(goal_reached)
-#set($range = [24..1])
-#foreach($i in $range)    
-    - $currentgoalnumber==$v_currentgoal? $i==$currentgoalquantity? P(goal_need) J(${v_goal.c_itemname}_no_$i) P(5ms)
-#end
+    - $currentgoalnumber==$v_currentgoal? J(script_goal_no_${v_currentgoal}) P(5ms)
 #end
     - J(script_next_level) P(5ms)
 
+#foreach($v_goal in $c_goals)
+#set($v_currentgoal = $velocityCount - 1)
+    script_goal_no_${v_currentgoal}:
+    - $inventory_${v_goal.c_itemname}>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_${v_goal.c_itemname}:=0 P(goal_reached)
+#set($range = [24..1])
+#foreach($i in $range)    
+    - $currentgoalquantity==$i? P(goal_need) J(${v_goal.c_itemname}_no_$i) P(5ms)
+#end
+#end
+
+
     script_next_level:
-    - $currentlevel+=1 $currentgoalnumber:=$currentlevel $tmp:=${c_goals.size()} J(script_next_level_split) P(5ms)
+    - $currentgoalnumber:=$currentlevel $currentgoalnumber%=${c_goals.size()} $currentlevel+=1 J(script_next_level_split) P(5ms)
 
     script_next_level_split:
-    - $currentgoalquantity+=1 $currentgoalquantity%=24 P(goal_next_level) J(script_goal_check) P(5ms)
+    - $currentgoalquantity%=24 $currentgoalquantity+=1 P(goal_next_level) P(5ms)
 
 
 # START ITEMS MAIN LOOP
