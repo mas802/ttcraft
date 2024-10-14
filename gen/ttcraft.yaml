@@ -1,0 +1,3868 @@
+product-id: 998 
+comment: Tiptoi-Craft
+welcome: willkommen
+media-path: ../Audio/%s
+gme-lang: GERMAN
+
+init: $currentgoalnumber:=65000 $currentgoalquantity:=0 $location:=0 $wuerfel:=1 $gamemodus:=99 $selecteditem:=99     $limit_gunpowder_11:=100  $limit_gunpowder_41:=100  $limit_gunpowder_82:=100  $limit_gunpowder_84:=100  $limit_gunpowder_83:=100  $limit_gunpowder_87001:=100  $limit_gunpowder_87002:=100                  $limit_log_16:=100  $limit_log_18:=100  $limit_log_19:=100                              $limit_portal_61:=1       $inventory_hearts:=10
+
+scripts:
+
+
+    script_goal_check:
+    - $currentgoalnumber==0? J(script_goal_no_0) P(5ms)
+    - $currentgoalnumber==1? J(script_goal_no_1) P(5ms)
+    - $currentgoalnumber==2? J(script_goal_no_2) P(5ms)
+    - $currentgoalnumber==3? J(script_goal_no_3) P(5ms)
+    - $currentgoalnumber==4? J(script_goal_no_4) P(5ms)
+    - J(script_next_level) P(5ms)
+
+    script_goal_no_0:
+    - $inventory_stick>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_stick:=0 P(goal_reached)
+    - $currentgoalquantity==24? P(goal_need) J(stick_no_24) P(5ms)
+    - $currentgoalquantity==23? P(goal_need) J(stick_no_23) P(5ms)
+    - $currentgoalquantity==22? P(goal_need) J(stick_no_22) P(5ms)
+    - $currentgoalquantity==21? P(goal_need) J(stick_no_21) P(5ms)
+    - $currentgoalquantity==20? P(goal_need) J(stick_no_20) P(5ms)
+    - $currentgoalquantity==19? P(goal_need) J(stick_no_19) P(5ms)
+    - $currentgoalquantity==18? P(goal_need) J(stick_no_18) P(5ms)
+    - $currentgoalquantity==17? P(goal_need) J(stick_no_17) P(5ms)
+    - $currentgoalquantity==16? P(goal_need) J(stick_no_16) P(5ms)
+    - $currentgoalquantity==15? P(goal_need) J(stick_no_15) P(5ms)
+    - $currentgoalquantity==14? P(goal_need) J(stick_no_14) P(5ms)
+    - $currentgoalquantity==13? P(goal_need) J(stick_no_13) P(5ms)
+    - $currentgoalquantity==12? P(goal_need) J(stick_no_12) P(5ms)
+    - $currentgoalquantity==11? P(goal_need) J(stick_no_11) P(5ms)
+    - $currentgoalquantity==10? P(goal_need) J(stick_no_10) P(5ms)
+    - $currentgoalquantity==9? P(goal_need) J(stick_no_9) P(5ms)
+    - $currentgoalquantity==8? P(goal_need) J(stick_no_8) P(5ms)
+    - $currentgoalquantity==7? P(goal_need) J(stick_no_7) P(5ms)
+    - $currentgoalquantity==6? P(goal_need) J(stick_no_6) P(5ms)
+    - $currentgoalquantity==5? P(goal_need) J(stick_no_5) P(5ms)
+    - $currentgoalquantity==4? P(goal_need) J(stick_no_4) P(5ms)
+    - $currentgoalquantity==3? P(goal_need) J(stick_no_3) P(5ms)
+    - $currentgoalquantity==2? P(goal_need) J(stick_no_2) P(5ms)
+    - $currentgoalquantity==1? P(goal_need) J(stick_no_1) P(5ms)
+    script_goal_no_1:
+    - $inventory_stone>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_stone:=0 P(goal_reached)
+    - $currentgoalquantity==24? P(goal_need) J(stone_no_24) P(5ms)
+    - $currentgoalquantity==23? P(goal_need) J(stone_no_23) P(5ms)
+    - $currentgoalquantity==22? P(goal_need) J(stone_no_22) P(5ms)
+    - $currentgoalquantity==21? P(goal_need) J(stone_no_21) P(5ms)
+    - $currentgoalquantity==20? P(goal_need) J(stone_no_20) P(5ms)
+    - $currentgoalquantity==19? P(goal_need) J(stone_no_19) P(5ms)
+    - $currentgoalquantity==18? P(goal_need) J(stone_no_18) P(5ms)
+    - $currentgoalquantity==17? P(goal_need) J(stone_no_17) P(5ms)
+    - $currentgoalquantity==16? P(goal_need) J(stone_no_16) P(5ms)
+    - $currentgoalquantity==15? P(goal_need) J(stone_no_15) P(5ms)
+    - $currentgoalquantity==14? P(goal_need) J(stone_no_14) P(5ms)
+    - $currentgoalquantity==13? P(goal_need) J(stone_no_13) P(5ms)
+    - $currentgoalquantity==12? P(goal_need) J(stone_no_12) P(5ms)
+    - $currentgoalquantity==11? P(goal_need) J(stone_no_11) P(5ms)
+    - $currentgoalquantity==10? P(goal_need) J(stone_no_10) P(5ms)
+    - $currentgoalquantity==9? P(goal_need) J(stone_no_9) P(5ms)
+    - $currentgoalquantity==8? P(goal_need) J(stone_no_8) P(5ms)
+    - $currentgoalquantity==7? P(goal_need) J(stone_no_7) P(5ms)
+    - $currentgoalquantity==6? P(goal_need) J(stone_no_6) P(5ms)
+    - $currentgoalquantity==5? P(goal_need) J(stone_no_5) P(5ms)
+    - $currentgoalquantity==4? P(goal_need) J(stone_no_4) P(5ms)
+    - $currentgoalquantity==3? P(goal_need) J(stone_no_3) P(5ms)
+    - $currentgoalquantity==2? P(goal_need) J(stone_no_2) P(5ms)
+    - $currentgoalquantity==1? P(goal_need) J(stone_no_1) P(5ms)
+    script_goal_no_2:
+    - $inventory_iron>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_iron:=0 P(goal_reached)
+    - $currentgoalquantity==24? P(goal_need) J(iron_no_24) P(5ms)
+    - $currentgoalquantity==23? P(goal_need) J(iron_no_23) P(5ms)
+    - $currentgoalquantity==22? P(goal_need) J(iron_no_22) P(5ms)
+    - $currentgoalquantity==21? P(goal_need) J(iron_no_21) P(5ms)
+    - $currentgoalquantity==20? P(goal_need) J(iron_no_20) P(5ms)
+    - $currentgoalquantity==19? P(goal_need) J(iron_no_19) P(5ms)
+    - $currentgoalquantity==18? P(goal_need) J(iron_no_18) P(5ms)
+    - $currentgoalquantity==17? P(goal_need) J(iron_no_17) P(5ms)
+    - $currentgoalquantity==16? P(goal_need) J(iron_no_16) P(5ms)
+    - $currentgoalquantity==15? P(goal_need) J(iron_no_15) P(5ms)
+    - $currentgoalquantity==14? P(goal_need) J(iron_no_14) P(5ms)
+    - $currentgoalquantity==13? P(goal_need) J(iron_no_13) P(5ms)
+    - $currentgoalquantity==12? P(goal_need) J(iron_no_12) P(5ms)
+    - $currentgoalquantity==11? P(goal_need) J(iron_no_11) P(5ms)
+    - $currentgoalquantity==10? P(goal_need) J(iron_no_10) P(5ms)
+    - $currentgoalquantity==9? P(goal_need) J(iron_no_9) P(5ms)
+    - $currentgoalquantity==8? P(goal_need) J(iron_no_8) P(5ms)
+    - $currentgoalquantity==7? P(goal_need) J(iron_no_7) P(5ms)
+    - $currentgoalquantity==6? P(goal_need) J(iron_no_6) P(5ms)
+    - $currentgoalquantity==5? P(goal_need) J(iron_no_5) P(5ms)
+    - $currentgoalquantity==4? P(goal_need) J(iron_no_4) P(5ms)
+    - $currentgoalquantity==3? P(goal_need) J(iron_no_3) P(5ms)
+    - $currentgoalquantity==2? P(goal_need) J(iron_no_2) P(5ms)
+    - $currentgoalquantity==1? P(goal_need) J(iron_no_1) P(5ms)
+    script_goal_no_3:
+    - $inventory_tnt>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_tnt:=0 P(goal_reached)
+    - $currentgoalquantity==24? P(goal_need) J(tnt_no_24) P(5ms)
+    - $currentgoalquantity==23? P(goal_need) J(tnt_no_23) P(5ms)
+    - $currentgoalquantity==22? P(goal_need) J(tnt_no_22) P(5ms)
+    - $currentgoalquantity==21? P(goal_need) J(tnt_no_21) P(5ms)
+    - $currentgoalquantity==20? P(goal_need) J(tnt_no_20) P(5ms)
+    - $currentgoalquantity==19? P(goal_need) J(tnt_no_19) P(5ms)
+    - $currentgoalquantity==18? P(goal_need) J(tnt_no_18) P(5ms)
+    - $currentgoalquantity==17? P(goal_need) J(tnt_no_17) P(5ms)
+    - $currentgoalquantity==16? P(goal_need) J(tnt_no_16) P(5ms)
+    - $currentgoalquantity==15? P(goal_need) J(tnt_no_15) P(5ms)
+    - $currentgoalquantity==14? P(goal_need) J(tnt_no_14) P(5ms)
+    - $currentgoalquantity==13? P(goal_need) J(tnt_no_13) P(5ms)
+    - $currentgoalquantity==12? P(goal_need) J(tnt_no_12) P(5ms)
+    - $currentgoalquantity==11? P(goal_need) J(tnt_no_11) P(5ms)
+    - $currentgoalquantity==10? P(goal_need) J(tnt_no_10) P(5ms)
+    - $currentgoalquantity==9? P(goal_need) J(tnt_no_9) P(5ms)
+    - $currentgoalquantity==8? P(goal_need) J(tnt_no_8) P(5ms)
+    - $currentgoalquantity==7? P(goal_need) J(tnt_no_7) P(5ms)
+    - $currentgoalquantity==6? P(goal_need) J(tnt_no_6) P(5ms)
+    - $currentgoalquantity==5? P(goal_need) J(tnt_no_5) P(5ms)
+    - $currentgoalquantity==4? P(goal_need) J(tnt_no_4) P(5ms)
+    - $currentgoalquantity==3? P(goal_need) J(tnt_no_3) P(5ms)
+    - $currentgoalquantity==2? P(goal_need) J(tnt_no_2) P(5ms)
+    - $currentgoalquantity==1? P(goal_need) J(tnt_no_1) P(5ms)
+    script_goal_no_4:
+    - $inventory_fish>=$currentgoalquantity? $currentgoalnumber:=65000 $inventory_fish:=0 P(goal_reached)
+    - $currentgoalquantity==24? P(goal_need) J(fish_no_24) P(5ms)
+    - $currentgoalquantity==23? P(goal_need) J(fish_no_23) P(5ms)
+    - $currentgoalquantity==22? P(goal_need) J(fish_no_22) P(5ms)
+    - $currentgoalquantity==21? P(goal_need) J(fish_no_21) P(5ms)
+    - $currentgoalquantity==20? P(goal_need) J(fish_no_20) P(5ms)
+    - $currentgoalquantity==19? P(goal_need) J(fish_no_19) P(5ms)
+    - $currentgoalquantity==18? P(goal_need) J(fish_no_18) P(5ms)
+    - $currentgoalquantity==17? P(goal_need) J(fish_no_17) P(5ms)
+    - $currentgoalquantity==16? P(goal_need) J(fish_no_16) P(5ms)
+    - $currentgoalquantity==15? P(goal_need) J(fish_no_15) P(5ms)
+    - $currentgoalquantity==14? P(goal_need) J(fish_no_14) P(5ms)
+    - $currentgoalquantity==13? P(goal_need) J(fish_no_13) P(5ms)
+    - $currentgoalquantity==12? P(goal_need) J(fish_no_12) P(5ms)
+    - $currentgoalquantity==11? P(goal_need) J(fish_no_11) P(5ms)
+    - $currentgoalquantity==10? P(goal_need) J(fish_no_10) P(5ms)
+    - $currentgoalquantity==9? P(goal_need) J(fish_no_9) P(5ms)
+    - $currentgoalquantity==8? P(goal_need) J(fish_no_8) P(5ms)
+    - $currentgoalquantity==7? P(goal_need) J(fish_no_7) P(5ms)
+    - $currentgoalquantity==6? P(goal_need) J(fish_no_6) P(5ms)
+    - $currentgoalquantity==5? P(goal_need) J(fish_no_5) P(5ms)
+    - $currentgoalquantity==4? P(goal_need) J(fish_no_4) P(5ms)
+    - $currentgoalquantity==3? P(goal_need) J(fish_no_3) P(5ms)
+    - $currentgoalquantity==2? P(goal_need) J(fish_no_2) P(5ms)
+    - $currentgoalquantity==1? P(goal_need) J(fish_no_1) P(5ms)
+
+
+    script_next_level:
+    - $currentgoalnumber:=$currentlevel $currentgoalnumber%=5 $currentlevel+=1 J(script_next_level_split) P(5ms)
+
+    script_next_level_split:
+    - $currentgoalquantity%=24 $currentgoalquantity+=1 P(goal_next_level) P(5ms)
+
+
+# START ITEMS MAIN LOOP
+
+    gunpowder_item_script:
+    - $gamemodus==1? J(gunpowder_attack) P(5ms)
+    - $gamemodus==2? J(gunpowder_craft) P(5ms)
+    - $gamemodus==3? J(gunpowder_info) P(5ms)
+    - $gamemodus==4? J(gunpowder_harvest) P(5ms)
+    - $gamemodus==5? J(gunpowder_eat) P(5ms)
+    - $inventory_gunpowder==0?  $inventory_sword < 1? $selecteditem:=1 P(item_gunpowder_selectednoinv)
+    - $selecteditem:=1 J(gunpowder_inventory)  P(5ms)
+
+
+
+    gunpowder_harvest:
+    - $gamemodus==3? $selecteditem:=1 J(gunpowder_inventory)  P(5ms)
+    - P(gunpowder_noharvest) $selecteditem:=1 J(gunpowder_info)  P(5ms)
+
+
+
+
+    gunpowder_attack:
+    - $gamemodus==3? $selecteditem:=1 J(gunpowder_info)  P(5ms)
+    - P(gunpowder_noattack) $selecteditem:=1 J(gunpowder_info)  P(5ms)
+
+    gunpowder_11_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_11<1? P(gunpowder_limited)
+    - $limit_gunpowder_11-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_41_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_41<1? P(gunpowder_limited)
+    - $limit_gunpowder_41-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_82_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_82<1? P(gunpowder_limited)
+    - $limit_gunpowder_82-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_84_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_84<1? P(gunpowder_limited)
+    - $limit_gunpowder_84-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_83_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_83<1? P(gunpowder_limited)
+    - $limit_gunpowder_83-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_87001_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_87001<1? P(gunpowder_limited)
+    - $limit_gunpowder_87001-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+    gunpowder_87002_attack:
+    - $gamemodus==3? J(gunpowder_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(gunpowder_to_attack)
+    - $limit_gunpowder_87002<1? P(gunpowder_limited)
+    - $limit_gunpowder_87002-=1  P(gunpowder_attack) J(gunpowder_attack_drop_rnd)  P(5ms)
+
+
+    gunpowder_attack_drop:
+    - $attack_rnd==0? $inventory_gunpowder+=1 P(gunpowder_attack_drop_0) P(5ms)
+    - $attack_rnd==1? $inventory_gunpowder+=2 P(gunpowder_attack_drop_1) P(5ms)
+    - $attack_rnd==2? $inventory_gunpowder+=3 P(gunpowder_attack_drop_2) P(5ms)
+    - J(gunpowder_attack_loss_rnd)
+
+    gunpowder_attack_loss:
+    - J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_attack_drop_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $attack_rnd:=$rnd $attack_rnd%=3  J(gunpowder_attack_drop)  P(5ms)
+
+    gunpowder_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(gunpowder_attack_loss)  P(5ms)
+
+
+
+    gunpowder_craft:
+    - $gamemodus==3?  $selecteditem:=1 J(gunpowder_info)  P(5ms)
+    -  $selecteditem:=1 P(gunpowder_nocraft) 
+
+
+    gunpowder_eat:
+    - $gamemodus==3? $selecteditem:=1 J(gunpowder_inventory)  P(5ms)
+    - $selecteditem:=1 P(gunpowder_noeat) 
+
+
+
+    gunpowder_info:
+       - P(gunpowder_infotxt) $selecteditem:=1 J(gunpowder_inventory)  P(5ms)
+
+    gunpowder_inventory:
+    - $inventory_gunpowder==0? P(item_gunpowder_inventory_0) J(random2) P(5ms)
+    - $inventory_gunpowder==1? P(item_gunpowder_inventory_1) J(random2) P(5ms)
+    - $inventory_gunpowder==2? P(item_gunpowder_inventory_2) J(random2) P(5ms)
+    - $inventory_gunpowder==3? P(item_gunpowder_inventory_3) J(random2) P(5ms)
+    - $inventory_gunpowder==4? P(item_gunpowder_inventory_4) J(random2) P(5ms)
+    - $inventory_gunpowder==5? P(item_gunpowder_inventory_5) J(random2) P(5ms)
+    - $inventory_gunpowder==6? P(item_gunpowder_inventory_6) J(random2) P(5ms)
+    - $inventory_gunpowder==7? P(item_gunpowder_inventory_7) J(random2) P(5ms)
+    - $inventory_gunpowder==8? P(item_gunpowder_inventory_8) J(random2) P(5ms)
+    - $inventory_gunpowder==9? P(item_gunpowder_inventory_9) J(random2) P(5ms)
+    - $inventory_gunpowder==10? P(item_gunpowder_inventory_10) J(random2) P(5ms)
+    - $inventory_gunpowder==11? P(item_gunpowder_inventory_11) J(random2) P(5ms)
+    - $inventory_gunpowder==12? P(item_gunpowder_inventory_12) J(random2) P(5ms)
+    - $inventory_gunpowder==13? P(item_gunpowder_inventory_13) J(random2) P(5ms)
+    - $inventory_gunpowder==14? P(item_gunpowder_inventory_14) J(random2) P(5ms)
+    - $inventory_gunpowder==15? P(item_gunpowder_inventory_15) J(random2) P(5ms)
+    - $inventory_gunpowder==16? P(item_gunpowder_inventory_16) J(random2) P(5ms)
+    - $inventory_gunpowder==17? P(item_gunpowder_inventory_17) J(random2) P(5ms)
+    - $inventory_gunpowder==18? P(item_gunpowder_inventory_18) J(random2) P(5ms)
+    - $inventory_gunpowder==19? P(item_gunpowder_inventory_19) J(random2) P(5ms)
+    - $inventory_gunpowder==20? P(item_gunpowder_inventory_20) J(random2) P(5ms)
+    - $inventory_gunpowder==21? P(item_gunpowder_inventory_21) J(random2) P(5ms)
+    - $inventory_gunpowder==22? P(item_gunpowder_inventory_22) J(random2) P(5ms)
+    - $inventory_gunpowder==23? P(item_gunpowder_inventory_23) J(random2) P(5ms)
+    - $inventory_gunpowder==24? P(item_gunpowder_inventory_24) J(random2) P(5ms)
+    - P(item_gunpowder_inventory_more) J(random2) P(5ms)
+
+    gunpowder_no:
+    - $inventory_gunpowder==0? P(item_gunpowder_0)
+    - $inventory_gunpowder==1? P(item_gunpowder_1)
+    - $inventory_gunpowder==2? P(item_gunpowder_2)
+    - $inventory_gunpowder==3? P(item_gunpowder_3)
+    - $inventory_gunpowder==4? P(item_gunpowder_4)
+    - $inventory_gunpowder==5? P(item_gunpowder_5)
+    - $inventory_gunpowder==6? P(item_gunpowder_6)
+    - $inventory_gunpowder==7? P(item_gunpowder_7)
+    - $inventory_gunpowder==8? P(item_gunpowder_8)
+    - $inventory_gunpowder==9? P(item_gunpowder_9)
+    - $inventory_gunpowder==10? P(item_gunpowder_10)
+    - $inventory_gunpowder==11? P(item_gunpowder_11)
+    - $inventory_gunpowder==12? P(item_gunpowder_12)
+    - $inventory_gunpowder==13? P(item_gunpowder_13)
+    - $inventory_gunpowder==14? P(item_gunpowder_14)
+    - $inventory_gunpowder==15? P(item_gunpowder_15)
+    - $inventory_gunpowder==16? P(item_gunpowder_16)
+    - $inventory_gunpowder==17? P(item_gunpowder_17)
+    - $inventory_gunpowder==18? P(item_gunpowder_18)
+    - $inventory_gunpowder==19? P(item_gunpowder_19)
+    - $inventory_gunpowder==20? P(item_gunpowder_20)
+    - $inventory_gunpowder==21? P(item_gunpowder_21)
+    - $inventory_gunpowder==22? P(item_gunpowder_22)
+    - $inventory_gunpowder==23? P(item_gunpowder_23)
+    - $inventory_gunpowder==24? P(item_gunpowder_24)
+    - P(item_gunpowder_more)
+
+    gunpowder_no_0:
+    - P(item_gunpowder_0)
+    gunpowder_no_1:
+    - P(item_gunpowder_1)
+    gunpowder_no_2:
+    - P(item_gunpowder_2)
+    gunpowder_no_3:
+    - P(item_gunpowder_3)
+    gunpowder_no_4:
+    - P(item_gunpowder_4)
+    gunpowder_no_5:
+    - P(item_gunpowder_5)
+    gunpowder_no_6:
+    - P(item_gunpowder_6)
+    gunpowder_no_7:
+    - P(item_gunpowder_7)
+    gunpowder_no_8:
+    - P(item_gunpowder_8)
+    gunpowder_no_9:
+    - P(item_gunpowder_9)
+    gunpowder_no_10:
+    - P(item_gunpowder_10)
+    gunpowder_no_11:
+    - P(item_gunpowder_11)
+    gunpowder_no_12:
+    - P(item_gunpowder_12)
+    gunpowder_no_13:
+    - P(item_gunpowder_13)
+    gunpowder_no_14:
+    - P(item_gunpowder_14)
+    gunpowder_no_15:
+    - P(item_gunpowder_15)
+    gunpowder_no_16:
+    - P(item_gunpowder_16)
+    gunpowder_no_17:
+    - P(item_gunpowder_17)
+    gunpowder_no_18:
+    - P(item_gunpowder_18)
+    gunpowder_no_19:
+    - P(item_gunpowder_19)
+    gunpowder_no_20:
+    - P(item_gunpowder_20)
+    gunpowder_no_21:
+    - P(item_gunpowder_21)
+    gunpowder_no_22:
+    - P(item_gunpowder_22)
+    gunpowder_no_23:
+    - P(item_gunpowder_23)
+    gunpowder_no_24:
+    - P(item_gunpowder_24)
+
+    item_gunpowder_name_s:
+    - P(item_gunpowder_name_s)
+
+    item_gunpowder_name_p:
+    - P(item_gunpowder_name_p)
+
+
+    goatmeat_item_script:
+    - $gamemodus==1? J(goatmeat_attack) P(5ms)
+    - $gamemodus==2? J(goatmeat_craft) P(5ms)
+    - $gamemodus==3? J(goatmeat_info) P(5ms)
+    - $gamemodus==4? J(goatmeat_harvest) P(5ms)
+    - $gamemodus==5? J(goatmeat_eat) P(5ms)
+    - $inventory_goatmeat==0?  $inventory_sword < 1? $selecteditem:=2 P(item_goatmeat_selectednoinv)
+    - $selecteditem:=2 J(goatmeat_inventory)  P(5ms)
+
+
+
+    goatmeat_harvest:
+    - $gamemodus==3? $selecteditem:=2 J(goatmeat_inventory)  P(5ms)
+    - P(goatmeat_noharvest) $selecteditem:=2 J(goatmeat_info)  P(5ms)
+
+
+
+
+    goatmeat_attack:
+    - $gamemodus==3? $selecteditem:=2 J(goatmeat_info)  P(5ms)
+    - P(goatmeat_noattack) $selecteditem:=2 J(goatmeat_info)  P(5ms)
+
+    goatmeat_66_attack:
+    - $gamemodus==3? J(goatmeat_info)  P(5ms)
+    - $inventory_sword < 1? P(item_need) P(item_sword_1) P(goatmeat_to_attack)
+    - P(goatmeat_attack) J(goatmeat_attack_drop_rnd)  P(5ms)
+
+
+    goatmeat_attack_drop:
+    - J(goatmeat_attack_loss_rnd)
+
+    goatmeat_attack_loss:
+    - J(goatmeat_inventory)  P(5ms)
+
+    goatmeat_attack_drop_rnd:
+    -  J(goatmeat_attack_drop)  P(5ms)
+
+    goatmeat_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(goatmeat_attack_loss)  P(5ms)
+
+
+
+    goatmeat_craft:
+    - $gamemodus==3?  $selecteditem:=2 J(goatmeat_info)  P(5ms)
+    -  $selecteditem:=2 P(goatmeat_nocraft) 
+
+
+    goatmeat_eat:
+    - $gamemodus==3? $selecteditem:=2 J(goatmeat_inventory)  P(5ms)
+    - $inventory_goatmeat>=1? $inventory_goatmeat-=1 $inventory_hearts+=1 $selecteditem:=2 P(goatmeat_eat) 
+
+
+
+    goatmeat_info:
+       - P(goatmeat_infotxt) $selecteditem:=2 J(goatmeat_inventory)  P(5ms)
+
+    goatmeat_inventory:
+    - $inventory_goatmeat==0? P(item_goatmeat_inventory_0) J(random2) P(5ms)
+    - $inventory_goatmeat==1? P(item_goatmeat_inventory_1) J(random2) P(5ms)
+    - $inventory_goatmeat==2? P(item_goatmeat_inventory_2) J(random2) P(5ms)
+    - $inventory_goatmeat==3? P(item_goatmeat_inventory_3) J(random2) P(5ms)
+    - $inventory_goatmeat==4? P(item_goatmeat_inventory_4) J(random2) P(5ms)
+    - $inventory_goatmeat==5? P(item_goatmeat_inventory_5) J(random2) P(5ms)
+    - $inventory_goatmeat==6? P(item_goatmeat_inventory_6) J(random2) P(5ms)
+    - $inventory_goatmeat==7? P(item_goatmeat_inventory_7) J(random2) P(5ms)
+    - $inventory_goatmeat==8? P(item_goatmeat_inventory_8) J(random2) P(5ms)
+    - $inventory_goatmeat==9? P(item_goatmeat_inventory_9) J(random2) P(5ms)
+    - $inventory_goatmeat==10? P(item_goatmeat_inventory_10) J(random2) P(5ms)
+    - $inventory_goatmeat==11? P(item_goatmeat_inventory_11) J(random2) P(5ms)
+    - $inventory_goatmeat==12? P(item_goatmeat_inventory_12) J(random2) P(5ms)
+    - $inventory_goatmeat==13? P(item_goatmeat_inventory_13) J(random2) P(5ms)
+    - $inventory_goatmeat==14? P(item_goatmeat_inventory_14) J(random2) P(5ms)
+    - $inventory_goatmeat==15? P(item_goatmeat_inventory_15) J(random2) P(5ms)
+    - $inventory_goatmeat==16? P(item_goatmeat_inventory_16) J(random2) P(5ms)
+    - $inventory_goatmeat==17? P(item_goatmeat_inventory_17) J(random2) P(5ms)
+    - $inventory_goatmeat==18? P(item_goatmeat_inventory_18) J(random2) P(5ms)
+    - $inventory_goatmeat==19? P(item_goatmeat_inventory_19) J(random2) P(5ms)
+    - $inventory_goatmeat==20? P(item_goatmeat_inventory_20) J(random2) P(5ms)
+    - $inventory_goatmeat==21? P(item_goatmeat_inventory_21) J(random2) P(5ms)
+    - $inventory_goatmeat==22? P(item_goatmeat_inventory_22) J(random2) P(5ms)
+    - $inventory_goatmeat==23? P(item_goatmeat_inventory_23) J(random2) P(5ms)
+    - $inventory_goatmeat==24? P(item_goatmeat_inventory_24) J(random2) P(5ms)
+    - P(item_goatmeat_inventory_more) J(random2) P(5ms)
+
+    goatmeat_no:
+    - $inventory_goatmeat==0? P(item_goatmeat_0)
+    - $inventory_goatmeat==1? P(item_goatmeat_1)
+    - $inventory_goatmeat==2? P(item_goatmeat_2)
+    - $inventory_goatmeat==3? P(item_goatmeat_3)
+    - $inventory_goatmeat==4? P(item_goatmeat_4)
+    - $inventory_goatmeat==5? P(item_goatmeat_5)
+    - $inventory_goatmeat==6? P(item_goatmeat_6)
+    - $inventory_goatmeat==7? P(item_goatmeat_7)
+    - $inventory_goatmeat==8? P(item_goatmeat_8)
+    - $inventory_goatmeat==9? P(item_goatmeat_9)
+    - $inventory_goatmeat==10? P(item_goatmeat_10)
+    - $inventory_goatmeat==11? P(item_goatmeat_11)
+    - $inventory_goatmeat==12? P(item_goatmeat_12)
+    - $inventory_goatmeat==13? P(item_goatmeat_13)
+    - $inventory_goatmeat==14? P(item_goatmeat_14)
+    - $inventory_goatmeat==15? P(item_goatmeat_15)
+    - $inventory_goatmeat==16? P(item_goatmeat_16)
+    - $inventory_goatmeat==17? P(item_goatmeat_17)
+    - $inventory_goatmeat==18? P(item_goatmeat_18)
+    - $inventory_goatmeat==19? P(item_goatmeat_19)
+    - $inventory_goatmeat==20? P(item_goatmeat_20)
+    - $inventory_goatmeat==21? P(item_goatmeat_21)
+    - $inventory_goatmeat==22? P(item_goatmeat_22)
+    - $inventory_goatmeat==23? P(item_goatmeat_23)
+    - $inventory_goatmeat==24? P(item_goatmeat_24)
+    - P(item_goatmeat_more)
+
+    goatmeat_no_0:
+    - P(item_goatmeat_0)
+    goatmeat_no_1:
+    - P(item_goatmeat_1)
+    goatmeat_no_2:
+    - P(item_goatmeat_2)
+    goatmeat_no_3:
+    - P(item_goatmeat_3)
+    goatmeat_no_4:
+    - P(item_goatmeat_4)
+    goatmeat_no_5:
+    - P(item_goatmeat_5)
+    goatmeat_no_6:
+    - P(item_goatmeat_6)
+    goatmeat_no_7:
+    - P(item_goatmeat_7)
+    goatmeat_no_8:
+    - P(item_goatmeat_8)
+    goatmeat_no_9:
+    - P(item_goatmeat_9)
+    goatmeat_no_10:
+    - P(item_goatmeat_10)
+    goatmeat_no_11:
+    - P(item_goatmeat_11)
+    goatmeat_no_12:
+    - P(item_goatmeat_12)
+    goatmeat_no_13:
+    - P(item_goatmeat_13)
+    goatmeat_no_14:
+    - P(item_goatmeat_14)
+    goatmeat_no_15:
+    - P(item_goatmeat_15)
+    goatmeat_no_16:
+    - P(item_goatmeat_16)
+    goatmeat_no_17:
+    - P(item_goatmeat_17)
+    goatmeat_no_18:
+    - P(item_goatmeat_18)
+    goatmeat_no_19:
+    - P(item_goatmeat_19)
+    goatmeat_no_20:
+    - P(item_goatmeat_20)
+    goatmeat_no_21:
+    - P(item_goatmeat_21)
+    goatmeat_no_22:
+    - P(item_goatmeat_22)
+    goatmeat_no_23:
+    - P(item_goatmeat_23)
+    goatmeat_no_24:
+    - P(item_goatmeat_24)
+
+    item_goatmeat_name_s:
+    - P(item_goatmeat_name_s)
+
+    item_goatmeat_name_p:
+    - P(item_goatmeat_name_p)
+
+
+    fish_item_script:
+    - $gamemodus==1? J(fish_attack) P(5ms)
+    - $gamemodus==2? J(fish_craft) P(5ms)
+    - $gamemodus==3? J(fish_info) P(5ms)
+    - $gamemodus==4? J(fish_harvest) P(5ms)
+    - $gamemodus==5? J(fish_eat) P(5ms)
+    - $inventory_fish==0?  $inventory_fishingrod < 1? $selecteditem:=3 P(item_fish_selectednoinv)
+    - $selecteditem:=3 J(fish_inventory)  P(5ms)
+
+
+
+    fish_harvest:
+    - $gamemodus==3? $selecteditem:=3 J(fish_inventory)  P(5ms)
+    - P(fish_noharvest) $selecteditem:=3 J(fish_info)  P(5ms)
+
+
+
+
+    fish_attack:
+    - $gamemodus==3? $selecteditem:=3 J(fish_info)  P(5ms)
+    - P(fish_noattack) $selecteditem:=3 J(fish_info)  P(5ms)
+
+    fish_32_attack:
+    - $gamemodus==3? J(fish_info)  P(5ms)
+    - $inventory_fishingrod < 1? P(item_need) P(item_fishingrod_1) P(fish_to_attack)
+    - P(fish_attack) J(fish_attack_drop_rnd)  P(5ms)
+
+
+    fish_attack_drop:
+    - J(fish_attack_loss_rnd)
+
+    fish_attack_loss:
+    - J(fish_inventory)  P(5ms)
+
+    fish_attack_drop_rnd:
+    -  J(fish_attack_drop)  P(5ms)
+
+    fish_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(fish_attack_loss)  P(5ms)
+
+
+
+    fish_craft:
+    - $gamemodus==3?  $selecteditem:=3 J(fish_info)  P(5ms)
+    -  $selecteditem:=3 P(fish_nocraft) 
+
+
+    fish_eat:
+    - $gamemodus==3? $selecteditem:=3 J(fish_inventory)  P(5ms)
+    - $inventory_fish>=1? $inventory_fish-=1 $inventory_hearts+=1 $selecteditem:=3 P(fish_eat) 
+
+
+
+    fish_info:
+       - P(fish_infotxt) $selecteditem:=3 J(fish_inventory)  P(5ms)
+
+    fish_inventory:
+    - $inventory_fish==0? P(item_fish_inventory_0) J(random2) P(5ms)
+    - $inventory_fish==1? P(item_fish_inventory_1) J(random2) P(5ms)
+    - $inventory_fish==2? P(item_fish_inventory_2) J(random2) P(5ms)
+    - $inventory_fish==3? P(item_fish_inventory_3) J(random2) P(5ms)
+    - $inventory_fish==4? P(item_fish_inventory_4) J(random2) P(5ms)
+    - $inventory_fish==5? P(item_fish_inventory_5) J(random2) P(5ms)
+    - $inventory_fish==6? P(item_fish_inventory_6) J(random2) P(5ms)
+    - $inventory_fish==7? P(item_fish_inventory_7) J(random2) P(5ms)
+    - $inventory_fish==8? P(item_fish_inventory_8) J(random2) P(5ms)
+    - $inventory_fish==9? P(item_fish_inventory_9) J(random2) P(5ms)
+    - $inventory_fish==10? P(item_fish_inventory_10) J(random2) P(5ms)
+    - $inventory_fish==11? P(item_fish_inventory_11) J(random2) P(5ms)
+    - $inventory_fish==12? P(item_fish_inventory_12) J(random2) P(5ms)
+    - $inventory_fish==13? P(item_fish_inventory_13) J(random2) P(5ms)
+    - $inventory_fish==14? P(item_fish_inventory_14) J(random2) P(5ms)
+    - $inventory_fish==15? P(item_fish_inventory_15) J(random2) P(5ms)
+    - $inventory_fish==16? P(item_fish_inventory_16) J(random2) P(5ms)
+    - $inventory_fish==17? P(item_fish_inventory_17) J(random2) P(5ms)
+    - $inventory_fish==18? P(item_fish_inventory_18) J(random2) P(5ms)
+    - $inventory_fish==19? P(item_fish_inventory_19) J(random2) P(5ms)
+    - $inventory_fish==20? P(item_fish_inventory_20) J(random2) P(5ms)
+    - $inventory_fish==21? P(item_fish_inventory_21) J(random2) P(5ms)
+    - $inventory_fish==22? P(item_fish_inventory_22) J(random2) P(5ms)
+    - $inventory_fish==23? P(item_fish_inventory_23) J(random2) P(5ms)
+    - $inventory_fish==24? P(item_fish_inventory_24) J(random2) P(5ms)
+    - P(item_fish_inventory_more) J(random2) P(5ms)
+
+    fish_no:
+    - $inventory_fish==0? P(item_fish_0)
+    - $inventory_fish==1? P(item_fish_1)
+    - $inventory_fish==2? P(item_fish_2)
+    - $inventory_fish==3? P(item_fish_3)
+    - $inventory_fish==4? P(item_fish_4)
+    - $inventory_fish==5? P(item_fish_5)
+    - $inventory_fish==6? P(item_fish_6)
+    - $inventory_fish==7? P(item_fish_7)
+    - $inventory_fish==8? P(item_fish_8)
+    - $inventory_fish==9? P(item_fish_9)
+    - $inventory_fish==10? P(item_fish_10)
+    - $inventory_fish==11? P(item_fish_11)
+    - $inventory_fish==12? P(item_fish_12)
+    - $inventory_fish==13? P(item_fish_13)
+    - $inventory_fish==14? P(item_fish_14)
+    - $inventory_fish==15? P(item_fish_15)
+    - $inventory_fish==16? P(item_fish_16)
+    - $inventory_fish==17? P(item_fish_17)
+    - $inventory_fish==18? P(item_fish_18)
+    - $inventory_fish==19? P(item_fish_19)
+    - $inventory_fish==20? P(item_fish_20)
+    - $inventory_fish==21? P(item_fish_21)
+    - $inventory_fish==22? P(item_fish_22)
+    - $inventory_fish==23? P(item_fish_23)
+    - $inventory_fish==24? P(item_fish_24)
+    - P(item_fish_more)
+
+    fish_no_0:
+    - P(item_fish_0)
+    fish_no_1:
+    - P(item_fish_1)
+    fish_no_2:
+    - P(item_fish_2)
+    fish_no_3:
+    - P(item_fish_3)
+    fish_no_4:
+    - P(item_fish_4)
+    fish_no_5:
+    - P(item_fish_5)
+    fish_no_6:
+    - P(item_fish_6)
+    fish_no_7:
+    - P(item_fish_7)
+    fish_no_8:
+    - P(item_fish_8)
+    fish_no_9:
+    - P(item_fish_9)
+    fish_no_10:
+    - P(item_fish_10)
+    fish_no_11:
+    - P(item_fish_11)
+    fish_no_12:
+    - P(item_fish_12)
+    fish_no_13:
+    - P(item_fish_13)
+    fish_no_14:
+    - P(item_fish_14)
+    fish_no_15:
+    - P(item_fish_15)
+    fish_no_16:
+    - P(item_fish_16)
+    fish_no_17:
+    - P(item_fish_17)
+    fish_no_18:
+    - P(item_fish_18)
+    fish_no_19:
+    - P(item_fish_19)
+    fish_no_20:
+    - P(item_fish_20)
+    fish_no_21:
+    - P(item_fish_21)
+    fish_no_22:
+    - P(item_fish_22)
+    fish_no_23:
+    - P(item_fish_23)
+    fish_no_24:
+    - P(item_fish_24)
+
+    item_fish_name_s:
+    - P(item_fish_name_s)
+
+    item_fish_name_p:
+    - P(item_fish_name_p)
+
+
+    fishingrod_item_script:
+    - $gamemodus==1? J(fishingrod_attack) P(5ms)
+    - $gamemodus==2? J(fishingrod_craft) P(5ms)
+    - $gamemodus==3? J(fishingrod_info) P(5ms)
+    - $gamemodus==4? J(fishingrod_harvest) P(5ms)
+    - $gamemodus==5? J(fishingrod_eat) P(5ms)
+    - $inventory_fishingrod==0?  $inventory_fishingrod < 1? $selecteditem:=4 P(item_fishingrod_selectednoinv)
+    - $selecteditem:=4 J(fishingrod_inventory)  P(5ms)
+
+
+
+    fishingrod_harvest:
+    - $gamemodus==3? $selecteditem:=4 J(fishingrod_inventory)  P(5ms)
+    - P(fishingrod_noharvest) $selecteditem:=4 J(fishingrod_info)  P(5ms)
+
+
+
+
+    fishingrod_attack:
+    - $gamemodus==3? $selecteditem:=4 J(fishingrod_info)  P(5ms)
+    - P(fishingrod_noattack) $selecteditem:=4 J(fishingrod_info)  P(5ms)
+
+
+
+
+    fishingrod_craft:
+    - $gamemodus==3?  $selecteditem:=4 J(fishingrod_info)  P(5ms)
+    - $inventory_fishingrod < 1? $selecteditem:=4 P(item_need) P(item_fishingrod_1) P(fishingrod_to_craft)
+    - $inventory_fishingrod+=1      $selecteditem:=4 P(fishingrod_craft) J(fishingrod_inventory)  P(5ms) 
+
+
+    fishingrod_eat:
+    - $gamemodus==3? $selecteditem:=4 J(fishingrod_inventory)  P(5ms)
+    - $selecteditem:=4 P(fishingrod_noeat) 
+
+
+
+    fishingrod_info:
+       - P(fishingrod_infotxt) $selecteditem:=4 J(fishingrod_inventory)  P(5ms)
+
+    fishingrod_inventory:
+    - $inventory_fishingrod==0? P(item_fishingrod_inventory_0) J(random2) P(5ms)
+    - $inventory_fishingrod==1? P(item_fishingrod_inventory_1) J(random2) P(5ms)
+    - $inventory_fishingrod==2? P(item_fishingrod_inventory_2) J(random2) P(5ms)
+    - $inventory_fishingrod==3? P(item_fishingrod_inventory_3) J(random2) P(5ms)
+    - $inventory_fishingrod==4? P(item_fishingrod_inventory_4) J(random2) P(5ms)
+    - $inventory_fishingrod==5? P(item_fishingrod_inventory_5) J(random2) P(5ms)
+    - $inventory_fishingrod==6? P(item_fishingrod_inventory_6) J(random2) P(5ms)
+    - $inventory_fishingrod==7? P(item_fishingrod_inventory_7) J(random2) P(5ms)
+    - $inventory_fishingrod==8? P(item_fishingrod_inventory_8) J(random2) P(5ms)
+    - $inventory_fishingrod==9? P(item_fishingrod_inventory_9) J(random2) P(5ms)
+    - $inventory_fishingrod==10? P(item_fishingrod_inventory_10) J(random2) P(5ms)
+    - $inventory_fishingrod==11? P(item_fishingrod_inventory_11) J(random2) P(5ms)
+    - $inventory_fishingrod==12? P(item_fishingrod_inventory_12) J(random2) P(5ms)
+    - $inventory_fishingrod==13? P(item_fishingrod_inventory_13) J(random2) P(5ms)
+    - $inventory_fishingrod==14? P(item_fishingrod_inventory_14) J(random2) P(5ms)
+    - $inventory_fishingrod==15? P(item_fishingrod_inventory_15) J(random2) P(5ms)
+    - $inventory_fishingrod==16? P(item_fishingrod_inventory_16) J(random2) P(5ms)
+    - $inventory_fishingrod==17? P(item_fishingrod_inventory_17) J(random2) P(5ms)
+    - $inventory_fishingrod==18? P(item_fishingrod_inventory_18) J(random2) P(5ms)
+    - $inventory_fishingrod==19? P(item_fishingrod_inventory_19) J(random2) P(5ms)
+    - $inventory_fishingrod==20? P(item_fishingrod_inventory_20) J(random2) P(5ms)
+    - $inventory_fishingrod==21? P(item_fishingrod_inventory_21) J(random2) P(5ms)
+    - $inventory_fishingrod==22? P(item_fishingrod_inventory_22) J(random2) P(5ms)
+    - $inventory_fishingrod==23? P(item_fishingrod_inventory_23) J(random2) P(5ms)
+    - $inventory_fishingrod==24? P(item_fishingrod_inventory_24) J(random2) P(5ms)
+    - P(item_fishingrod_inventory_more) J(random2) P(5ms)
+
+    fishingrod_no:
+    - $inventory_fishingrod==0? P(item_fishingrod_0)
+    - $inventory_fishingrod==1? P(item_fishingrod_1)
+    - $inventory_fishingrod==2? P(item_fishingrod_2)
+    - $inventory_fishingrod==3? P(item_fishingrod_3)
+    - $inventory_fishingrod==4? P(item_fishingrod_4)
+    - $inventory_fishingrod==5? P(item_fishingrod_5)
+    - $inventory_fishingrod==6? P(item_fishingrod_6)
+    - $inventory_fishingrod==7? P(item_fishingrod_7)
+    - $inventory_fishingrod==8? P(item_fishingrod_8)
+    - $inventory_fishingrod==9? P(item_fishingrod_9)
+    - $inventory_fishingrod==10? P(item_fishingrod_10)
+    - $inventory_fishingrod==11? P(item_fishingrod_11)
+    - $inventory_fishingrod==12? P(item_fishingrod_12)
+    - $inventory_fishingrod==13? P(item_fishingrod_13)
+    - $inventory_fishingrod==14? P(item_fishingrod_14)
+    - $inventory_fishingrod==15? P(item_fishingrod_15)
+    - $inventory_fishingrod==16? P(item_fishingrod_16)
+    - $inventory_fishingrod==17? P(item_fishingrod_17)
+    - $inventory_fishingrod==18? P(item_fishingrod_18)
+    - $inventory_fishingrod==19? P(item_fishingrod_19)
+    - $inventory_fishingrod==20? P(item_fishingrod_20)
+    - $inventory_fishingrod==21? P(item_fishingrod_21)
+    - $inventory_fishingrod==22? P(item_fishingrod_22)
+    - $inventory_fishingrod==23? P(item_fishingrod_23)
+    - $inventory_fishingrod==24? P(item_fishingrod_24)
+    - P(item_fishingrod_more)
+
+    fishingrod_no_0:
+    - P(item_fishingrod_0)
+    fishingrod_no_1:
+    - P(item_fishingrod_1)
+    fishingrod_no_2:
+    - P(item_fishingrod_2)
+    fishingrod_no_3:
+    - P(item_fishingrod_3)
+    fishingrod_no_4:
+    - P(item_fishingrod_4)
+    fishingrod_no_5:
+    - P(item_fishingrod_5)
+    fishingrod_no_6:
+    - P(item_fishingrod_6)
+    fishingrod_no_7:
+    - P(item_fishingrod_7)
+    fishingrod_no_8:
+    - P(item_fishingrod_8)
+    fishingrod_no_9:
+    - P(item_fishingrod_9)
+    fishingrod_no_10:
+    - P(item_fishingrod_10)
+    fishingrod_no_11:
+    - P(item_fishingrod_11)
+    fishingrod_no_12:
+    - P(item_fishingrod_12)
+    fishingrod_no_13:
+    - P(item_fishingrod_13)
+    fishingrod_no_14:
+    - P(item_fishingrod_14)
+    fishingrod_no_15:
+    - P(item_fishingrod_15)
+    fishingrod_no_16:
+    - P(item_fishingrod_16)
+    fishingrod_no_17:
+    - P(item_fishingrod_17)
+    fishingrod_no_18:
+    - P(item_fishingrod_18)
+    fishingrod_no_19:
+    - P(item_fishingrod_19)
+    fishingrod_no_20:
+    - P(item_fishingrod_20)
+    fishingrod_no_21:
+    - P(item_fishingrod_21)
+    fishingrod_no_22:
+    - P(item_fishingrod_22)
+    fishingrod_no_23:
+    - P(item_fishingrod_23)
+    fishingrod_no_24:
+    - P(item_fishingrod_24)
+
+    item_fishingrod_name_s:
+    - P(item_fishingrod_name_s)
+
+    item_fishingrod_name_p:
+    - P(item_fishingrod_name_p)
+
+
+    ironore_item_script:
+    - $gamemodus==1? J(ironore_attack) P(5ms)
+    - $gamemodus==2? J(ironore_craft) P(5ms)
+    - $gamemodus==3? J(ironore_info) P(5ms)
+    - $gamemodus==4? J(ironore_harvest) P(5ms)
+    - $gamemodus==5? J(ironore_eat) P(5ms)
+    - $inventory_ironore==0?  $inventory_stonepickaxe < 1? $selecteditem:=5 P(item_ironore_selectednoinv)
+    - $selecteditem:=5 J(ironore_inventory)  P(5ms)
+
+
+
+    ironore_harvest:
+    - $gamemodus==3? $selecteditem:=5 J(ironore_inventory)  P(5ms)
+    - P(ironore_noharvest) $selecteditem:=5 J(ironore_info)  P(5ms)
+
+    ironore_39_harvest:
+        - $inventory_stonepickaxe < 1? P(item_need) P(item_stonepickaxe_1) P(ironore_to_harvest)
+        - $inventory_ironore+=1 P(ironore_harvest) J(ironore_inventory)  P(5ms)
+    ironore_45_harvest:
+        - $inventory_stonepickaxe < 1? P(item_need) P(item_stonepickaxe_1) P(ironore_to_harvest)
+        - $inventory_ironore+=1 P(ironore_harvest) J(ironore_inventory)  P(5ms)
+
+
+
+    ironore_attack:
+    - $gamemodus==3? $selecteditem:=5 J(ironore_info)  P(5ms)
+    - P(ironore_noattack) $selecteditem:=5 J(ironore_info)  P(5ms)
+
+
+
+    ironore_attack_drop:
+    - J(ironore_attack_loss_rnd)
+
+    ironore_attack_loss:
+    - J(ironore_inventory)  P(5ms)
+
+    ironore_attack_drop_rnd:
+    -  J(ironore_attack_drop)  P(5ms)
+
+    ironore_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(ironore_attack_loss)  P(5ms)
+
+
+    ironore_attack_drop:
+    - J(ironore_attack_loss_rnd)
+
+    ironore_attack_loss:
+    - J(ironore_inventory)  P(5ms)
+
+    ironore_attack_drop_rnd:
+    -  J(ironore_attack_drop)  P(5ms)
+
+    ironore_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(ironore_attack_loss)  P(5ms)
+
+
+
+    ironore_craft:
+    - $gamemodus==3?  $selecteditem:=5 J(ironore_info)  P(5ms)
+    -  $selecteditem:=5 P(ironore_nocraft) 
+
+
+    ironore_eat:
+    - $gamemodus==3? $selecteditem:=5 J(ironore_inventory)  P(5ms)
+    - $selecteditem:=5 P(ironore_noeat) 
+
+
+
+    ironore_info:
+       - P(ironore_infotxt) $selecteditem:=5 J(ironore_inventory)  P(5ms)
+
+    ironore_inventory:
+    - $inventory_ironore==0? P(item_ironore_inventory_0) J(random2) P(5ms)
+    - $inventory_ironore==1? P(item_ironore_inventory_1) J(random2) P(5ms)
+    - $inventory_ironore==2? P(item_ironore_inventory_2) J(random2) P(5ms)
+    - $inventory_ironore==3? P(item_ironore_inventory_3) J(random2) P(5ms)
+    - $inventory_ironore==4? P(item_ironore_inventory_4) J(random2) P(5ms)
+    - $inventory_ironore==5? P(item_ironore_inventory_5) J(random2) P(5ms)
+    - $inventory_ironore==6? P(item_ironore_inventory_6) J(random2) P(5ms)
+    - $inventory_ironore==7? P(item_ironore_inventory_7) J(random2) P(5ms)
+    - $inventory_ironore==8? P(item_ironore_inventory_8) J(random2) P(5ms)
+    - $inventory_ironore==9? P(item_ironore_inventory_9) J(random2) P(5ms)
+    - $inventory_ironore==10? P(item_ironore_inventory_10) J(random2) P(5ms)
+    - $inventory_ironore==11? P(item_ironore_inventory_11) J(random2) P(5ms)
+    - $inventory_ironore==12? P(item_ironore_inventory_12) J(random2) P(5ms)
+    - $inventory_ironore==13? P(item_ironore_inventory_13) J(random2) P(5ms)
+    - $inventory_ironore==14? P(item_ironore_inventory_14) J(random2) P(5ms)
+    - $inventory_ironore==15? P(item_ironore_inventory_15) J(random2) P(5ms)
+    - $inventory_ironore==16? P(item_ironore_inventory_16) J(random2) P(5ms)
+    - $inventory_ironore==17? P(item_ironore_inventory_17) J(random2) P(5ms)
+    - $inventory_ironore==18? P(item_ironore_inventory_18) J(random2) P(5ms)
+    - $inventory_ironore==19? P(item_ironore_inventory_19) J(random2) P(5ms)
+    - $inventory_ironore==20? P(item_ironore_inventory_20) J(random2) P(5ms)
+    - $inventory_ironore==21? P(item_ironore_inventory_21) J(random2) P(5ms)
+    - $inventory_ironore==22? P(item_ironore_inventory_22) J(random2) P(5ms)
+    - $inventory_ironore==23? P(item_ironore_inventory_23) J(random2) P(5ms)
+    - $inventory_ironore==24? P(item_ironore_inventory_24) J(random2) P(5ms)
+    - P(item_ironore_inventory_more) J(random2) P(5ms)
+
+    ironore_no:
+    - $inventory_ironore==0? P(item_ironore_0)
+    - $inventory_ironore==1? P(item_ironore_1)
+    - $inventory_ironore==2? P(item_ironore_2)
+    - $inventory_ironore==3? P(item_ironore_3)
+    - $inventory_ironore==4? P(item_ironore_4)
+    - $inventory_ironore==5? P(item_ironore_5)
+    - $inventory_ironore==6? P(item_ironore_6)
+    - $inventory_ironore==7? P(item_ironore_7)
+    - $inventory_ironore==8? P(item_ironore_8)
+    - $inventory_ironore==9? P(item_ironore_9)
+    - $inventory_ironore==10? P(item_ironore_10)
+    - $inventory_ironore==11? P(item_ironore_11)
+    - $inventory_ironore==12? P(item_ironore_12)
+    - $inventory_ironore==13? P(item_ironore_13)
+    - $inventory_ironore==14? P(item_ironore_14)
+    - $inventory_ironore==15? P(item_ironore_15)
+    - $inventory_ironore==16? P(item_ironore_16)
+    - $inventory_ironore==17? P(item_ironore_17)
+    - $inventory_ironore==18? P(item_ironore_18)
+    - $inventory_ironore==19? P(item_ironore_19)
+    - $inventory_ironore==20? P(item_ironore_20)
+    - $inventory_ironore==21? P(item_ironore_21)
+    - $inventory_ironore==22? P(item_ironore_22)
+    - $inventory_ironore==23? P(item_ironore_23)
+    - $inventory_ironore==24? P(item_ironore_24)
+    - P(item_ironore_more)
+
+    ironore_no_0:
+    - P(item_ironore_0)
+    ironore_no_1:
+    - P(item_ironore_1)
+    ironore_no_2:
+    - P(item_ironore_2)
+    ironore_no_3:
+    - P(item_ironore_3)
+    ironore_no_4:
+    - P(item_ironore_4)
+    ironore_no_5:
+    - P(item_ironore_5)
+    ironore_no_6:
+    - P(item_ironore_6)
+    ironore_no_7:
+    - P(item_ironore_7)
+    ironore_no_8:
+    - P(item_ironore_8)
+    ironore_no_9:
+    - P(item_ironore_9)
+    ironore_no_10:
+    - P(item_ironore_10)
+    ironore_no_11:
+    - P(item_ironore_11)
+    ironore_no_12:
+    - P(item_ironore_12)
+    ironore_no_13:
+    - P(item_ironore_13)
+    ironore_no_14:
+    - P(item_ironore_14)
+    ironore_no_15:
+    - P(item_ironore_15)
+    ironore_no_16:
+    - P(item_ironore_16)
+    ironore_no_17:
+    - P(item_ironore_17)
+    ironore_no_18:
+    - P(item_ironore_18)
+    ironore_no_19:
+    - P(item_ironore_19)
+    ironore_no_20:
+    - P(item_ironore_20)
+    ironore_no_21:
+    - P(item_ironore_21)
+    ironore_no_22:
+    - P(item_ironore_22)
+    ironore_no_23:
+    - P(item_ironore_23)
+    ironore_no_24:
+    - P(item_ironore_24)
+
+    item_ironore_name_s:
+    - P(item_ironore_name_s)
+
+    item_ironore_name_p:
+    - P(item_ironore_name_p)
+
+
+    stone_item_script:
+    - $gamemodus==1? J(stone_attack) P(5ms)
+    - $gamemodus==2? J(stone_craft) P(5ms)
+    - $gamemodus==3? J(stone_info) P(5ms)
+    - $gamemodus==4? J(stone_harvest) P(5ms)
+    - $gamemodus==5? J(stone_eat) P(5ms)
+    - $inventory_stone==0?  $inventory_woodpickaxe < 1? $selecteditem:=6 P(item_stone_selectednoinv)
+    - $selecteditem:=6 J(stone_inventory)  P(5ms)
+
+
+
+    stone_harvest:
+    - $gamemodus==3? $selecteditem:=6 J(stone_inventory)  P(5ms)
+    - P(stone_noharvest) $selecteditem:=6 J(stone_info)  P(5ms)
+
+    stone_17_harvest:
+        - $inventory_woodpickaxe < 1? P(item_need) P(item_woodpickaxe_1) P(stone_to_harvest)
+        - $inventory_stone+=1 P(stone_harvest) J(stone_inventory)  P(5ms)
+    stone_80_harvest:
+        - $inventory_woodpickaxe < 1? P(item_need) P(item_woodpickaxe_1) P(stone_to_harvest)
+        - $inventory_stone+=1 P(stone_harvest) J(stone_inventory)  P(5ms)
+
+
+
+    stone_attack:
+    - $gamemodus==3? $selecteditem:=6 J(stone_info)  P(5ms)
+    - P(stone_noattack) $selecteditem:=6 J(stone_info)  P(5ms)
+
+
+
+    stone_attack_drop:
+    - J(stone_attack_loss_rnd)
+
+    stone_attack_loss:
+    - J(stone_inventory)  P(5ms)
+
+    stone_attack_drop_rnd:
+    -  J(stone_attack_drop)  P(5ms)
+
+    stone_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(stone_attack_loss)  P(5ms)
+
+
+    stone_attack_drop:
+    - J(stone_attack_loss_rnd)
+
+    stone_attack_loss:
+    - J(stone_inventory)  P(5ms)
+
+    stone_attack_drop_rnd:
+    -  J(stone_attack_drop)  P(5ms)
+
+    stone_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(stone_attack_loss)  P(5ms)
+
+
+
+    stone_craft:
+    - $gamemodus==3?  $selecteditem:=6 J(stone_info)  P(5ms)
+    -  $selecteditem:=6 P(stone_nocraft) 
+
+
+    stone_eat:
+    - $gamemodus==3? $selecteditem:=6 J(stone_inventory)  P(5ms)
+    - $selecteditem:=6 P(stone_noeat) 
+
+
+
+    stone_info:
+       - P(stone_infotxt) $selecteditem:=6 J(stone_inventory)  P(5ms)
+
+    stone_inventory:
+    - $inventory_stone==0? P(item_stone_inventory_0) J(random2) P(5ms)
+    - $inventory_stone==1? P(item_stone_inventory_1) J(random2) P(5ms)
+    - $inventory_stone==2? P(item_stone_inventory_2) J(random2) P(5ms)
+    - $inventory_stone==3? P(item_stone_inventory_3) J(random2) P(5ms)
+    - $inventory_stone==4? P(item_stone_inventory_4) J(random2) P(5ms)
+    - $inventory_stone==5? P(item_stone_inventory_5) J(random2) P(5ms)
+    - $inventory_stone==6? P(item_stone_inventory_6) J(random2) P(5ms)
+    - $inventory_stone==7? P(item_stone_inventory_7) J(random2) P(5ms)
+    - $inventory_stone==8? P(item_stone_inventory_8) J(random2) P(5ms)
+    - $inventory_stone==9? P(item_stone_inventory_9) J(random2) P(5ms)
+    - $inventory_stone==10? P(item_stone_inventory_10) J(random2) P(5ms)
+    - $inventory_stone==11? P(item_stone_inventory_11) J(random2) P(5ms)
+    - $inventory_stone==12? P(item_stone_inventory_12) J(random2) P(5ms)
+    - $inventory_stone==13? P(item_stone_inventory_13) J(random2) P(5ms)
+    - $inventory_stone==14? P(item_stone_inventory_14) J(random2) P(5ms)
+    - $inventory_stone==15? P(item_stone_inventory_15) J(random2) P(5ms)
+    - $inventory_stone==16? P(item_stone_inventory_16) J(random2) P(5ms)
+    - $inventory_stone==17? P(item_stone_inventory_17) J(random2) P(5ms)
+    - $inventory_stone==18? P(item_stone_inventory_18) J(random2) P(5ms)
+    - $inventory_stone==19? P(item_stone_inventory_19) J(random2) P(5ms)
+    - $inventory_stone==20? P(item_stone_inventory_20) J(random2) P(5ms)
+    - $inventory_stone==21? P(item_stone_inventory_21) J(random2) P(5ms)
+    - $inventory_stone==22? P(item_stone_inventory_22) J(random2) P(5ms)
+    - $inventory_stone==23? P(item_stone_inventory_23) J(random2) P(5ms)
+    - $inventory_stone==24? P(item_stone_inventory_24) J(random2) P(5ms)
+    - P(item_stone_inventory_more) J(random2) P(5ms)
+
+    stone_no:
+    - $inventory_stone==0? P(item_stone_0)
+    - $inventory_stone==1? P(item_stone_1)
+    - $inventory_stone==2? P(item_stone_2)
+    - $inventory_stone==3? P(item_stone_3)
+    - $inventory_stone==4? P(item_stone_4)
+    - $inventory_stone==5? P(item_stone_5)
+    - $inventory_stone==6? P(item_stone_6)
+    - $inventory_stone==7? P(item_stone_7)
+    - $inventory_stone==8? P(item_stone_8)
+    - $inventory_stone==9? P(item_stone_9)
+    - $inventory_stone==10? P(item_stone_10)
+    - $inventory_stone==11? P(item_stone_11)
+    - $inventory_stone==12? P(item_stone_12)
+    - $inventory_stone==13? P(item_stone_13)
+    - $inventory_stone==14? P(item_stone_14)
+    - $inventory_stone==15? P(item_stone_15)
+    - $inventory_stone==16? P(item_stone_16)
+    - $inventory_stone==17? P(item_stone_17)
+    - $inventory_stone==18? P(item_stone_18)
+    - $inventory_stone==19? P(item_stone_19)
+    - $inventory_stone==20? P(item_stone_20)
+    - $inventory_stone==21? P(item_stone_21)
+    - $inventory_stone==22? P(item_stone_22)
+    - $inventory_stone==23? P(item_stone_23)
+    - $inventory_stone==24? P(item_stone_24)
+    - P(item_stone_more)
+
+    stone_no_0:
+    - P(item_stone_0)
+    stone_no_1:
+    - P(item_stone_1)
+    stone_no_2:
+    - P(item_stone_2)
+    stone_no_3:
+    - P(item_stone_3)
+    stone_no_4:
+    - P(item_stone_4)
+    stone_no_5:
+    - P(item_stone_5)
+    stone_no_6:
+    - P(item_stone_6)
+    stone_no_7:
+    - P(item_stone_7)
+    stone_no_8:
+    - P(item_stone_8)
+    stone_no_9:
+    - P(item_stone_9)
+    stone_no_10:
+    - P(item_stone_10)
+    stone_no_11:
+    - P(item_stone_11)
+    stone_no_12:
+    - P(item_stone_12)
+    stone_no_13:
+    - P(item_stone_13)
+    stone_no_14:
+    - P(item_stone_14)
+    stone_no_15:
+    - P(item_stone_15)
+    stone_no_16:
+    - P(item_stone_16)
+    stone_no_17:
+    - P(item_stone_17)
+    stone_no_18:
+    - P(item_stone_18)
+    stone_no_19:
+    - P(item_stone_19)
+    stone_no_20:
+    - P(item_stone_20)
+    stone_no_21:
+    - P(item_stone_21)
+    stone_no_22:
+    - P(item_stone_22)
+    stone_no_23:
+    - P(item_stone_23)
+    stone_no_24:
+    - P(item_stone_24)
+
+    item_stone_name_s:
+    - P(item_stone_name_s)
+
+    item_stone_name_p:
+    - P(item_stone_name_p)
+
+
+    log_item_script:
+    - $gamemodus==1? J(log_attack) P(5ms)
+    - $gamemodus==2? J(log_craft) P(5ms)
+    - $gamemodus==3? J(log_info) P(5ms)
+    - $gamemodus==4? J(log_harvest) P(5ms)
+    - $gamemodus==5? J(log_eat) P(5ms)
+    - $inventory_log==0?  $selecteditem:=7 P(item_log_selectednoinv)
+    - $selecteditem:=7 J(log_inventory)  P(5ms)
+
+
+
+    log_harvest:
+    - $gamemodus==3? $selecteditem:=7 J(log_inventory)  P(5ms)
+    - P(log_noharvest) $selecteditem:=7 J(log_info)  P(5ms)
+
+    log_16_harvest:
+    - $limit_log_16<1? P(log_limited)
+    - $inventory_log+=1 $limit_log_16-=1  P(log_harvest) J(log_inventory)  P(5ms)
+    log_18_harvest:
+    - $limit_log_18<1? P(log_limited)
+    - $inventory_log+=1 $limit_log_18-=1  P(log_harvest) J(log_inventory)  P(5ms)
+    log_19_harvest:
+    - $limit_log_19<1? P(log_limited)
+    - $inventory_log+=1 $limit_log_19-=1  P(log_harvest) J(log_inventory)  P(5ms)
+
+
+
+    log_attack:
+    - $gamemodus==3? $selecteditem:=7 J(log_info)  P(5ms)
+    - P(log_noattack) $selecteditem:=7 J(log_info)  P(5ms)
+
+
+
+    log_attack_drop:
+    - J(log_attack_loss_rnd)
+
+    log_attack_loss:
+    - J(log_inventory)  P(5ms)
+
+    log_attack_drop_rnd:
+    -  J(log_attack_drop)  P(5ms)
+
+    log_attack_loss_rnd:
+    -  J(log_attack_loss)  P(5ms)
+
+
+    log_attack_drop:
+    - J(log_attack_loss_rnd)
+
+    log_attack_loss:
+    - J(log_inventory)  P(5ms)
+
+    log_attack_drop_rnd:
+    -  J(log_attack_drop)  P(5ms)
+
+    log_attack_loss_rnd:
+    -  J(log_attack_loss)  P(5ms)
+
+
+    log_attack_drop:
+    - J(log_attack_loss_rnd)
+
+    log_attack_loss:
+    - J(log_inventory)  P(5ms)
+
+    log_attack_drop_rnd:
+    -  J(log_attack_drop)  P(5ms)
+
+    log_attack_loss_rnd:
+    -  J(log_attack_loss)  P(5ms)
+
+
+
+    log_craft:
+    - $gamemodus==3?  $selecteditem:=7 J(log_info)  P(5ms)
+    -  $selecteditem:=7 P(log_nocraft) 
+
+
+    log_eat:
+    - $gamemodus==3? $selecteditem:=7 J(log_inventory)  P(5ms)
+    - $selecteditem:=7 P(log_noeat) 
+
+
+
+    log_info:
+       - P(log_infotxt) $selecteditem:=7 J(log_inventory)  P(5ms)
+
+    log_inventory:
+    - $inventory_log==0? P(item_log_inventory_0) J(random2) P(5ms)
+    - $inventory_log==1? P(item_log_inventory_1) J(random2) P(5ms)
+    - $inventory_log==2? P(item_log_inventory_2) J(random2) P(5ms)
+    - $inventory_log==3? P(item_log_inventory_3) J(random2) P(5ms)
+    - $inventory_log==4? P(item_log_inventory_4) J(random2) P(5ms)
+    - $inventory_log==5? P(item_log_inventory_5) J(random2) P(5ms)
+    - $inventory_log==6? P(item_log_inventory_6) J(random2) P(5ms)
+    - $inventory_log==7? P(item_log_inventory_7) J(random2) P(5ms)
+    - $inventory_log==8? P(item_log_inventory_8) J(random2) P(5ms)
+    - $inventory_log==9? P(item_log_inventory_9) J(random2) P(5ms)
+    - $inventory_log==10? P(item_log_inventory_10) J(random2) P(5ms)
+    - $inventory_log==11? P(item_log_inventory_11) J(random2) P(5ms)
+    - $inventory_log==12? P(item_log_inventory_12) J(random2) P(5ms)
+    - $inventory_log==13? P(item_log_inventory_13) J(random2) P(5ms)
+    - $inventory_log==14? P(item_log_inventory_14) J(random2) P(5ms)
+    - $inventory_log==15? P(item_log_inventory_15) J(random2) P(5ms)
+    - $inventory_log==16? P(item_log_inventory_16) J(random2) P(5ms)
+    - $inventory_log==17? P(item_log_inventory_17) J(random2) P(5ms)
+    - $inventory_log==18? P(item_log_inventory_18) J(random2) P(5ms)
+    - $inventory_log==19? P(item_log_inventory_19) J(random2) P(5ms)
+    - $inventory_log==20? P(item_log_inventory_20) J(random2) P(5ms)
+    - $inventory_log==21? P(item_log_inventory_21) J(random2) P(5ms)
+    - $inventory_log==22? P(item_log_inventory_22) J(random2) P(5ms)
+    - $inventory_log==23? P(item_log_inventory_23) J(random2) P(5ms)
+    - $inventory_log==24? P(item_log_inventory_24) J(random2) P(5ms)
+    - P(item_log_inventory_more) J(random2) P(5ms)
+
+    log_no:
+    - $inventory_log==0? P(item_log_0)
+    - $inventory_log==1? P(item_log_1)
+    - $inventory_log==2? P(item_log_2)
+    - $inventory_log==3? P(item_log_3)
+    - $inventory_log==4? P(item_log_4)
+    - $inventory_log==5? P(item_log_5)
+    - $inventory_log==6? P(item_log_6)
+    - $inventory_log==7? P(item_log_7)
+    - $inventory_log==8? P(item_log_8)
+    - $inventory_log==9? P(item_log_9)
+    - $inventory_log==10? P(item_log_10)
+    - $inventory_log==11? P(item_log_11)
+    - $inventory_log==12? P(item_log_12)
+    - $inventory_log==13? P(item_log_13)
+    - $inventory_log==14? P(item_log_14)
+    - $inventory_log==15? P(item_log_15)
+    - $inventory_log==16? P(item_log_16)
+    - $inventory_log==17? P(item_log_17)
+    - $inventory_log==18? P(item_log_18)
+    - $inventory_log==19? P(item_log_19)
+    - $inventory_log==20? P(item_log_20)
+    - $inventory_log==21? P(item_log_21)
+    - $inventory_log==22? P(item_log_22)
+    - $inventory_log==23? P(item_log_23)
+    - $inventory_log==24? P(item_log_24)
+    - P(item_log_more)
+
+    log_no_0:
+    - P(item_log_0)
+    log_no_1:
+    - P(item_log_1)
+    log_no_2:
+    - P(item_log_2)
+    log_no_3:
+    - P(item_log_3)
+    log_no_4:
+    - P(item_log_4)
+    log_no_5:
+    - P(item_log_5)
+    log_no_6:
+    - P(item_log_6)
+    log_no_7:
+    - P(item_log_7)
+    log_no_8:
+    - P(item_log_8)
+    log_no_9:
+    - P(item_log_9)
+    log_no_10:
+    - P(item_log_10)
+    log_no_11:
+    - P(item_log_11)
+    log_no_12:
+    - P(item_log_12)
+    log_no_13:
+    - P(item_log_13)
+    log_no_14:
+    - P(item_log_14)
+    log_no_15:
+    - P(item_log_15)
+    log_no_16:
+    - P(item_log_16)
+    log_no_17:
+    - P(item_log_17)
+    log_no_18:
+    - P(item_log_18)
+    log_no_19:
+    - P(item_log_19)
+    log_no_20:
+    - P(item_log_20)
+    log_no_21:
+    - P(item_log_21)
+    log_no_22:
+    - P(item_log_22)
+    log_no_23:
+    - P(item_log_23)
+    log_no_24:
+    - P(item_log_24)
+
+    item_log_name_s:
+    - P(item_log_name_s)
+
+    item_log_name_p:
+    - P(item_log_name_p)
+
+
+    coal_item_script:
+    - $gamemodus==1? J(coal_attack) P(5ms)
+    - $gamemodus==2? J(coal_craft) P(5ms)
+    - $gamemodus==3? J(coal_info) P(5ms)
+    - $gamemodus==4? J(coal_harvest) P(5ms)
+    - $gamemodus==5? J(coal_eat) P(5ms)
+    - $inventory_coal==0?  $selecteditem:=8 P(item_coal_selectednoinv)
+    - $selecteditem:=8 J(coal_inventory)  P(5ms)
+
+
+
+    coal_harvest:
+    - $gamemodus==3? $selecteditem:=8 J(coal_inventory)  P(5ms)
+    - P(coal_noharvest) $selecteditem:=8 J(coal_info)  P(5ms)
+
+    coal_21_harvest:
+    - $inventory_coal+=1 P(coal_harvest) J(coal_inventory)  P(5ms)
+
+
+
+    coal_attack:
+    - $gamemodus==3? $selecteditem:=8 J(coal_info)  P(5ms)
+    - P(coal_noattack) $selecteditem:=8 J(coal_info)  P(5ms)
+
+
+
+    coal_attack_drop:
+    - J(coal_attack_loss_rnd)
+
+    coal_attack_loss:
+    - J(coal_inventory)  P(5ms)
+
+    coal_attack_drop_rnd:
+    -  J(coal_attack_drop)  P(5ms)
+
+    coal_attack_loss_rnd:
+    -  J(coal_attack_loss)  P(5ms)
+
+
+
+    coal_craft:
+    - $gamemodus==3?  $selecteditem:=8 J(coal_info)  P(5ms)
+    -  $selecteditem:=8 P(coal_nocraft) 
+
+
+    coal_eat:
+    - $gamemodus==3? $selecteditem:=8 J(coal_inventory)  P(5ms)
+    - $selecteditem:=8 P(coal_noeat) 
+
+
+
+    coal_info:
+       - P(coal_infotxt) $selecteditem:=8 J(coal_inventory)  P(5ms)
+
+    coal_inventory:
+    - $inventory_coal==0? P(item_coal_inventory_0) J(random2) P(5ms)
+    - $inventory_coal==1? P(item_coal_inventory_1) J(random2) P(5ms)
+    - $inventory_coal==2? P(item_coal_inventory_2) J(random2) P(5ms)
+    - $inventory_coal==3? P(item_coal_inventory_3) J(random2) P(5ms)
+    - $inventory_coal==4? P(item_coal_inventory_4) J(random2) P(5ms)
+    - $inventory_coal==5? P(item_coal_inventory_5) J(random2) P(5ms)
+    - $inventory_coal==6? P(item_coal_inventory_6) J(random2) P(5ms)
+    - $inventory_coal==7? P(item_coal_inventory_7) J(random2) P(5ms)
+    - $inventory_coal==8? P(item_coal_inventory_8) J(random2) P(5ms)
+    - $inventory_coal==9? P(item_coal_inventory_9) J(random2) P(5ms)
+    - $inventory_coal==10? P(item_coal_inventory_10) J(random2) P(5ms)
+    - $inventory_coal==11? P(item_coal_inventory_11) J(random2) P(5ms)
+    - $inventory_coal==12? P(item_coal_inventory_12) J(random2) P(5ms)
+    - $inventory_coal==13? P(item_coal_inventory_13) J(random2) P(5ms)
+    - $inventory_coal==14? P(item_coal_inventory_14) J(random2) P(5ms)
+    - $inventory_coal==15? P(item_coal_inventory_15) J(random2) P(5ms)
+    - $inventory_coal==16? P(item_coal_inventory_16) J(random2) P(5ms)
+    - $inventory_coal==17? P(item_coal_inventory_17) J(random2) P(5ms)
+    - $inventory_coal==18? P(item_coal_inventory_18) J(random2) P(5ms)
+    - $inventory_coal==19? P(item_coal_inventory_19) J(random2) P(5ms)
+    - $inventory_coal==20? P(item_coal_inventory_20) J(random2) P(5ms)
+    - $inventory_coal==21? P(item_coal_inventory_21) J(random2) P(5ms)
+    - $inventory_coal==22? P(item_coal_inventory_22) J(random2) P(5ms)
+    - $inventory_coal==23? P(item_coal_inventory_23) J(random2) P(5ms)
+    - $inventory_coal==24? P(item_coal_inventory_24) J(random2) P(5ms)
+    - P(item_coal_inventory_more) J(random2) P(5ms)
+
+    coal_no:
+    - $inventory_coal==0? P(item_coal_0)
+    - $inventory_coal==1? P(item_coal_1)
+    - $inventory_coal==2? P(item_coal_2)
+    - $inventory_coal==3? P(item_coal_3)
+    - $inventory_coal==4? P(item_coal_4)
+    - $inventory_coal==5? P(item_coal_5)
+    - $inventory_coal==6? P(item_coal_6)
+    - $inventory_coal==7? P(item_coal_7)
+    - $inventory_coal==8? P(item_coal_8)
+    - $inventory_coal==9? P(item_coal_9)
+    - $inventory_coal==10? P(item_coal_10)
+    - $inventory_coal==11? P(item_coal_11)
+    - $inventory_coal==12? P(item_coal_12)
+    - $inventory_coal==13? P(item_coal_13)
+    - $inventory_coal==14? P(item_coal_14)
+    - $inventory_coal==15? P(item_coal_15)
+    - $inventory_coal==16? P(item_coal_16)
+    - $inventory_coal==17? P(item_coal_17)
+    - $inventory_coal==18? P(item_coal_18)
+    - $inventory_coal==19? P(item_coal_19)
+    - $inventory_coal==20? P(item_coal_20)
+    - $inventory_coal==21? P(item_coal_21)
+    - $inventory_coal==22? P(item_coal_22)
+    - $inventory_coal==23? P(item_coal_23)
+    - $inventory_coal==24? P(item_coal_24)
+    - P(item_coal_more)
+
+    coal_no_0:
+    - P(item_coal_0)
+    coal_no_1:
+    - P(item_coal_1)
+    coal_no_2:
+    - P(item_coal_2)
+    coal_no_3:
+    - P(item_coal_3)
+    coal_no_4:
+    - P(item_coal_4)
+    coal_no_5:
+    - P(item_coal_5)
+    coal_no_6:
+    - P(item_coal_6)
+    coal_no_7:
+    - P(item_coal_7)
+    coal_no_8:
+    - P(item_coal_8)
+    coal_no_9:
+    - P(item_coal_9)
+    coal_no_10:
+    - P(item_coal_10)
+    coal_no_11:
+    - P(item_coal_11)
+    coal_no_12:
+    - P(item_coal_12)
+    coal_no_13:
+    - P(item_coal_13)
+    coal_no_14:
+    - P(item_coal_14)
+    coal_no_15:
+    - P(item_coal_15)
+    coal_no_16:
+    - P(item_coal_16)
+    coal_no_17:
+    - P(item_coal_17)
+    coal_no_18:
+    - P(item_coal_18)
+    coal_no_19:
+    - P(item_coal_19)
+    coal_no_20:
+    - P(item_coal_20)
+    coal_no_21:
+    - P(item_coal_21)
+    coal_no_22:
+    - P(item_coal_22)
+    coal_no_23:
+    - P(item_coal_23)
+    coal_no_24:
+    - P(item_coal_24)
+
+    item_coal_name_s:
+    - P(item_coal_name_s)
+
+    item_coal_name_p:
+    - P(item_coal_name_p)
+
+
+    flint_item_script:
+    - $gamemodus==1? J(flint_attack) P(5ms)
+    - $gamemodus==2? J(flint_craft) P(5ms)
+    - $gamemodus==3? J(flint_info) P(5ms)
+    - $gamemodus==4? J(flint_harvest) P(5ms)
+    - $gamemodus==5? J(flint_eat) P(5ms)
+    - $inventory_flint==0?  $selecteditem:=9 P(item_flint_selectednoinv)
+    - $selecteditem:=9 J(flint_inventory)  P(5ms)
+
+
+
+    flint_harvest:
+    - $gamemodus==3? $selecteditem:=9 J(flint_inventory)  P(5ms)
+    - P(flint_noharvest) $selecteditem:=9 J(flint_info)  P(5ms)
+
+    flint_15_harvest:
+    - $inventory_flint+=1 P(flint_harvest) J(flint_inventory)  P(5ms)
+
+
+
+    flint_attack:
+    - $gamemodus==3? $selecteditem:=9 J(flint_info)  P(5ms)
+    - P(flint_noattack) $selecteditem:=9 J(flint_info)  P(5ms)
+
+
+
+    flint_attack_drop:
+    - J(flint_attack_loss_rnd)
+
+    flint_attack_loss:
+    - J(flint_inventory)  P(5ms)
+
+    flint_attack_drop_rnd:
+    -  J(flint_attack_drop)  P(5ms)
+
+    flint_attack_loss_rnd:
+    -  J(flint_attack_loss)  P(5ms)
+
+
+
+    flint_craft:
+    - $gamemodus==3?  $selecteditem:=9 J(flint_info)  P(5ms)
+    -  $selecteditem:=9 P(flint_nocraft) 
+
+
+    flint_eat:
+    - $gamemodus==3? $selecteditem:=9 J(flint_inventory)  P(5ms)
+    - $selecteditem:=9 P(flint_noeat) 
+
+
+
+    flint_info:
+       - P(flint_infotxt) $selecteditem:=9 J(flint_inventory)  P(5ms)
+
+    flint_inventory:
+    - $inventory_flint==0? P(item_flint_inventory_0) J(random2) P(5ms)
+    - $inventory_flint==1? P(item_flint_inventory_1) J(random2) P(5ms)
+    - $inventory_flint==2? P(item_flint_inventory_2) J(random2) P(5ms)
+    - $inventory_flint==3? P(item_flint_inventory_3) J(random2) P(5ms)
+    - $inventory_flint==4? P(item_flint_inventory_4) J(random2) P(5ms)
+    - $inventory_flint==5? P(item_flint_inventory_5) J(random2) P(5ms)
+    - $inventory_flint==6? P(item_flint_inventory_6) J(random2) P(5ms)
+    - $inventory_flint==7? P(item_flint_inventory_7) J(random2) P(5ms)
+    - $inventory_flint==8? P(item_flint_inventory_8) J(random2) P(5ms)
+    - $inventory_flint==9? P(item_flint_inventory_9) J(random2) P(5ms)
+    - $inventory_flint==10? P(item_flint_inventory_10) J(random2) P(5ms)
+    - $inventory_flint==11? P(item_flint_inventory_11) J(random2) P(5ms)
+    - $inventory_flint==12? P(item_flint_inventory_12) J(random2) P(5ms)
+    - $inventory_flint==13? P(item_flint_inventory_13) J(random2) P(5ms)
+    - $inventory_flint==14? P(item_flint_inventory_14) J(random2) P(5ms)
+    - $inventory_flint==15? P(item_flint_inventory_15) J(random2) P(5ms)
+    - $inventory_flint==16? P(item_flint_inventory_16) J(random2) P(5ms)
+    - $inventory_flint==17? P(item_flint_inventory_17) J(random2) P(5ms)
+    - $inventory_flint==18? P(item_flint_inventory_18) J(random2) P(5ms)
+    - $inventory_flint==19? P(item_flint_inventory_19) J(random2) P(5ms)
+    - $inventory_flint==20? P(item_flint_inventory_20) J(random2) P(5ms)
+    - $inventory_flint==21? P(item_flint_inventory_21) J(random2) P(5ms)
+    - $inventory_flint==22? P(item_flint_inventory_22) J(random2) P(5ms)
+    - $inventory_flint==23? P(item_flint_inventory_23) J(random2) P(5ms)
+    - $inventory_flint==24? P(item_flint_inventory_24) J(random2) P(5ms)
+    - P(item_flint_inventory_more) J(random2) P(5ms)
+
+    flint_no:
+    - $inventory_flint==0? P(item_flint_0)
+    - $inventory_flint==1? P(item_flint_1)
+    - $inventory_flint==2? P(item_flint_2)
+    - $inventory_flint==3? P(item_flint_3)
+    - $inventory_flint==4? P(item_flint_4)
+    - $inventory_flint==5? P(item_flint_5)
+    - $inventory_flint==6? P(item_flint_6)
+    - $inventory_flint==7? P(item_flint_7)
+    - $inventory_flint==8? P(item_flint_8)
+    - $inventory_flint==9? P(item_flint_9)
+    - $inventory_flint==10? P(item_flint_10)
+    - $inventory_flint==11? P(item_flint_11)
+    - $inventory_flint==12? P(item_flint_12)
+    - $inventory_flint==13? P(item_flint_13)
+    - $inventory_flint==14? P(item_flint_14)
+    - $inventory_flint==15? P(item_flint_15)
+    - $inventory_flint==16? P(item_flint_16)
+    - $inventory_flint==17? P(item_flint_17)
+    - $inventory_flint==18? P(item_flint_18)
+    - $inventory_flint==19? P(item_flint_19)
+    - $inventory_flint==20? P(item_flint_20)
+    - $inventory_flint==21? P(item_flint_21)
+    - $inventory_flint==22? P(item_flint_22)
+    - $inventory_flint==23? P(item_flint_23)
+    - $inventory_flint==24? P(item_flint_24)
+    - P(item_flint_more)
+
+    flint_no_0:
+    - P(item_flint_0)
+    flint_no_1:
+    - P(item_flint_1)
+    flint_no_2:
+    - P(item_flint_2)
+    flint_no_3:
+    - P(item_flint_3)
+    flint_no_4:
+    - P(item_flint_4)
+    flint_no_5:
+    - P(item_flint_5)
+    flint_no_6:
+    - P(item_flint_6)
+    flint_no_7:
+    - P(item_flint_7)
+    flint_no_8:
+    - P(item_flint_8)
+    flint_no_9:
+    - P(item_flint_9)
+    flint_no_10:
+    - P(item_flint_10)
+    flint_no_11:
+    - P(item_flint_11)
+    flint_no_12:
+    - P(item_flint_12)
+    flint_no_13:
+    - P(item_flint_13)
+    flint_no_14:
+    - P(item_flint_14)
+    flint_no_15:
+    - P(item_flint_15)
+    flint_no_16:
+    - P(item_flint_16)
+    flint_no_17:
+    - P(item_flint_17)
+    flint_no_18:
+    - P(item_flint_18)
+    flint_no_19:
+    - P(item_flint_19)
+    flint_no_20:
+    - P(item_flint_20)
+    flint_no_21:
+    - P(item_flint_21)
+    flint_no_22:
+    - P(item_flint_22)
+    flint_no_23:
+    - P(item_flint_23)
+    flint_no_24:
+    - P(item_flint_24)
+
+    item_flint_name_s:
+    - P(item_flint_name_s)
+
+    item_flint_name_p:
+    - P(item_flint_name_p)
+
+
+    sand_item_script:
+    - $gamemodus==1? J(sand_attack) P(5ms)
+    - $gamemodus==2? J(sand_craft) P(5ms)
+    - $gamemodus==3? J(sand_info) P(5ms)
+    - $gamemodus==4? J(sand_harvest) P(5ms)
+    - $gamemodus==5? J(sand_eat) P(5ms)
+    - $inventory_sand==0?  $selecteditem:=10 P(item_sand_selectednoinv)
+    - $selecteditem:=10 J(sand_inventory)  P(5ms)
+
+
+
+    sand_harvest:
+    - $gamemodus==3? $selecteditem:=10 J(sand_inventory)  P(5ms)
+    - P(sand_noharvest) $selecteditem:=10 J(sand_info)  P(5ms)
+
+    sand_57_harvest:
+    - $inventory_sand+=3 P(sand_harvest) J(sand_inventory)  P(5ms)
+
+
+
+    sand_attack:
+    - $gamemodus==3? $selecteditem:=10 J(sand_info)  P(5ms)
+    - P(sand_noattack) $selecteditem:=10 J(sand_info)  P(5ms)
+
+
+
+    sand_attack_drop:
+    - J(sand_attack_loss_rnd)
+
+    sand_attack_loss:
+    - J(sand_inventory)  P(5ms)
+
+    sand_attack_drop_rnd:
+    -  J(sand_attack_drop)  P(5ms)
+
+    sand_attack_loss_rnd:
+    -  J(sand_attack_loss)  P(5ms)
+
+
+
+    sand_craft:
+    - $gamemodus==3?  $selecteditem:=10 J(sand_info)  P(5ms)
+    -  $selecteditem:=10 P(sand_nocraft) 
+
+
+    sand_eat:
+    - $gamemodus==3? $selecteditem:=10 J(sand_inventory)  P(5ms)
+    - $selecteditem:=10 P(sand_noeat) 
+
+
+
+    sand_info:
+       - P(sand_infotxt) $selecteditem:=10 J(sand_inventory)  P(5ms)
+
+    sand_inventory:
+    - $inventory_sand==0? P(item_sand_inventory_0) J(random2) P(5ms)
+    - $inventory_sand==1? P(item_sand_inventory_1) J(random2) P(5ms)
+    - $inventory_sand==2? P(item_sand_inventory_2) J(random2) P(5ms)
+    - $inventory_sand==3? P(item_sand_inventory_3) J(random2) P(5ms)
+    - $inventory_sand==4? P(item_sand_inventory_4) J(random2) P(5ms)
+    - $inventory_sand==5? P(item_sand_inventory_5) J(random2) P(5ms)
+    - $inventory_sand==6? P(item_sand_inventory_6) J(random2) P(5ms)
+    - $inventory_sand==7? P(item_sand_inventory_7) J(random2) P(5ms)
+    - $inventory_sand==8? P(item_sand_inventory_8) J(random2) P(5ms)
+    - $inventory_sand==9? P(item_sand_inventory_9) J(random2) P(5ms)
+    - $inventory_sand==10? P(item_sand_inventory_10) J(random2) P(5ms)
+    - $inventory_sand==11? P(item_sand_inventory_11) J(random2) P(5ms)
+    - $inventory_sand==12? P(item_sand_inventory_12) J(random2) P(5ms)
+    - $inventory_sand==13? P(item_sand_inventory_13) J(random2) P(5ms)
+    - $inventory_sand==14? P(item_sand_inventory_14) J(random2) P(5ms)
+    - $inventory_sand==15? P(item_sand_inventory_15) J(random2) P(5ms)
+    - $inventory_sand==16? P(item_sand_inventory_16) J(random2) P(5ms)
+    - $inventory_sand==17? P(item_sand_inventory_17) J(random2) P(5ms)
+    - $inventory_sand==18? P(item_sand_inventory_18) J(random2) P(5ms)
+    - $inventory_sand==19? P(item_sand_inventory_19) J(random2) P(5ms)
+    - $inventory_sand==20? P(item_sand_inventory_20) J(random2) P(5ms)
+    - $inventory_sand==21? P(item_sand_inventory_21) J(random2) P(5ms)
+    - $inventory_sand==22? P(item_sand_inventory_22) J(random2) P(5ms)
+    - $inventory_sand==23? P(item_sand_inventory_23) J(random2) P(5ms)
+    - $inventory_sand==24? P(item_sand_inventory_24) J(random2) P(5ms)
+    - P(item_sand_inventory_more) J(random2) P(5ms)
+
+    sand_no:
+    - $inventory_sand==0? P(item_sand_0)
+    - $inventory_sand==1? P(item_sand_1)
+    - $inventory_sand==2? P(item_sand_2)
+    - $inventory_sand==3? P(item_sand_3)
+    - $inventory_sand==4? P(item_sand_4)
+    - $inventory_sand==5? P(item_sand_5)
+    - $inventory_sand==6? P(item_sand_6)
+    - $inventory_sand==7? P(item_sand_7)
+    - $inventory_sand==8? P(item_sand_8)
+    - $inventory_sand==9? P(item_sand_9)
+    - $inventory_sand==10? P(item_sand_10)
+    - $inventory_sand==11? P(item_sand_11)
+    - $inventory_sand==12? P(item_sand_12)
+    - $inventory_sand==13? P(item_sand_13)
+    - $inventory_sand==14? P(item_sand_14)
+    - $inventory_sand==15? P(item_sand_15)
+    - $inventory_sand==16? P(item_sand_16)
+    - $inventory_sand==17? P(item_sand_17)
+    - $inventory_sand==18? P(item_sand_18)
+    - $inventory_sand==19? P(item_sand_19)
+    - $inventory_sand==20? P(item_sand_20)
+    - $inventory_sand==21? P(item_sand_21)
+    - $inventory_sand==22? P(item_sand_22)
+    - $inventory_sand==23? P(item_sand_23)
+    - $inventory_sand==24? P(item_sand_24)
+    - P(item_sand_more)
+
+    sand_no_0:
+    - P(item_sand_0)
+    sand_no_1:
+    - P(item_sand_1)
+    sand_no_2:
+    - P(item_sand_2)
+    sand_no_3:
+    - P(item_sand_3)
+    sand_no_4:
+    - P(item_sand_4)
+    sand_no_5:
+    - P(item_sand_5)
+    sand_no_6:
+    - P(item_sand_6)
+    sand_no_7:
+    - P(item_sand_7)
+    sand_no_8:
+    - P(item_sand_8)
+    sand_no_9:
+    - P(item_sand_9)
+    sand_no_10:
+    - P(item_sand_10)
+    sand_no_11:
+    - P(item_sand_11)
+    sand_no_12:
+    - P(item_sand_12)
+    sand_no_13:
+    - P(item_sand_13)
+    sand_no_14:
+    - P(item_sand_14)
+    sand_no_15:
+    - P(item_sand_15)
+    sand_no_16:
+    - P(item_sand_16)
+    sand_no_17:
+    - P(item_sand_17)
+    sand_no_18:
+    - P(item_sand_18)
+    sand_no_19:
+    - P(item_sand_19)
+    sand_no_20:
+    - P(item_sand_20)
+    sand_no_21:
+    - P(item_sand_21)
+    sand_no_22:
+    - P(item_sand_22)
+    sand_no_23:
+    - P(item_sand_23)
+    sand_no_24:
+    - P(item_sand_24)
+
+    item_sand_name_s:
+    - P(item_sand_name_s)
+
+    item_sand_name_p:
+    - P(item_sand_name_p)
+
+
+    plank_item_script:
+    - $gamemodus==1? J(plank_attack) P(5ms)
+    - $gamemodus==2? J(plank_craft) P(5ms)
+    - $gamemodus==3? J(plank_info) P(5ms)
+    - $gamemodus==4? J(plank_harvest) P(5ms)
+    - $gamemodus==5? J(plank_eat) P(5ms)
+    - $inventory_plank==0?  $inventory_log < 2? $selecteditem:=11 P(item_plank_selectednoinv)
+    - $selecteditem:=11 J(plank_inventory)  P(5ms)
+
+
+
+    plank_harvest:
+    - $gamemodus==3? $selecteditem:=11 J(plank_inventory)  P(5ms)
+    - P(plank_noharvest) $selecteditem:=11 J(plank_info)  P(5ms)
+
+
+
+
+    plank_attack:
+    - $gamemodus==3? $selecteditem:=11 J(plank_info)  P(5ms)
+    - P(plank_noattack) $selecteditem:=11 J(plank_info)  P(5ms)
+
+
+
+
+    plank_craft:
+    - $gamemodus==3?  $selecteditem:=11 J(plank_info)  P(5ms)
+    - $inventory_log < 2? $selecteditem:=11 P(item_need) P(item_log_2) P(plank_to_craft)
+    - $inventory_plank+=4   $inventory_log-=2    $selecteditem:=11 P(plank_craft) J(plank_inventory)  P(5ms) 
+
+
+    plank_eat:
+    - $gamemodus==3? $selecteditem:=11 J(plank_inventory)  P(5ms)
+    - $selecteditem:=11 P(plank_noeat) 
+
+
+
+    plank_info:
+       - P(plank_infotxt) $selecteditem:=11 J(plank_inventory)  P(5ms)
+
+    plank_inventory:
+    - $inventory_plank==0? P(item_plank_inventory_0) J(random2) P(5ms)
+    - $inventory_plank==1? P(item_plank_inventory_1) J(random2) P(5ms)
+    - $inventory_plank==2? P(item_plank_inventory_2) J(random2) P(5ms)
+    - $inventory_plank==3? P(item_plank_inventory_3) J(random2) P(5ms)
+    - $inventory_plank==4? P(item_plank_inventory_4) J(random2) P(5ms)
+    - $inventory_plank==5? P(item_plank_inventory_5) J(random2) P(5ms)
+    - $inventory_plank==6? P(item_plank_inventory_6) J(random2) P(5ms)
+    - $inventory_plank==7? P(item_plank_inventory_7) J(random2) P(5ms)
+    - $inventory_plank==8? P(item_plank_inventory_8) J(random2) P(5ms)
+    - $inventory_plank==9? P(item_plank_inventory_9) J(random2) P(5ms)
+    - $inventory_plank==10? P(item_plank_inventory_10) J(random2) P(5ms)
+    - $inventory_plank==11? P(item_plank_inventory_11) J(random2) P(5ms)
+    - $inventory_plank==12? P(item_plank_inventory_12) J(random2) P(5ms)
+    - $inventory_plank==13? P(item_plank_inventory_13) J(random2) P(5ms)
+    - $inventory_plank==14? P(item_plank_inventory_14) J(random2) P(5ms)
+    - $inventory_plank==15? P(item_plank_inventory_15) J(random2) P(5ms)
+    - $inventory_plank==16? P(item_plank_inventory_16) J(random2) P(5ms)
+    - $inventory_plank==17? P(item_plank_inventory_17) J(random2) P(5ms)
+    - $inventory_plank==18? P(item_plank_inventory_18) J(random2) P(5ms)
+    - $inventory_plank==19? P(item_plank_inventory_19) J(random2) P(5ms)
+    - $inventory_plank==20? P(item_plank_inventory_20) J(random2) P(5ms)
+    - $inventory_plank==21? P(item_plank_inventory_21) J(random2) P(5ms)
+    - $inventory_plank==22? P(item_plank_inventory_22) J(random2) P(5ms)
+    - $inventory_plank==23? P(item_plank_inventory_23) J(random2) P(5ms)
+    - $inventory_plank==24? P(item_plank_inventory_24) J(random2) P(5ms)
+    - P(item_plank_inventory_more) J(random2) P(5ms)
+
+    plank_no:
+    - $inventory_plank==0? P(item_plank_0)
+    - $inventory_plank==1? P(item_plank_1)
+    - $inventory_plank==2? P(item_plank_2)
+    - $inventory_plank==3? P(item_plank_3)
+    - $inventory_plank==4? P(item_plank_4)
+    - $inventory_plank==5? P(item_plank_5)
+    - $inventory_plank==6? P(item_plank_6)
+    - $inventory_plank==7? P(item_plank_7)
+    - $inventory_plank==8? P(item_plank_8)
+    - $inventory_plank==9? P(item_plank_9)
+    - $inventory_plank==10? P(item_plank_10)
+    - $inventory_plank==11? P(item_plank_11)
+    - $inventory_plank==12? P(item_plank_12)
+    - $inventory_plank==13? P(item_plank_13)
+    - $inventory_plank==14? P(item_plank_14)
+    - $inventory_plank==15? P(item_plank_15)
+    - $inventory_plank==16? P(item_plank_16)
+    - $inventory_plank==17? P(item_plank_17)
+    - $inventory_plank==18? P(item_plank_18)
+    - $inventory_plank==19? P(item_plank_19)
+    - $inventory_plank==20? P(item_plank_20)
+    - $inventory_plank==21? P(item_plank_21)
+    - $inventory_plank==22? P(item_plank_22)
+    - $inventory_plank==23? P(item_plank_23)
+    - $inventory_plank==24? P(item_plank_24)
+    - P(item_plank_more)
+
+    plank_no_0:
+    - P(item_plank_0)
+    plank_no_1:
+    - P(item_plank_1)
+    plank_no_2:
+    - P(item_plank_2)
+    plank_no_3:
+    - P(item_plank_3)
+    plank_no_4:
+    - P(item_plank_4)
+    plank_no_5:
+    - P(item_plank_5)
+    plank_no_6:
+    - P(item_plank_6)
+    plank_no_7:
+    - P(item_plank_7)
+    plank_no_8:
+    - P(item_plank_8)
+    plank_no_9:
+    - P(item_plank_9)
+    plank_no_10:
+    - P(item_plank_10)
+    plank_no_11:
+    - P(item_plank_11)
+    plank_no_12:
+    - P(item_plank_12)
+    plank_no_13:
+    - P(item_plank_13)
+    plank_no_14:
+    - P(item_plank_14)
+    plank_no_15:
+    - P(item_plank_15)
+    plank_no_16:
+    - P(item_plank_16)
+    plank_no_17:
+    - P(item_plank_17)
+    plank_no_18:
+    - P(item_plank_18)
+    plank_no_19:
+    - P(item_plank_19)
+    plank_no_20:
+    - P(item_plank_20)
+    plank_no_21:
+    - P(item_plank_21)
+    plank_no_22:
+    - P(item_plank_22)
+    plank_no_23:
+    - P(item_plank_23)
+    plank_no_24:
+    - P(item_plank_24)
+
+    item_plank_name_s:
+    - P(item_plank_name_s)
+
+    item_plank_name_p:
+    - P(item_plank_name_p)
+
+
+    stick_item_script:
+    - $gamemodus==1? J(stick_attack) P(5ms)
+    - $gamemodus==2? J(stick_craft) P(5ms)
+    - $gamemodus==3? J(stick_info) P(5ms)
+    - $gamemodus==4? J(stick_harvest) P(5ms)
+    - $gamemodus==5? J(stick_eat) P(5ms)
+    - $inventory_stick==0?  $inventory_plank < 2? $selecteditem:=12 P(item_stick_selectednoinv)
+    - $selecteditem:=12 J(stick_inventory)  P(5ms)
+
+
+
+    stick_harvest:
+    - $gamemodus==3? $selecteditem:=12 J(stick_inventory)  P(5ms)
+    - P(stick_noharvest) $selecteditem:=12 J(stick_info)  P(5ms)
+
+
+
+
+    stick_attack:
+    - $gamemodus==3? $selecteditem:=12 J(stick_info)  P(5ms)
+    - P(stick_noattack) $selecteditem:=12 J(stick_info)  P(5ms)
+
+
+
+
+    stick_craft:
+    - $gamemodus==3?  $selecteditem:=12 J(stick_info)  P(5ms)
+    - $inventory_plank < 2? $selecteditem:=12 P(item_need) P(item_plank_2) P(stick_to_craft)
+    - $inventory_stick+=4   $inventory_plank-=2    $selecteditem:=12 P(stick_craft) J(stick_inventory)  P(5ms) 
+
+
+    stick_eat:
+    - $gamemodus==3? $selecteditem:=12 J(stick_inventory)  P(5ms)
+    - $selecteditem:=12 P(stick_noeat) 
+
+
+
+    stick_info:
+       - P(stick_infotxt) $selecteditem:=12 J(stick_inventory)  P(5ms)
+
+    stick_inventory:
+    - $inventory_stick==0? P(item_stick_inventory_0) J(random2) P(5ms)
+    - $inventory_stick==1? P(item_stick_inventory_1) J(random2) P(5ms)
+    - $inventory_stick==2? P(item_stick_inventory_2) J(random2) P(5ms)
+    - $inventory_stick==3? P(item_stick_inventory_3) J(random2) P(5ms)
+    - $inventory_stick==4? P(item_stick_inventory_4) J(random2) P(5ms)
+    - $inventory_stick==5? P(item_stick_inventory_5) J(random2) P(5ms)
+    - $inventory_stick==6? P(item_stick_inventory_6) J(random2) P(5ms)
+    - $inventory_stick==7? P(item_stick_inventory_7) J(random2) P(5ms)
+    - $inventory_stick==8? P(item_stick_inventory_8) J(random2) P(5ms)
+    - $inventory_stick==9? P(item_stick_inventory_9) J(random2) P(5ms)
+    - $inventory_stick==10? P(item_stick_inventory_10) J(random2) P(5ms)
+    - $inventory_stick==11? P(item_stick_inventory_11) J(random2) P(5ms)
+    - $inventory_stick==12? P(item_stick_inventory_12) J(random2) P(5ms)
+    - $inventory_stick==13? P(item_stick_inventory_13) J(random2) P(5ms)
+    - $inventory_stick==14? P(item_stick_inventory_14) J(random2) P(5ms)
+    - $inventory_stick==15? P(item_stick_inventory_15) J(random2) P(5ms)
+    - $inventory_stick==16? P(item_stick_inventory_16) J(random2) P(5ms)
+    - $inventory_stick==17? P(item_stick_inventory_17) J(random2) P(5ms)
+    - $inventory_stick==18? P(item_stick_inventory_18) J(random2) P(5ms)
+    - $inventory_stick==19? P(item_stick_inventory_19) J(random2) P(5ms)
+    - $inventory_stick==20? P(item_stick_inventory_20) J(random2) P(5ms)
+    - $inventory_stick==21? P(item_stick_inventory_21) J(random2) P(5ms)
+    - $inventory_stick==22? P(item_stick_inventory_22) J(random2) P(5ms)
+    - $inventory_stick==23? P(item_stick_inventory_23) J(random2) P(5ms)
+    - $inventory_stick==24? P(item_stick_inventory_24) J(random2) P(5ms)
+    - P(item_stick_inventory_more) J(random2) P(5ms)
+
+    stick_no:
+    - $inventory_stick==0? P(item_stick_0)
+    - $inventory_stick==1? P(item_stick_1)
+    - $inventory_stick==2? P(item_stick_2)
+    - $inventory_stick==3? P(item_stick_3)
+    - $inventory_stick==4? P(item_stick_4)
+    - $inventory_stick==5? P(item_stick_5)
+    - $inventory_stick==6? P(item_stick_6)
+    - $inventory_stick==7? P(item_stick_7)
+    - $inventory_stick==8? P(item_stick_8)
+    - $inventory_stick==9? P(item_stick_9)
+    - $inventory_stick==10? P(item_stick_10)
+    - $inventory_stick==11? P(item_stick_11)
+    - $inventory_stick==12? P(item_stick_12)
+    - $inventory_stick==13? P(item_stick_13)
+    - $inventory_stick==14? P(item_stick_14)
+    - $inventory_stick==15? P(item_stick_15)
+    - $inventory_stick==16? P(item_stick_16)
+    - $inventory_stick==17? P(item_stick_17)
+    - $inventory_stick==18? P(item_stick_18)
+    - $inventory_stick==19? P(item_stick_19)
+    - $inventory_stick==20? P(item_stick_20)
+    - $inventory_stick==21? P(item_stick_21)
+    - $inventory_stick==22? P(item_stick_22)
+    - $inventory_stick==23? P(item_stick_23)
+    - $inventory_stick==24? P(item_stick_24)
+    - P(item_stick_more)
+
+    stick_no_0:
+    - P(item_stick_0)
+    stick_no_1:
+    - P(item_stick_1)
+    stick_no_2:
+    - P(item_stick_2)
+    stick_no_3:
+    - P(item_stick_3)
+    stick_no_4:
+    - P(item_stick_4)
+    stick_no_5:
+    - P(item_stick_5)
+    stick_no_6:
+    - P(item_stick_6)
+    stick_no_7:
+    - P(item_stick_7)
+    stick_no_8:
+    - P(item_stick_8)
+    stick_no_9:
+    - P(item_stick_9)
+    stick_no_10:
+    - P(item_stick_10)
+    stick_no_11:
+    - P(item_stick_11)
+    stick_no_12:
+    - P(item_stick_12)
+    stick_no_13:
+    - P(item_stick_13)
+    stick_no_14:
+    - P(item_stick_14)
+    stick_no_15:
+    - P(item_stick_15)
+    stick_no_16:
+    - P(item_stick_16)
+    stick_no_17:
+    - P(item_stick_17)
+    stick_no_18:
+    - P(item_stick_18)
+    stick_no_19:
+    - P(item_stick_19)
+    stick_no_20:
+    - P(item_stick_20)
+    stick_no_21:
+    - P(item_stick_21)
+    stick_no_22:
+    - P(item_stick_22)
+    stick_no_23:
+    - P(item_stick_23)
+    stick_no_24:
+    - P(item_stick_24)
+
+    item_stick_name_s:
+    - P(item_stick_name_s)
+
+    item_stick_name_p:
+    - P(item_stick_name_p)
+
+
+    sword_item_script:
+    - $gamemodus==1? J(sword_attack) P(5ms)
+    - $gamemodus==2? J(sword_craft) P(5ms)
+    - $gamemodus==3? J(sword_info) P(5ms)
+    - $gamemodus==4? J(sword_harvest) P(5ms)
+    - $gamemodus==5? J(sword_eat) P(5ms)
+    - $inventory_sword==0?  $inventory_stick < 1? $inventory_iron < 2? $inventory_crafting_table < 1? $selecteditem:=13 P(item_sword_selectednoinv)
+    - $selecteditem:=13 J(sword_inventory)  P(5ms)
+
+
+
+    sword_harvest:
+    - $gamemodus==3? $selecteditem:=13 J(sword_inventory)  P(5ms)
+    - P(sword_noharvest) $selecteditem:=13 J(sword_info)  P(5ms)
+
+
+
+
+    sword_attack:
+    - $gamemodus==3? $selecteditem:=13 J(sword_info)  P(5ms)
+    - P(sword_noattack) $selecteditem:=13 J(sword_info)  P(5ms)
+
+
+
+
+    sword_craft:
+    - $gamemodus==3?  $selecteditem:=13 J(sword_info)  P(5ms)
+    - $inventory_stick < 1? $selecteditem:=13 P(item_need) P(item_stick_1) P(sword_to_craft)
+    - $inventory_iron < 2? $selecteditem:=13 P(item_need) P(item_iron_2) P(sword_to_craft)
+    - $inventory_crafting_table < 1? $selecteditem:=13 P(item_need) P(item_crafting_table_1) P(sword_to_craft)
+    - $inventory_sword+=1   $inventory_stick-=1    $inventory_iron-=2       $selecteditem:=13 P(sword_craft) J(sword_inventory)  P(5ms) 
+
+
+    sword_eat:
+    - $gamemodus==3? $selecteditem:=13 J(sword_inventory)  P(5ms)
+    - $selecteditem:=13 P(sword_noeat) 
+
+
+
+    sword_info:
+       - P(sword_infotxt) $selecteditem:=13 J(sword_inventory)  P(5ms)
+
+    sword_inventory:
+    - $inventory_sword==0? P(item_sword_inventory_0) J(random2) P(5ms)
+    - $inventory_sword==1? P(item_sword_inventory_1) J(random2) P(5ms)
+    - $inventory_sword==2? P(item_sword_inventory_2) J(random2) P(5ms)
+    - $inventory_sword==3? P(item_sword_inventory_3) J(random2) P(5ms)
+    - $inventory_sword==4? P(item_sword_inventory_4) J(random2) P(5ms)
+    - $inventory_sword==5? P(item_sword_inventory_5) J(random2) P(5ms)
+    - $inventory_sword==6? P(item_sword_inventory_6) J(random2) P(5ms)
+    - $inventory_sword==7? P(item_sword_inventory_7) J(random2) P(5ms)
+    - $inventory_sword==8? P(item_sword_inventory_8) J(random2) P(5ms)
+    - $inventory_sword==9? P(item_sword_inventory_9) J(random2) P(5ms)
+    - $inventory_sword==10? P(item_sword_inventory_10) J(random2) P(5ms)
+    - $inventory_sword==11? P(item_sword_inventory_11) J(random2) P(5ms)
+    - $inventory_sword==12? P(item_sword_inventory_12) J(random2) P(5ms)
+    - $inventory_sword==13? P(item_sword_inventory_13) J(random2) P(5ms)
+    - $inventory_sword==14? P(item_sword_inventory_14) J(random2) P(5ms)
+    - $inventory_sword==15? P(item_sword_inventory_15) J(random2) P(5ms)
+    - $inventory_sword==16? P(item_sword_inventory_16) J(random2) P(5ms)
+    - $inventory_sword==17? P(item_sword_inventory_17) J(random2) P(5ms)
+    - $inventory_sword==18? P(item_sword_inventory_18) J(random2) P(5ms)
+    - $inventory_sword==19? P(item_sword_inventory_19) J(random2) P(5ms)
+    - $inventory_sword==20? P(item_sword_inventory_20) J(random2) P(5ms)
+    - $inventory_sword==21? P(item_sword_inventory_21) J(random2) P(5ms)
+    - $inventory_sword==22? P(item_sword_inventory_22) J(random2) P(5ms)
+    - $inventory_sword==23? P(item_sword_inventory_23) J(random2) P(5ms)
+    - $inventory_sword==24? P(item_sword_inventory_24) J(random2) P(5ms)
+    - P(item_sword_inventory_more) J(random2) P(5ms)
+
+    sword_no:
+    - $inventory_sword==0? P(item_sword_0)
+    - $inventory_sword==1? P(item_sword_1)
+    - $inventory_sword==2? P(item_sword_2)
+    - $inventory_sword==3? P(item_sword_3)
+    - $inventory_sword==4? P(item_sword_4)
+    - $inventory_sword==5? P(item_sword_5)
+    - $inventory_sword==6? P(item_sword_6)
+    - $inventory_sword==7? P(item_sword_7)
+    - $inventory_sword==8? P(item_sword_8)
+    - $inventory_sword==9? P(item_sword_9)
+    - $inventory_sword==10? P(item_sword_10)
+    - $inventory_sword==11? P(item_sword_11)
+    - $inventory_sword==12? P(item_sword_12)
+    - $inventory_sword==13? P(item_sword_13)
+    - $inventory_sword==14? P(item_sword_14)
+    - $inventory_sword==15? P(item_sword_15)
+    - $inventory_sword==16? P(item_sword_16)
+    - $inventory_sword==17? P(item_sword_17)
+    - $inventory_sword==18? P(item_sword_18)
+    - $inventory_sword==19? P(item_sword_19)
+    - $inventory_sword==20? P(item_sword_20)
+    - $inventory_sword==21? P(item_sword_21)
+    - $inventory_sword==22? P(item_sword_22)
+    - $inventory_sword==23? P(item_sword_23)
+    - $inventory_sword==24? P(item_sword_24)
+    - P(item_sword_more)
+
+    sword_no_0:
+    - P(item_sword_0)
+    sword_no_1:
+    - P(item_sword_1)
+    sword_no_2:
+    - P(item_sword_2)
+    sword_no_3:
+    - P(item_sword_3)
+    sword_no_4:
+    - P(item_sword_4)
+    sword_no_5:
+    - P(item_sword_5)
+    sword_no_6:
+    - P(item_sword_6)
+    sword_no_7:
+    - P(item_sword_7)
+    sword_no_8:
+    - P(item_sword_8)
+    sword_no_9:
+    - P(item_sword_9)
+    sword_no_10:
+    - P(item_sword_10)
+    sword_no_11:
+    - P(item_sword_11)
+    sword_no_12:
+    - P(item_sword_12)
+    sword_no_13:
+    - P(item_sword_13)
+    sword_no_14:
+    - P(item_sword_14)
+    sword_no_15:
+    - P(item_sword_15)
+    sword_no_16:
+    - P(item_sword_16)
+    sword_no_17:
+    - P(item_sword_17)
+    sword_no_18:
+    - P(item_sword_18)
+    sword_no_19:
+    - P(item_sword_19)
+    sword_no_20:
+    - P(item_sword_20)
+    sword_no_21:
+    - P(item_sword_21)
+    sword_no_22:
+    - P(item_sword_22)
+    sword_no_23:
+    - P(item_sword_23)
+    sword_no_24:
+    - P(item_sword_24)
+
+    item_sword_name_s:
+    - P(item_sword_name_s)
+
+    item_sword_name_p:
+    - P(item_sword_name_p)
+
+
+    woodpickaxe_item_script:
+    - $gamemodus==1? J(woodpickaxe_attack) P(5ms)
+    - $gamemodus==2? J(woodpickaxe_craft) P(5ms)
+    - $gamemodus==3? J(woodpickaxe_info) P(5ms)
+    - $gamemodus==4? J(woodpickaxe_harvest) P(5ms)
+    - $gamemodus==5? J(woodpickaxe_eat) P(5ms)
+    - $inventory_woodpickaxe==0?  $inventory_stick < 2? $inventory_plank < 3? $inventory_crafting_table < 1? $selecteditem:=14 P(item_woodpickaxe_selectednoinv)
+    - $selecteditem:=14 J(woodpickaxe_inventory)  P(5ms)
+
+
+
+    woodpickaxe_harvest:
+    - $gamemodus==3? $selecteditem:=14 J(woodpickaxe_inventory)  P(5ms)
+    - P(woodpickaxe_noharvest) $selecteditem:=14 J(woodpickaxe_info)  P(5ms)
+
+
+
+
+    woodpickaxe_attack:
+    - $gamemodus==3? $selecteditem:=14 J(woodpickaxe_info)  P(5ms)
+    - P(woodpickaxe_noattack) $selecteditem:=14 J(woodpickaxe_info)  P(5ms)
+
+
+
+
+    woodpickaxe_craft:
+    - $gamemodus==3?  $selecteditem:=14 J(woodpickaxe_info)  P(5ms)
+    - $inventory_stick < 2? $selecteditem:=14 P(item_need) P(item_stick_2) P(woodpickaxe_to_craft)
+    - $inventory_plank < 3? $selecteditem:=14 P(item_need) P(item_plank_3) P(woodpickaxe_to_craft)
+    - $inventory_crafting_table < 1? $selecteditem:=14 P(item_need) P(item_crafting_table_1) P(woodpickaxe_to_craft)
+    - $inventory_woodpickaxe+=1   $inventory_stick-=2    $inventory_plank-=3       $selecteditem:=14 P(woodpickaxe_craft) J(woodpickaxe_inventory)  P(5ms) 
+
+
+    woodpickaxe_eat:
+    - $gamemodus==3? $selecteditem:=14 J(woodpickaxe_inventory)  P(5ms)
+    - $selecteditem:=14 P(woodpickaxe_noeat) 
+
+
+
+    woodpickaxe_info:
+       - P(woodpickaxe_infotxt) $selecteditem:=14 J(woodpickaxe_inventory)  P(5ms)
+
+    woodpickaxe_inventory:
+    - $inventory_woodpickaxe==0? P(item_woodpickaxe_inventory_0) J(random2) P(5ms)
+    - $inventory_woodpickaxe==1? P(item_woodpickaxe_inventory_1) J(random2) P(5ms)
+    - $inventory_woodpickaxe==2? P(item_woodpickaxe_inventory_2) J(random2) P(5ms)
+    - $inventory_woodpickaxe==3? P(item_woodpickaxe_inventory_3) J(random2) P(5ms)
+    - $inventory_woodpickaxe==4? P(item_woodpickaxe_inventory_4) J(random2) P(5ms)
+    - $inventory_woodpickaxe==5? P(item_woodpickaxe_inventory_5) J(random2) P(5ms)
+    - $inventory_woodpickaxe==6? P(item_woodpickaxe_inventory_6) J(random2) P(5ms)
+    - $inventory_woodpickaxe==7? P(item_woodpickaxe_inventory_7) J(random2) P(5ms)
+    - $inventory_woodpickaxe==8? P(item_woodpickaxe_inventory_8) J(random2) P(5ms)
+    - $inventory_woodpickaxe==9? P(item_woodpickaxe_inventory_9) J(random2) P(5ms)
+    - $inventory_woodpickaxe==10? P(item_woodpickaxe_inventory_10) J(random2) P(5ms)
+    - $inventory_woodpickaxe==11? P(item_woodpickaxe_inventory_11) J(random2) P(5ms)
+    - $inventory_woodpickaxe==12? P(item_woodpickaxe_inventory_12) J(random2) P(5ms)
+    - $inventory_woodpickaxe==13? P(item_woodpickaxe_inventory_13) J(random2) P(5ms)
+    - $inventory_woodpickaxe==14? P(item_woodpickaxe_inventory_14) J(random2) P(5ms)
+    - $inventory_woodpickaxe==15? P(item_woodpickaxe_inventory_15) J(random2) P(5ms)
+    - $inventory_woodpickaxe==16? P(item_woodpickaxe_inventory_16) J(random2) P(5ms)
+    - $inventory_woodpickaxe==17? P(item_woodpickaxe_inventory_17) J(random2) P(5ms)
+    - $inventory_woodpickaxe==18? P(item_woodpickaxe_inventory_18) J(random2) P(5ms)
+    - $inventory_woodpickaxe==19? P(item_woodpickaxe_inventory_19) J(random2) P(5ms)
+    - $inventory_woodpickaxe==20? P(item_woodpickaxe_inventory_20) J(random2) P(5ms)
+    - $inventory_woodpickaxe==21? P(item_woodpickaxe_inventory_21) J(random2) P(5ms)
+    - $inventory_woodpickaxe==22? P(item_woodpickaxe_inventory_22) J(random2) P(5ms)
+    - $inventory_woodpickaxe==23? P(item_woodpickaxe_inventory_23) J(random2) P(5ms)
+    - $inventory_woodpickaxe==24? P(item_woodpickaxe_inventory_24) J(random2) P(5ms)
+    - P(item_woodpickaxe_inventory_more) J(random2) P(5ms)
+
+    woodpickaxe_no:
+    - $inventory_woodpickaxe==0? P(item_woodpickaxe_0)
+    - $inventory_woodpickaxe==1? P(item_woodpickaxe_1)
+    - $inventory_woodpickaxe==2? P(item_woodpickaxe_2)
+    - $inventory_woodpickaxe==3? P(item_woodpickaxe_3)
+    - $inventory_woodpickaxe==4? P(item_woodpickaxe_4)
+    - $inventory_woodpickaxe==5? P(item_woodpickaxe_5)
+    - $inventory_woodpickaxe==6? P(item_woodpickaxe_6)
+    - $inventory_woodpickaxe==7? P(item_woodpickaxe_7)
+    - $inventory_woodpickaxe==8? P(item_woodpickaxe_8)
+    - $inventory_woodpickaxe==9? P(item_woodpickaxe_9)
+    - $inventory_woodpickaxe==10? P(item_woodpickaxe_10)
+    - $inventory_woodpickaxe==11? P(item_woodpickaxe_11)
+    - $inventory_woodpickaxe==12? P(item_woodpickaxe_12)
+    - $inventory_woodpickaxe==13? P(item_woodpickaxe_13)
+    - $inventory_woodpickaxe==14? P(item_woodpickaxe_14)
+    - $inventory_woodpickaxe==15? P(item_woodpickaxe_15)
+    - $inventory_woodpickaxe==16? P(item_woodpickaxe_16)
+    - $inventory_woodpickaxe==17? P(item_woodpickaxe_17)
+    - $inventory_woodpickaxe==18? P(item_woodpickaxe_18)
+    - $inventory_woodpickaxe==19? P(item_woodpickaxe_19)
+    - $inventory_woodpickaxe==20? P(item_woodpickaxe_20)
+    - $inventory_woodpickaxe==21? P(item_woodpickaxe_21)
+    - $inventory_woodpickaxe==22? P(item_woodpickaxe_22)
+    - $inventory_woodpickaxe==23? P(item_woodpickaxe_23)
+    - $inventory_woodpickaxe==24? P(item_woodpickaxe_24)
+    - P(item_woodpickaxe_more)
+
+    woodpickaxe_no_0:
+    - P(item_woodpickaxe_0)
+    woodpickaxe_no_1:
+    - P(item_woodpickaxe_1)
+    woodpickaxe_no_2:
+    - P(item_woodpickaxe_2)
+    woodpickaxe_no_3:
+    - P(item_woodpickaxe_3)
+    woodpickaxe_no_4:
+    - P(item_woodpickaxe_4)
+    woodpickaxe_no_5:
+    - P(item_woodpickaxe_5)
+    woodpickaxe_no_6:
+    - P(item_woodpickaxe_6)
+    woodpickaxe_no_7:
+    - P(item_woodpickaxe_7)
+    woodpickaxe_no_8:
+    - P(item_woodpickaxe_8)
+    woodpickaxe_no_9:
+    - P(item_woodpickaxe_9)
+    woodpickaxe_no_10:
+    - P(item_woodpickaxe_10)
+    woodpickaxe_no_11:
+    - P(item_woodpickaxe_11)
+    woodpickaxe_no_12:
+    - P(item_woodpickaxe_12)
+    woodpickaxe_no_13:
+    - P(item_woodpickaxe_13)
+    woodpickaxe_no_14:
+    - P(item_woodpickaxe_14)
+    woodpickaxe_no_15:
+    - P(item_woodpickaxe_15)
+    woodpickaxe_no_16:
+    - P(item_woodpickaxe_16)
+    woodpickaxe_no_17:
+    - P(item_woodpickaxe_17)
+    woodpickaxe_no_18:
+    - P(item_woodpickaxe_18)
+    woodpickaxe_no_19:
+    - P(item_woodpickaxe_19)
+    woodpickaxe_no_20:
+    - P(item_woodpickaxe_20)
+    woodpickaxe_no_21:
+    - P(item_woodpickaxe_21)
+    woodpickaxe_no_22:
+    - P(item_woodpickaxe_22)
+    woodpickaxe_no_23:
+    - P(item_woodpickaxe_23)
+    woodpickaxe_no_24:
+    - P(item_woodpickaxe_24)
+
+    item_woodpickaxe_name_s:
+    - P(item_woodpickaxe_name_s)
+
+    item_woodpickaxe_name_p:
+    - P(item_woodpickaxe_name_p)
+
+
+    stonepickaxe_item_script:
+    - $gamemodus==1? J(stonepickaxe_attack) P(5ms)
+    - $gamemodus==2? J(stonepickaxe_craft) P(5ms)
+    - $gamemodus==3? J(stonepickaxe_info) P(5ms)
+    - $gamemodus==4? J(stonepickaxe_harvest) P(5ms)
+    - $gamemodus==5? J(stonepickaxe_eat) P(5ms)
+    - $inventory_stonepickaxe==0?  $inventory_stick < 2? $inventory_stone < 3? $inventory_crafting_table < 1? $selecteditem:=15 P(item_stonepickaxe_selectednoinv)
+    - $selecteditem:=15 J(stonepickaxe_inventory)  P(5ms)
+
+
+
+    stonepickaxe_harvest:
+    - $gamemodus==3? $selecteditem:=15 J(stonepickaxe_inventory)  P(5ms)
+    - P(stonepickaxe_noharvest) $selecteditem:=15 J(stonepickaxe_info)  P(5ms)
+
+
+
+
+    stonepickaxe_attack:
+    - $gamemodus==3? $selecteditem:=15 J(stonepickaxe_info)  P(5ms)
+    - P(stonepickaxe_noattack) $selecteditem:=15 J(stonepickaxe_info)  P(5ms)
+
+
+
+
+    stonepickaxe_craft:
+    - $gamemodus==3?  $selecteditem:=15 J(stonepickaxe_info)  P(5ms)
+    - $inventory_stick < 2? $selecteditem:=15 P(item_need) P(item_stick_2) P(stonepickaxe_to_craft)
+    - $inventory_stone < 3? $selecteditem:=15 P(item_need) P(item_stone_3) P(stonepickaxe_to_craft)
+    - $inventory_crafting_table < 1? $selecteditem:=15 P(item_need) P(item_crafting_table_1) P(stonepickaxe_to_craft)
+    - $inventory_stonepickaxe+=1   $inventory_stick-=2    $inventory_stone-=3       $selecteditem:=15 P(stonepickaxe_craft) J(stonepickaxe_inventory)  P(5ms) 
+
+
+    stonepickaxe_eat:
+    - $gamemodus==3? $selecteditem:=15 J(stonepickaxe_inventory)  P(5ms)
+    - $selecteditem:=15 P(stonepickaxe_noeat) 
+
+
+
+    stonepickaxe_info:
+       - P(stonepickaxe_infotxt) $selecteditem:=15 J(stonepickaxe_inventory)  P(5ms)
+
+    stonepickaxe_inventory:
+    - $inventory_stonepickaxe==0? P(item_stonepickaxe_inventory_0) J(random2) P(5ms)
+    - $inventory_stonepickaxe==1? P(item_stonepickaxe_inventory_1) J(random2) P(5ms)
+    - $inventory_stonepickaxe==2? P(item_stonepickaxe_inventory_2) J(random2) P(5ms)
+    - $inventory_stonepickaxe==3? P(item_stonepickaxe_inventory_3) J(random2) P(5ms)
+    - $inventory_stonepickaxe==4? P(item_stonepickaxe_inventory_4) J(random2) P(5ms)
+    - $inventory_stonepickaxe==5? P(item_stonepickaxe_inventory_5) J(random2) P(5ms)
+    - $inventory_stonepickaxe==6? P(item_stonepickaxe_inventory_6) J(random2) P(5ms)
+    - $inventory_stonepickaxe==7? P(item_stonepickaxe_inventory_7) J(random2) P(5ms)
+    - $inventory_stonepickaxe==8? P(item_stonepickaxe_inventory_8) J(random2) P(5ms)
+    - $inventory_stonepickaxe==9? P(item_stonepickaxe_inventory_9) J(random2) P(5ms)
+    - $inventory_stonepickaxe==10? P(item_stonepickaxe_inventory_10) J(random2) P(5ms)
+    - $inventory_stonepickaxe==11? P(item_stonepickaxe_inventory_11) J(random2) P(5ms)
+    - $inventory_stonepickaxe==12? P(item_stonepickaxe_inventory_12) J(random2) P(5ms)
+    - $inventory_stonepickaxe==13? P(item_stonepickaxe_inventory_13) J(random2) P(5ms)
+    - $inventory_stonepickaxe==14? P(item_stonepickaxe_inventory_14) J(random2) P(5ms)
+    - $inventory_stonepickaxe==15? P(item_stonepickaxe_inventory_15) J(random2) P(5ms)
+    - $inventory_stonepickaxe==16? P(item_stonepickaxe_inventory_16) J(random2) P(5ms)
+    - $inventory_stonepickaxe==17? P(item_stonepickaxe_inventory_17) J(random2) P(5ms)
+    - $inventory_stonepickaxe==18? P(item_stonepickaxe_inventory_18) J(random2) P(5ms)
+    - $inventory_stonepickaxe==19? P(item_stonepickaxe_inventory_19) J(random2) P(5ms)
+    - $inventory_stonepickaxe==20? P(item_stonepickaxe_inventory_20) J(random2) P(5ms)
+    - $inventory_stonepickaxe==21? P(item_stonepickaxe_inventory_21) J(random2) P(5ms)
+    - $inventory_stonepickaxe==22? P(item_stonepickaxe_inventory_22) J(random2) P(5ms)
+    - $inventory_stonepickaxe==23? P(item_stonepickaxe_inventory_23) J(random2) P(5ms)
+    - $inventory_stonepickaxe==24? P(item_stonepickaxe_inventory_24) J(random2) P(5ms)
+    - P(item_stonepickaxe_inventory_more) J(random2) P(5ms)
+
+    stonepickaxe_no:
+    - $inventory_stonepickaxe==0? P(item_stonepickaxe_0)
+    - $inventory_stonepickaxe==1? P(item_stonepickaxe_1)
+    - $inventory_stonepickaxe==2? P(item_stonepickaxe_2)
+    - $inventory_stonepickaxe==3? P(item_stonepickaxe_3)
+    - $inventory_stonepickaxe==4? P(item_stonepickaxe_4)
+    - $inventory_stonepickaxe==5? P(item_stonepickaxe_5)
+    - $inventory_stonepickaxe==6? P(item_stonepickaxe_6)
+    - $inventory_stonepickaxe==7? P(item_stonepickaxe_7)
+    - $inventory_stonepickaxe==8? P(item_stonepickaxe_8)
+    - $inventory_stonepickaxe==9? P(item_stonepickaxe_9)
+    - $inventory_stonepickaxe==10? P(item_stonepickaxe_10)
+    - $inventory_stonepickaxe==11? P(item_stonepickaxe_11)
+    - $inventory_stonepickaxe==12? P(item_stonepickaxe_12)
+    - $inventory_stonepickaxe==13? P(item_stonepickaxe_13)
+    - $inventory_stonepickaxe==14? P(item_stonepickaxe_14)
+    - $inventory_stonepickaxe==15? P(item_stonepickaxe_15)
+    - $inventory_stonepickaxe==16? P(item_stonepickaxe_16)
+    - $inventory_stonepickaxe==17? P(item_stonepickaxe_17)
+    - $inventory_stonepickaxe==18? P(item_stonepickaxe_18)
+    - $inventory_stonepickaxe==19? P(item_stonepickaxe_19)
+    - $inventory_stonepickaxe==20? P(item_stonepickaxe_20)
+    - $inventory_stonepickaxe==21? P(item_stonepickaxe_21)
+    - $inventory_stonepickaxe==22? P(item_stonepickaxe_22)
+    - $inventory_stonepickaxe==23? P(item_stonepickaxe_23)
+    - $inventory_stonepickaxe==24? P(item_stonepickaxe_24)
+    - P(item_stonepickaxe_more)
+
+    stonepickaxe_no_0:
+    - P(item_stonepickaxe_0)
+    stonepickaxe_no_1:
+    - P(item_stonepickaxe_1)
+    stonepickaxe_no_2:
+    - P(item_stonepickaxe_2)
+    stonepickaxe_no_3:
+    - P(item_stonepickaxe_3)
+    stonepickaxe_no_4:
+    - P(item_stonepickaxe_4)
+    stonepickaxe_no_5:
+    - P(item_stonepickaxe_5)
+    stonepickaxe_no_6:
+    - P(item_stonepickaxe_6)
+    stonepickaxe_no_7:
+    - P(item_stonepickaxe_7)
+    stonepickaxe_no_8:
+    - P(item_stonepickaxe_8)
+    stonepickaxe_no_9:
+    - P(item_stonepickaxe_9)
+    stonepickaxe_no_10:
+    - P(item_stonepickaxe_10)
+    stonepickaxe_no_11:
+    - P(item_stonepickaxe_11)
+    stonepickaxe_no_12:
+    - P(item_stonepickaxe_12)
+    stonepickaxe_no_13:
+    - P(item_stonepickaxe_13)
+    stonepickaxe_no_14:
+    - P(item_stonepickaxe_14)
+    stonepickaxe_no_15:
+    - P(item_stonepickaxe_15)
+    stonepickaxe_no_16:
+    - P(item_stonepickaxe_16)
+    stonepickaxe_no_17:
+    - P(item_stonepickaxe_17)
+    stonepickaxe_no_18:
+    - P(item_stonepickaxe_18)
+    stonepickaxe_no_19:
+    - P(item_stonepickaxe_19)
+    stonepickaxe_no_20:
+    - P(item_stonepickaxe_20)
+    stonepickaxe_no_21:
+    - P(item_stonepickaxe_21)
+    stonepickaxe_no_22:
+    - P(item_stonepickaxe_22)
+    stonepickaxe_no_23:
+    - P(item_stonepickaxe_23)
+    stonepickaxe_no_24:
+    - P(item_stonepickaxe_24)
+
+    item_stonepickaxe_name_s:
+    - P(item_stonepickaxe_name_s)
+
+    item_stonepickaxe_name_p:
+    - P(item_stonepickaxe_name_p)
+
+
+    iron_item_script:
+    - $gamemodus==1? J(iron_attack) P(5ms)
+    - $gamemodus==2? J(iron_craft) P(5ms)
+    - $gamemodus==3? J(iron_info) P(5ms)
+    - $gamemodus==4? J(iron_harvest) P(5ms)
+    - $gamemodus==5? J(iron_eat) P(5ms)
+    - $inventory_iron==0?  $inventory_coal < 1? $inventory_ironore < 1? $inventory_crafting_table < 1? $selecteditem:=16 P(item_iron_selectednoinv)
+    - $selecteditem:=16 J(iron_inventory)  P(5ms)
+
+
+
+    iron_harvest:
+    - $gamemodus==3? $selecteditem:=16 J(iron_inventory)  P(5ms)
+    - P(iron_noharvest) $selecteditem:=16 J(iron_info)  P(5ms)
+
+
+
+
+    iron_attack:
+    - $gamemodus==3? $selecteditem:=16 J(iron_info)  P(5ms)
+    - P(iron_noattack) $selecteditem:=16 J(iron_info)  P(5ms)
+
+
+
+
+    iron_craft:
+    - $gamemodus==3?  $selecteditem:=16 J(iron_info)  P(5ms)
+    - $inventory_coal < 1? $selecteditem:=16 P(item_need) P(item_coal_1) P(iron_to_craft)
+    - $inventory_ironore < 1? $selecteditem:=16 P(item_need) P(item_ironore_1) P(iron_to_craft)
+    - $inventory_crafting_table < 1? $selecteditem:=16 P(item_need) P(item_crafting_table_1) P(iron_to_craft)
+    - $inventory_iron+=1   $inventory_coal-=1    $inventory_ironore-=1       $selecteditem:=16 P(iron_craft) J(iron_inventory)  P(5ms) 
+
+
+    iron_eat:
+    - $gamemodus==3? $selecteditem:=16 J(iron_inventory)  P(5ms)
+    - $selecteditem:=16 P(iron_noeat) 
+
+
+
+    iron_info:
+       - P(iron_infotxt) $selecteditem:=16 J(iron_inventory)  P(5ms)
+
+    iron_inventory:
+    - $inventory_iron==0? P(item_iron_inventory_0) J(random2) P(5ms)
+    - $inventory_iron==1? P(item_iron_inventory_1) J(random2) P(5ms)
+    - $inventory_iron==2? P(item_iron_inventory_2) J(random2) P(5ms)
+    - $inventory_iron==3? P(item_iron_inventory_3) J(random2) P(5ms)
+    - $inventory_iron==4? P(item_iron_inventory_4) J(random2) P(5ms)
+    - $inventory_iron==5? P(item_iron_inventory_5) J(random2) P(5ms)
+    - $inventory_iron==6? P(item_iron_inventory_6) J(random2) P(5ms)
+    - $inventory_iron==7? P(item_iron_inventory_7) J(random2) P(5ms)
+    - $inventory_iron==8? P(item_iron_inventory_8) J(random2) P(5ms)
+    - $inventory_iron==9? P(item_iron_inventory_9) J(random2) P(5ms)
+    - $inventory_iron==10? P(item_iron_inventory_10) J(random2) P(5ms)
+    - $inventory_iron==11? P(item_iron_inventory_11) J(random2) P(5ms)
+    - $inventory_iron==12? P(item_iron_inventory_12) J(random2) P(5ms)
+    - $inventory_iron==13? P(item_iron_inventory_13) J(random2) P(5ms)
+    - $inventory_iron==14? P(item_iron_inventory_14) J(random2) P(5ms)
+    - $inventory_iron==15? P(item_iron_inventory_15) J(random2) P(5ms)
+    - $inventory_iron==16? P(item_iron_inventory_16) J(random2) P(5ms)
+    - $inventory_iron==17? P(item_iron_inventory_17) J(random2) P(5ms)
+    - $inventory_iron==18? P(item_iron_inventory_18) J(random2) P(5ms)
+    - $inventory_iron==19? P(item_iron_inventory_19) J(random2) P(5ms)
+    - $inventory_iron==20? P(item_iron_inventory_20) J(random2) P(5ms)
+    - $inventory_iron==21? P(item_iron_inventory_21) J(random2) P(5ms)
+    - $inventory_iron==22? P(item_iron_inventory_22) J(random2) P(5ms)
+    - $inventory_iron==23? P(item_iron_inventory_23) J(random2) P(5ms)
+    - $inventory_iron==24? P(item_iron_inventory_24) J(random2) P(5ms)
+    - P(item_iron_inventory_more) J(random2) P(5ms)
+
+    iron_no:
+    - $inventory_iron==0? P(item_iron_0)
+    - $inventory_iron==1? P(item_iron_1)
+    - $inventory_iron==2? P(item_iron_2)
+    - $inventory_iron==3? P(item_iron_3)
+    - $inventory_iron==4? P(item_iron_4)
+    - $inventory_iron==5? P(item_iron_5)
+    - $inventory_iron==6? P(item_iron_6)
+    - $inventory_iron==7? P(item_iron_7)
+    - $inventory_iron==8? P(item_iron_8)
+    - $inventory_iron==9? P(item_iron_9)
+    - $inventory_iron==10? P(item_iron_10)
+    - $inventory_iron==11? P(item_iron_11)
+    - $inventory_iron==12? P(item_iron_12)
+    - $inventory_iron==13? P(item_iron_13)
+    - $inventory_iron==14? P(item_iron_14)
+    - $inventory_iron==15? P(item_iron_15)
+    - $inventory_iron==16? P(item_iron_16)
+    - $inventory_iron==17? P(item_iron_17)
+    - $inventory_iron==18? P(item_iron_18)
+    - $inventory_iron==19? P(item_iron_19)
+    - $inventory_iron==20? P(item_iron_20)
+    - $inventory_iron==21? P(item_iron_21)
+    - $inventory_iron==22? P(item_iron_22)
+    - $inventory_iron==23? P(item_iron_23)
+    - $inventory_iron==24? P(item_iron_24)
+    - P(item_iron_more)
+
+    iron_no_0:
+    - P(item_iron_0)
+    iron_no_1:
+    - P(item_iron_1)
+    iron_no_2:
+    - P(item_iron_2)
+    iron_no_3:
+    - P(item_iron_3)
+    iron_no_4:
+    - P(item_iron_4)
+    iron_no_5:
+    - P(item_iron_5)
+    iron_no_6:
+    - P(item_iron_6)
+    iron_no_7:
+    - P(item_iron_7)
+    iron_no_8:
+    - P(item_iron_8)
+    iron_no_9:
+    - P(item_iron_9)
+    iron_no_10:
+    - P(item_iron_10)
+    iron_no_11:
+    - P(item_iron_11)
+    iron_no_12:
+    - P(item_iron_12)
+    iron_no_13:
+    - P(item_iron_13)
+    iron_no_14:
+    - P(item_iron_14)
+    iron_no_15:
+    - P(item_iron_15)
+    iron_no_16:
+    - P(item_iron_16)
+    iron_no_17:
+    - P(item_iron_17)
+    iron_no_18:
+    - P(item_iron_18)
+    iron_no_19:
+    - P(item_iron_19)
+    iron_no_20:
+    - P(item_iron_20)
+    iron_no_21:
+    - P(item_iron_21)
+    iron_no_22:
+    - P(item_iron_22)
+    iron_no_23:
+    - P(item_iron_23)
+    iron_no_24:
+    - P(item_iron_24)
+
+    item_iron_name_s:
+    - P(item_iron_name_s)
+
+    item_iron_name_p:
+    - P(item_iron_name_p)
+
+
+    hearts_item_script:
+    - $gamemodus==1? J(hearts_attack) P(5ms)
+    - $gamemodus==2? J(hearts_craft) P(5ms)
+    - $gamemodus==3? J(hearts_info) P(5ms)
+    - $gamemodus==4? J(hearts_harvest) P(5ms)
+    - $gamemodus==5? J(hearts_eat) P(5ms)
+    - $inventory_hearts==0?  $inventory_goatmeat < 1? $selecteditem:=17 P(item_hearts_selectednoinv)
+    - $selecteditem:=17 J(hearts_inventory)  P(5ms)
+
+
+
+    hearts_harvest:
+    - $gamemodus==3? $selecteditem:=17 J(hearts_inventory)  P(5ms)
+    - P(hearts_noharvest) $selecteditem:=17 J(hearts_info)  P(5ms)
+
+
+
+
+    hearts_attack:
+    - $gamemodus==3? $selecteditem:=17 J(hearts_info)  P(5ms)
+    - P(hearts_noattack) $selecteditem:=17 J(hearts_info)  P(5ms)
+
+
+
+
+    hearts_craft:
+    - $gamemodus==3?  $selecteditem:=17 J(hearts_info)  P(5ms)
+    -  $selecteditem:=17 P(hearts_nocraft) 
+
+
+    hearts_eat:
+    - $gamemodus==3? $selecteditem:=17 J(hearts_inventory)  P(5ms)
+    - $selecteditem:=17 P(hearts_noeat) 
+
+
+
+    hearts_info:
+       - P(hearts_infotxt) $selecteditem:=17 J(hearts_inventory)  P(5ms)
+
+    hearts_inventory:
+    - $inventory_hearts==0? P(item_hearts_inventory_0) J(random2) P(5ms)
+    - $inventory_hearts==1? P(item_hearts_inventory_1) J(random2) P(5ms)
+    - $inventory_hearts==2? P(item_hearts_inventory_2) J(random2) P(5ms)
+    - $inventory_hearts==3? P(item_hearts_inventory_3) J(random2) P(5ms)
+    - $inventory_hearts==4? P(item_hearts_inventory_4) J(random2) P(5ms)
+    - $inventory_hearts==5? P(item_hearts_inventory_5) J(random2) P(5ms)
+    - $inventory_hearts==6? P(item_hearts_inventory_6) J(random2) P(5ms)
+    - $inventory_hearts==7? P(item_hearts_inventory_7) J(random2) P(5ms)
+    - $inventory_hearts==8? P(item_hearts_inventory_8) J(random2) P(5ms)
+    - $inventory_hearts==9? P(item_hearts_inventory_9) J(random2) P(5ms)
+    - $inventory_hearts==10? P(item_hearts_inventory_10) J(random2) P(5ms)
+    - $inventory_hearts==11? P(item_hearts_inventory_11) J(random2) P(5ms)
+    - $inventory_hearts==12? P(item_hearts_inventory_12) J(random2) P(5ms)
+    - $inventory_hearts==13? P(item_hearts_inventory_13) J(random2) P(5ms)
+    - $inventory_hearts==14? P(item_hearts_inventory_14) J(random2) P(5ms)
+    - $inventory_hearts==15? P(item_hearts_inventory_15) J(random2) P(5ms)
+    - $inventory_hearts==16? P(item_hearts_inventory_16) J(random2) P(5ms)
+    - $inventory_hearts==17? P(item_hearts_inventory_17) J(random2) P(5ms)
+    - $inventory_hearts==18? P(item_hearts_inventory_18) J(random2) P(5ms)
+    - $inventory_hearts==19? P(item_hearts_inventory_19) J(random2) P(5ms)
+    - $inventory_hearts==20? P(item_hearts_inventory_20) J(random2) P(5ms)
+    - $inventory_hearts==21? P(item_hearts_inventory_21) J(random2) P(5ms)
+    - $inventory_hearts==22? P(item_hearts_inventory_22) J(random2) P(5ms)
+    - $inventory_hearts==23? P(item_hearts_inventory_23) J(random2) P(5ms)
+    - $inventory_hearts==24? P(item_hearts_inventory_24) J(random2) P(5ms)
+    - P(item_hearts_inventory_more) J(random2) P(5ms)
+
+    hearts_no:
+    - $inventory_hearts==0? P(item_hearts_0)
+    - $inventory_hearts==1? P(item_hearts_1)
+    - $inventory_hearts==2? P(item_hearts_2)
+    - $inventory_hearts==3? P(item_hearts_3)
+    - $inventory_hearts==4? P(item_hearts_4)
+    - $inventory_hearts==5? P(item_hearts_5)
+    - $inventory_hearts==6? P(item_hearts_6)
+    - $inventory_hearts==7? P(item_hearts_7)
+    - $inventory_hearts==8? P(item_hearts_8)
+    - $inventory_hearts==9? P(item_hearts_9)
+    - $inventory_hearts==10? P(item_hearts_10)
+    - $inventory_hearts==11? P(item_hearts_11)
+    - $inventory_hearts==12? P(item_hearts_12)
+    - $inventory_hearts==13? P(item_hearts_13)
+    - $inventory_hearts==14? P(item_hearts_14)
+    - $inventory_hearts==15? P(item_hearts_15)
+    - $inventory_hearts==16? P(item_hearts_16)
+    - $inventory_hearts==17? P(item_hearts_17)
+    - $inventory_hearts==18? P(item_hearts_18)
+    - $inventory_hearts==19? P(item_hearts_19)
+    - $inventory_hearts==20? P(item_hearts_20)
+    - $inventory_hearts==21? P(item_hearts_21)
+    - $inventory_hearts==22? P(item_hearts_22)
+    - $inventory_hearts==23? P(item_hearts_23)
+    - $inventory_hearts==24? P(item_hearts_24)
+    - P(item_hearts_more)
+
+    hearts_no_0:
+    - P(item_hearts_0)
+    hearts_no_1:
+    - P(item_hearts_1)
+    hearts_no_2:
+    - P(item_hearts_2)
+    hearts_no_3:
+    - P(item_hearts_3)
+    hearts_no_4:
+    - P(item_hearts_4)
+    hearts_no_5:
+    - P(item_hearts_5)
+    hearts_no_6:
+    - P(item_hearts_6)
+    hearts_no_7:
+    - P(item_hearts_7)
+    hearts_no_8:
+    - P(item_hearts_8)
+    hearts_no_9:
+    - P(item_hearts_9)
+    hearts_no_10:
+    - P(item_hearts_10)
+    hearts_no_11:
+    - P(item_hearts_11)
+    hearts_no_12:
+    - P(item_hearts_12)
+    hearts_no_13:
+    - P(item_hearts_13)
+    hearts_no_14:
+    - P(item_hearts_14)
+    hearts_no_15:
+    - P(item_hearts_15)
+    hearts_no_16:
+    - P(item_hearts_16)
+    hearts_no_17:
+    - P(item_hearts_17)
+    hearts_no_18:
+    - P(item_hearts_18)
+    hearts_no_19:
+    - P(item_hearts_19)
+    hearts_no_20:
+    - P(item_hearts_20)
+    hearts_no_21:
+    - P(item_hearts_21)
+    hearts_no_22:
+    - P(item_hearts_22)
+    hearts_no_23:
+    - P(item_hearts_23)
+    hearts_no_24:
+    - P(item_hearts_24)
+
+    item_hearts_name_s:
+    - P(item_hearts_name_s)
+
+    item_hearts_name_p:
+    - P(item_hearts_name_p)
+
+
+    tnt_item_script:
+    - $gamemodus==1? J(tnt_attack) P(5ms)
+    - $gamemodus==2? J(tnt_craft) P(5ms)
+    - $gamemodus==3? J(tnt_info) P(5ms)
+    - $gamemodus==4? J(tnt_harvest) P(5ms)
+    - $gamemodus==5? J(tnt_eat) P(5ms)
+    - $inventory_tnt==0?  $inventory_sand < 4? $inventory_gunpowder < 5? $inventory_crafting_table < 1? $selecteditem:=18 P(item_tnt_selectednoinv)
+    - $selecteditem:=18 J(tnt_inventory)  P(5ms)
+
+
+
+    tnt_harvest:
+    - $gamemodus==3? $selecteditem:=18 J(tnt_inventory)  P(5ms)
+    - P(tnt_noharvest) $selecteditem:=18 J(tnt_info)  P(5ms)
+
+
+
+
+    tnt_attack:
+    - $gamemodus==3? $selecteditem:=18 J(tnt_info)  P(5ms)
+    - P(tnt_noattack) $selecteditem:=18 J(tnt_info)  P(5ms)
+
+
+
+
+    tnt_craft:
+    - $gamemodus==3?  $selecteditem:=18 J(tnt_info)  P(5ms)
+    - $inventory_sand < 4? $selecteditem:=18 P(item_need) P(item_sand_4) P(tnt_to_craft)
+    - $inventory_gunpowder < 5? $selecteditem:=18 P(item_need) P(item_gunpowder_5) P(tnt_to_craft)
+    - $inventory_crafting_table < 1? $selecteditem:=18 P(item_need) P(item_crafting_table_1) P(tnt_to_craft)
+    - $inventory_tnt+=1   $inventory_sand-=4    $inventory_gunpowder-=5       $selecteditem:=18 P(tnt_craft) J(tnt_inventory)  P(5ms) 
+
+
+    tnt_eat:
+    - $gamemodus==3? $selecteditem:=18 J(tnt_inventory)  P(5ms)
+    - $selecteditem:=18 P(tnt_noeat) 
+
+
+
+    tnt_info:
+       - P(tnt_infotxt) $selecteditem:=18 J(tnt_inventory)  P(5ms)
+
+    tnt_inventory:
+    - $inventory_tnt==0? P(item_tnt_inventory_0) J(random2) P(5ms)
+    - $inventory_tnt==1? P(item_tnt_inventory_1) J(random2) P(5ms)
+    - $inventory_tnt==2? P(item_tnt_inventory_2) J(random2) P(5ms)
+    - $inventory_tnt==3? P(item_tnt_inventory_3) J(random2) P(5ms)
+    - $inventory_tnt==4? P(item_tnt_inventory_4) J(random2) P(5ms)
+    - $inventory_tnt==5? P(item_tnt_inventory_5) J(random2) P(5ms)
+    - $inventory_tnt==6? P(item_tnt_inventory_6) J(random2) P(5ms)
+    - $inventory_tnt==7? P(item_tnt_inventory_7) J(random2) P(5ms)
+    - $inventory_tnt==8? P(item_tnt_inventory_8) J(random2) P(5ms)
+    - $inventory_tnt==9? P(item_tnt_inventory_9) J(random2) P(5ms)
+    - $inventory_tnt==10? P(item_tnt_inventory_10) J(random2) P(5ms)
+    - $inventory_tnt==11? P(item_tnt_inventory_11) J(random2) P(5ms)
+    - $inventory_tnt==12? P(item_tnt_inventory_12) J(random2) P(5ms)
+    - $inventory_tnt==13? P(item_tnt_inventory_13) J(random2) P(5ms)
+    - $inventory_tnt==14? P(item_tnt_inventory_14) J(random2) P(5ms)
+    - $inventory_tnt==15? P(item_tnt_inventory_15) J(random2) P(5ms)
+    - $inventory_tnt==16? P(item_tnt_inventory_16) J(random2) P(5ms)
+    - $inventory_tnt==17? P(item_tnt_inventory_17) J(random2) P(5ms)
+    - $inventory_tnt==18? P(item_tnt_inventory_18) J(random2) P(5ms)
+    - $inventory_tnt==19? P(item_tnt_inventory_19) J(random2) P(5ms)
+    - $inventory_tnt==20? P(item_tnt_inventory_20) J(random2) P(5ms)
+    - $inventory_tnt==21? P(item_tnt_inventory_21) J(random2) P(5ms)
+    - $inventory_tnt==22? P(item_tnt_inventory_22) J(random2) P(5ms)
+    - $inventory_tnt==23? P(item_tnt_inventory_23) J(random2) P(5ms)
+    - $inventory_tnt==24? P(item_tnt_inventory_24) J(random2) P(5ms)
+    - P(item_tnt_inventory_more) J(random2) P(5ms)
+
+    tnt_no:
+    - $inventory_tnt==0? P(item_tnt_0)
+    - $inventory_tnt==1? P(item_tnt_1)
+    - $inventory_tnt==2? P(item_tnt_2)
+    - $inventory_tnt==3? P(item_tnt_3)
+    - $inventory_tnt==4? P(item_tnt_4)
+    - $inventory_tnt==5? P(item_tnt_5)
+    - $inventory_tnt==6? P(item_tnt_6)
+    - $inventory_tnt==7? P(item_tnt_7)
+    - $inventory_tnt==8? P(item_tnt_8)
+    - $inventory_tnt==9? P(item_tnt_9)
+    - $inventory_tnt==10? P(item_tnt_10)
+    - $inventory_tnt==11? P(item_tnt_11)
+    - $inventory_tnt==12? P(item_tnt_12)
+    - $inventory_tnt==13? P(item_tnt_13)
+    - $inventory_tnt==14? P(item_tnt_14)
+    - $inventory_tnt==15? P(item_tnt_15)
+    - $inventory_tnt==16? P(item_tnt_16)
+    - $inventory_tnt==17? P(item_tnt_17)
+    - $inventory_tnt==18? P(item_tnt_18)
+    - $inventory_tnt==19? P(item_tnt_19)
+    - $inventory_tnt==20? P(item_tnt_20)
+    - $inventory_tnt==21? P(item_tnt_21)
+    - $inventory_tnt==22? P(item_tnt_22)
+    - $inventory_tnt==23? P(item_tnt_23)
+    - $inventory_tnt==24? P(item_tnt_24)
+    - P(item_tnt_more)
+
+    tnt_no_0:
+    - P(item_tnt_0)
+    tnt_no_1:
+    - P(item_tnt_1)
+    tnt_no_2:
+    - P(item_tnt_2)
+    tnt_no_3:
+    - P(item_tnt_3)
+    tnt_no_4:
+    - P(item_tnt_4)
+    tnt_no_5:
+    - P(item_tnt_5)
+    tnt_no_6:
+    - P(item_tnt_6)
+    tnt_no_7:
+    - P(item_tnt_7)
+    tnt_no_8:
+    - P(item_tnt_8)
+    tnt_no_9:
+    - P(item_tnt_9)
+    tnt_no_10:
+    - P(item_tnt_10)
+    tnt_no_11:
+    - P(item_tnt_11)
+    tnt_no_12:
+    - P(item_tnt_12)
+    tnt_no_13:
+    - P(item_tnt_13)
+    tnt_no_14:
+    - P(item_tnt_14)
+    tnt_no_15:
+    - P(item_tnt_15)
+    tnt_no_16:
+    - P(item_tnt_16)
+    tnt_no_17:
+    - P(item_tnt_17)
+    tnt_no_18:
+    - P(item_tnt_18)
+    tnt_no_19:
+    - P(item_tnt_19)
+    tnt_no_20:
+    - P(item_tnt_20)
+    tnt_no_21:
+    - P(item_tnt_21)
+    tnt_no_22:
+    - P(item_tnt_22)
+    tnt_no_23:
+    - P(item_tnt_23)
+    tnt_no_24:
+    - P(item_tnt_24)
+
+    item_tnt_name_s:
+    - P(item_tnt_name_s)
+
+    item_tnt_name_p:
+    - P(item_tnt_name_p)
+
+
+    portal_item_script:
+    - $gamemodus==1? J(portal_attack) P(5ms)
+    - $gamemodus==2? J(portal_craft) P(5ms)
+    - $gamemodus==3? J(portal_info) P(5ms)
+    - $gamemodus==4? J(portal_harvest) P(5ms)
+    - $gamemodus==5? J(portal_eat) P(5ms)
+    - $inventory_portal==0?  $inventory_tnt < 5? $selecteditem:=19 P(item_portal_selectednoinv)
+    - $selecteditem:=19 J(portal_inventory)  P(5ms)
+
+
+
+    portal_harvest:
+    - $gamemodus==3? $selecteditem:=19 J(portal_inventory)  P(5ms)
+    - P(portal_noharvest) $selecteditem:=19 J(portal_info)  P(5ms)
+
+
+
+
+    portal_attack:
+    - $gamemodus==3? $selecteditem:=19 J(portal_info)  P(5ms)
+    - P(portal_noattack) $selecteditem:=19 J(portal_info)  P(5ms)
+
+    portal_61_attack:
+    - $gamemodus==3? J(portal_info)  P(5ms)
+    - $inventory_tnt < 5? P(item_need) P(item_tnt_5) P(portal_to_attack)
+    - $limit_portal_61<1? P(portal_limited)
+    - $limit_portal_61-=1  P(portal_attack) J(portal_attack_drop_rnd)  P(5ms)
+
+
+    portal_attack_drop:
+    - J(portal_attack_loss_rnd)
+
+    portal_attack_loss:
+    - J(portal_inventory)  P(5ms)
+
+    portal_attack_drop_rnd:
+    -  J(portal_attack_drop)  P(5ms)
+
+    portal_attack_loss_rnd:
+    -  T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $loss_rnd:=$rnd $loss_rnd%=0  J(portal_attack_loss)  P(5ms)
+
+
+
+    portal_craft:
+    - $gamemodus==3?  $selecteditem:=19 J(portal_info)  P(5ms)
+    -  $selecteditem:=19 P(portal_nocraft) 
+
+
+    portal_eat:
+    - $gamemodus==3? $selecteditem:=19 J(portal_inventory)  P(5ms)
+    - $selecteditem:=19 P(portal_noeat) 
+
+
+
+    portal_info:
+       - P(portal_infotxt) $selecteditem:=19 J(portal_inventory)  P(5ms)
+
+    portal_inventory:
+    - $inventory_portal==0? P(item_portal_inventory_0) J(random2) P(5ms)
+    - $inventory_portal==1? P(item_portal_inventory_1) J(random2) P(5ms)
+    - $inventory_portal==2? P(item_portal_inventory_2) J(random2) P(5ms)
+    - $inventory_portal==3? P(item_portal_inventory_3) J(random2) P(5ms)
+    - $inventory_portal==4? P(item_portal_inventory_4) J(random2) P(5ms)
+    - $inventory_portal==5? P(item_portal_inventory_5) J(random2) P(5ms)
+    - $inventory_portal==6? P(item_portal_inventory_6) J(random2) P(5ms)
+    - $inventory_portal==7? P(item_portal_inventory_7) J(random2) P(5ms)
+    - $inventory_portal==8? P(item_portal_inventory_8) J(random2) P(5ms)
+    - $inventory_portal==9? P(item_portal_inventory_9) J(random2) P(5ms)
+    - $inventory_portal==10? P(item_portal_inventory_10) J(random2) P(5ms)
+    - $inventory_portal==11? P(item_portal_inventory_11) J(random2) P(5ms)
+    - $inventory_portal==12? P(item_portal_inventory_12) J(random2) P(5ms)
+    - $inventory_portal==13? P(item_portal_inventory_13) J(random2) P(5ms)
+    - $inventory_portal==14? P(item_portal_inventory_14) J(random2) P(5ms)
+    - $inventory_portal==15? P(item_portal_inventory_15) J(random2) P(5ms)
+    - $inventory_portal==16? P(item_portal_inventory_16) J(random2) P(5ms)
+    - $inventory_portal==17? P(item_portal_inventory_17) J(random2) P(5ms)
+    - $inventory_portal==18? P(item_portal_inventory_18) J(random2) P(5ms)
+    - $inventory_portal==19? P(item_portal_inventory_19) J(random2) P(5ms)
+    - $inventory_portal==20? P(item_portal_inventory_20) J(random2) P(5ms)
+    - $inventory_portal==21? P(item_portal_inventory_21) J(random2) P(5ms)
+    - $inventory_portal==22? P(item_portal_inventory_22) J(random2) P(5ms)
+    - $inventory_portal==23? P(item_portal_inventory_23) J(random2) P(5ms)
+    - $inventory_portal==24? P(item_portal_inventory_24) J(random2) P(5ms)
+    - P(item_portal_inventory_more) J(random2) P(5ms)
+
+    portal_no:
+    - $inventory_portal==0? P(item_portal_0)
+    - $inventory_portal==1? P(item_portal_1)
+    - $inventory_portal==2? P(item_portal_2)
+    - $inventory_portal==3? P(item_portal_3)
+    - $inventory_portal==4? P(item_portal_4)
+    - $inventory_portal==5? P(item_portal_5)
+    - $inventory_portal==6? P(item_portal_6)
+    - $inventory_portal==7? P(item_portal_7)
+    - $inventory_portal==8? P(item_portal_8)
+    - $inventory_portal==9? P(item_portal_9)
+    - $inventory_portal==10? P(item_portal_10)
+    - $inventory_portal==11? P(item_portal_11)
+    - $inventory_portal==12? P(item_portal_12)
+    - $inventory_portal==13? P(item_portal_13)
+    - $inventory_portal==14? P(item_portal_14)
+    - $inventory_portal==15? P(item_portal_15)
+    - $inventory_portal==16? P(item_portal_16)
+    - $inventory_portal==17? P(item_portal_17)
+    - $inventory_portal==18? P(item_portal_18)
+    - $inventory_portal==19? P(item_portal_19)
+    - $inventory_portal==20? P(item_portal_20)
+    - $inventory_portal==21? P(item_portal_21)
+    - $inventory_portal==22? P(item_portal_22)
+    - $inventory_portal==23? P(item_portal_23)
+    - $inventory_portal==24? P(item_portal_24)
+    - P(item_portal_more)
+
+    portal_no_0:
+    - P(item_portal_0)
+    portal_no_1:
+    - P(item_portal_1)
+    portal_no_2:
+    - P(item_portal_2)
+    portal_no_3:
+    - P(item_portal_3)
+    portal_no_4:
+    - P(item_portal_4)
+    portal_no_5:
+    - P(item_portal_5)
+    portal_no_6:
+    - P(item_portal_6)
+    portal_no_7:
+    - P(item_portal_7)
+    portal_no_8:
+    - P(item_portal_8)
+    portal_no_9:
+    - P(item_portal_9)
+    portal_no_10:
+    - P(item_portal_10)
+    portal_no_11:
+    - P(item_portal_11)
+    portal_no_12:
+    - P(item_portal_12)
+    portal_no_13:
+    - P(item_portal_13)
+    portal_no_14:
+    - P(item_portal_14)
+    portal_no_15:
+    - P(item_portal_15)
+    portal_no_16:
+    - P(item_portal_16)
+    portal_no_17:
+    - P(item_portal_17)
+    portal_no_18:
+    - P(item_portal_18)
+    portal_no_19:
+    - P(item_portal_19)
+    portal_no_20:
+    - P(item_portal_20)
+    portal_no_21:
+    - P(item_portal_21)
+    portal_no_22:
+    - P(item_portal_22)
+    portal_no_23:
+    - P(item_portal_23)
+    portal_no_24:
+    - P(item_portal_24)
+
+    item_portal_name_s:
+    - P(item_portal_name_s)
+
+    item_portal_name_p:
+    - P(item_portal_name_p)
+
+
+    crafting_table_item_script:
+    - $gamemodus==1? J(crafting_table_attack) P(5ms)
+    - $gamemodus==2? J(crafting_table_craft) P(5ms)
+    - $gamemodus==3? J(crafting_table_info) P(5ms)
+    - $gamemodus==4? J(crafting_table_harvest) P(5ms)
+    - $gamemodus==5? J(crafting_table_eat) P(5ms)
+    - $inventory_crafting_table==0?  $inventory_plank < 4? $selecteditem:=20 P(item_crafting_table_selectednoinv)
+    - $selecteditem:=20 J(crafting_table_inventory)  P(5ms)
+
+
+
+    crafting_table_harvest:
+    - $gamemodus==3? $selecteditem:=20 J(crafting_table_inventory)  P(5ms)
+    - P(crafting_table_noharvest) $selecteditem:=20 J(crafting_table_info)  P(5ms)
+
+
+
+
+    crafting_table_attack:
+    - $gamemodus==3? $selecteditem:=20 J(crafting_table_info)  P(5ms)
+    - P(crafting_table_noattack) $selecteditem:=20 J(crafting_table_info)  P(5ms)
+
+
+
+
+    crafting_table_craft:
+    - $gamemodus==3?  $selecteditem:=20 J(crafting_table_info)  P(5ms)
+    - $inventory_plank < 4? $selecteditem:=20 P(item_need) P(item_plank_4) P(crafting_table_to_craft)
+    - $inventory_crafting_table+=1   $inventory_plank-=4    $selecteditem:=20 P(crafting_table_craft) J(crafting_table_inventory)  P(5ms) 
+
+
+    crafting_table_eat:
+    - $gamemodus==3? $selecteditem:=20 J(crafting_table_inventory)  P(5ms)
+    - $selecteditem:=20 P(crafting_table_noeat) 
+
+
+
+    crafting_table_info:
+       - P(crafting_table_infotxt) $selecteditem:=20 J(crafting_table_inventory)  P(5ms)
+
+    crafting_table_inventory:
+    - $inventory_crafting_table==0? P(item_crafting_table_inventory_0) J(random2) P(5ms)
+    - $inventory_crafting_table==1? P(item_crafting_table_inventory_1) J(random2) P(5ms)
+    - $inventory_crafting_table==2? P(item_crafting_table_inventory_2) J(random2) P(5ms)
+    - $inventory_crafting_table==3? P(item_crafting_table_inventory_3) J(random2) P(5ms)
+    - $inventory_crafting_table==4? P(item_crafting_table_inventory_4) J(random2) P(5ms)
+    - $inventory_crafting_table==5? P(item_crafting_table_inventory_5) J(random2) P(5ms)
+    - $inventory_crafting_table==6? P(item_crafting_table_inventory_6) J(random2) P(5ms)
+    - $inventory_crafting_table==7? P(item_crafting_table_inventory_7) J(random2) P(5ms)
+    - $inventory_crafting_table==8? P(item_crafting_table_inventory_8) J(random2) P(5ms)
+    - $inventory_crafting_table==9? P(item_crafting_table_inventory_9) J(random2) P(5ms)
+    - $inventory_crafting_table==10? P(item_crafting_table_inventory_10) J(random2) P(5ms)
+    - $inventory_crafting_table==11? P(item_crafting_table_inventory_11) J(random2) P(5ms)
+    - $inventory_crafting_table==12? P(item_crafting_table_inventory_12) J(random2) P(5ms)
+    - $inventory_crafting_table==13? P(item_crafting_table_inventory_13) J(random2) P(5ms)
+    - $inventory_crafting_table==14? P(item_crafting_table_inventory_14) J(random2) P(5ms)
+    - $inventory_crafting_table==15? P(item_crafting_table_inventory_15) J(random2) P(5ms)
+    - $inventory_crafting_table==16? P(item_crafting_table_inventory_16) J(random2) P(5ms)
+    - $inventory_crafting_table==17? P(item_crafting_table_inventory_17) J(random2) P(5ms)
+    - $inventory_crafting_table==18? P(item_crafting_table_inventory_18) J(random2) P(5ms)
+    - $inventory_crafting_table==19? P(item_crafting_table_inventory_19) J(random2) P(5ms)
+    - $inventory_crafting_table==20? P(item_crafting_table_inventory_20) J(random2) P(5ms)
+    - $inventory_crafting_table==21? P(item_crafting_table_inventory_21) J(random2) P(5ms)
+    - $inventory_crafting_table==22? P(item_crafting_table_inventory_22) J(random2) P(5ms)
+    - $inventory_crafting_table==23? P(item_crafting_table_inventory_23) J(random2) P(5ms)
+    - $inventory_crafting_table==24? P(item_crafting_table_inventory_24) J(random2) P(5ms)
+    - P(item_crafting_table_inventory_more) J(random2) P(5ms)
+
+    crafting_table_no:
+    - $inventory_crafting_table==0? P(item_crafting_table_0)
+    - $inventory_crafting_table==1? P(item_crafting_table_1)
+    - $inventory_crafting_table==2? P(item_crafting_table_2)
+    - $inventory_crafting_table==3? P(item_crafting_table_3)
+    - $inventory_crafting_table==4? P(item_crafting_table_4)
+    - $inventory_crafting_table==5? P(item_crafting_table_5)
+    - $inventory_crafting_table==6? P(item_crafting_table_6)
+    - $inventory_crafting_table==7? P(item_crafting_table_7)
+    - $inventory_crafting_table==8? P(item_crafting_table_8)
+    - $inventory_crafting_table==9? P(item_crafting_table_9)
+    - $inventory_crafting_table==10? P(item_crafting_table_10)
+    - $inventory_crafting_table==11? P(item_crafting_table_11)
+    - $inventory_crafting_table==12? P(item_crafting_table_12)
+    - $inventory_crafting_table==13? P(item_crafting_table_13)
+    - $inventory_crafting_table==14? P(item_crafting_table_14)
+    - $inventory_crafting_table==15? P(item_crafting_table_15)
+    - $inventory_crafting_table==16? P(item_crafting_table_16)
+    - $inventory_crafting_table==17? P(item_crafting_table_17)
+    - $inventory_crafting_table==18? P(item_crafting_table_18)
+    - $inventory_crafting_table==19? P(item_crafting_table_19)
+    - $inventory_crafting_table==20? P(item_crafting_table_20)
+    - $inventory_crafting_table==21? P(item_crafting_table_21)
+    - $inventory_crafting_table==22? P(item_crafting_table_22)
+    - $inventory_crafting_table==23? P(item_crafting_table_23)
+    - $inventory_crafting_table==24? P(item_crafting_table_24)
+    - P(item_crafting_table_more)
+
+    crafting_table_no_0:
+    - P(item_crafting_table_0)
+    crafting_table_no_1:
+    - P(item_crafting_table_1)
+    crafting_table_no_2:
+    - P(item_crafting_table_2)
+    crafting_table_no_3:
+    - P(item_crafting_table_3)
+    crafting_table_no_4:
+    - P(item_crafting_table_4)
+    crafting_table_no_5:
+    - P(item_crafting_table_5)
+    crafting_table_no_6:
+    - P(item_crafting_table_6)
+    crafting_table_no_7:
+    - P(item_crafting_table_7)
+    crafting_table_no_8:
+    - P(item_crafting_table_8)
+    crafting_table_no_9:
+    - P(item_crafting_table_9)
+    crafting_table_no_10:
+    - P(item_crafting_table_10)
+    crafting_table_no_11:
+    - P(item_crafting_table_11)
+    crafting_table_no_12:
+    - P(item_crafting_table_12)
+    crafting_table_no_13:
+    - P(item_crafting_table_13)
+    crafting_table_no_14:
+    - P(item_crafting_table_14)
+    crafting_table_no_15:
+    - P(item_crafting_table_15)
+    crafting_table_no_16:
+    - P(item_crafting_table_16)
+    crafting_table_no_17:
+    - P(item_crafting_table_17)
+    crafting_table_no_18:
+    - P(item_crafting_table_18)
+    crafting_table_no_19:
+    - P(item_crafting_table_19)
+    crafting_table_no_20:
+    - P(item_crafting_table_20)
+    crafting_table_no_21:
+    - P(item_crafting_table_21)
+    crafting_table_no_22:
+    - P(item_crafting_table_22)
+    crafting_table_no_23:
+    - P(item_crafting_table_23)
+    crafting_table_no_24:
+    - P(item_crafting_table_24)
+
+    item_crafting_table_name_s:
+    - P(item_crafting_table_name_s)
+
+    item_crafting_table_name_p:
+    - P(item_crafting_table_name_p)
+
+# END ITEMS MAIN LOOP
+
+
+    game_info_info_script:
+    - P(game_info)
+
+    attack_modus_script:
+    - $selecteditem==1? J(gunpowder_attack)  P(5ms)
+    - $selecteditem==2? J(goatmeat_attack)  P(5ms)
+    - $selecteditem==3? J(fish_attack)  P(5ms)
+    - $selecteditem==4? J(fishingrod_attack)  P(5ms)
+    - $selecteditem==5? J(ironore_attack)  P(5ms)
+    - $selecteditem==6? J(stone_attack)  P(5ms)
+    - $selecteditem==7? J(log_attack)  P(5ms)
+    - $selecteditem==8? J(coal_attack)  P(5ms)
+    - $selecteditem==9? J(flint_attack)  P(5ms)
+    - $selecteditem==10? J(sand_attack)  P(5ms)
+    - $selecteditem==11? J(plank_attack)  P(5ms)
+    - $selecteditem==12? J(stick_attack)  P(5ms)
+    - $selecteditem==13? J(sword_attack)  P(5ms)
+    - $selecteditem==14? J(woodpickaxe_attack)  P(5ms)
+    - $selecteditem==15? J(stonepickaxe_attack)  P(5ms)
+    - $selecteditem==16? J(iron_attack)  P(5ms)
+    - $selecteditem==17? J(hearts_attack)  P(5ms)
+    - $selecteditem==18? J(tnt_attack)  P(5ms)
+    - $selecteditem==19? J(portal_attack)  P(5ms)
+    - $selecteditem==20? J(crafting_table_attack)  P(5ms)
+    - $gamemodus:=1 P(modus_attack_selected)
+
+    craft_modus_script:
+    - $selecteditem==1? J(gunpowder_craft)  P(5ms)
+    - $selecteditem==2? J(goatmeat_craft)  P(5ms)
+    - $selecteditem==3? J(fish_craft)  P(5ms)
+    - $selecteditem==4? J(fishingrod_craft)  P(5ms)
+    - $selecteditem==5? J(ironore_craft)  P(5ms)
+    - $selecteditem==6? J(stone_craft)  P(5ms)
+    - $selecteditem==7? J(log_craft)  P(5ms)
+    - $selecteditem==8? J(coal_craft)  P(5ms)
+    - $selecteditem==9? J(flint_craft)  P(5ms)
+    - $selecteditem==10? J(sand_craft)  P(5ms)
+    - $selecteditem==11? J(plank_craft)  P(5ms)
+    - $selecteditem==12? J(stick_craft)  P(5ms)
+    - $selecteditem==13? J(sword_craft)  P(5ms)
+    - $selecteditem==14? J(woodpickaxe_craft)  P(5ms)
+    - $selecteditem==15? J(stonepickaxe_craft)  P(5ms)
+    - $selecteditem==16? J(iron_craft)  P(5ms)
+    - $selecteditem==17? J(hearts_craft)  P(5ms)
+    - $selecteditem==18? J(tnt_craft)  P(5ms)
+    - $selecteditem==19? J(portal_craft)  P(5ms)
+    - $selecteditem==20? J(crafting_table_craft)  P(5ms)
+    - $gamemodus:=2 P(modus_craft_selected)
+
+    info_modus_script:
+    - $selecteditem==1? J(gunpowder_info)  P(5ms)
+    - $selecteditem==2? J(goatmeat_info)  P(5ms)
+    - $selecteditem==3? J(fish_info)  P(5ms)
+    - $selecteditem==4? J(fishingrod_info)  P(5ms)
+    - $selecteditem==5? J(ironore_info)  P(5ms)
+    - $selecteditem==6? J(stone_info)  P(5ms)
+    - $selecteditem==7? J(log_info)  P(5ms)
+    - $selecteditem==8? J(coal_info)  P(5ms)
+    - $selecteditem==9? J(flint_info)  P(5ms)
+    - $selecteditem==10? J(sand_info)  P(5ms)
+    - $selecteditem==11? J(plank_info)  P(5ms)
+    - $selecteditem==12? J(stick_info)  P(5ms)
+    - $selecteditem==13? J(sword_info)  P(5ms)
+    - $selecteditem==14? J(woodpickaxe_info)  P(5ms)
+    - $selecteditem==15? J(stonepickaxe_info)  P(5ms)
+    - $selecteditem==16? J(iron_info)  P(5ms)
+    - $selecteditem==17? J(hearts_info)  P(5ms)
+    - $selecteditem==18? J(tnt_info)  P(5ms)
+    - $selecteditem==19? J(portal_info)  P(5ms)
+    - $selecteditem==20? J(crafting_table_info)  P(5ms)
+    - $gamemodus:=3 P(modus_info_selected)
+
+    harvest_modus_script:
+    - $selecteditem==1? J(gunpowder_harvest)  P(5ms)
+    - $selecteditem==2? J(goatmeat_harvest)  P(5ms)
+    - $selecteditem==3? J(fish_harvest)  P(5ms)
+    - $selecteditem==4? J(fishingrod_harvest)  P(5ms)
+    - $selecteditem==5? J(ironore_harvest)  P(5ms)
+    - $selecteditem==6? J(stone_harvest)  P(5ms)
+    - $selecteditem==7? J(log_harvest)  P(5ms)
+    - $selecteditem==8? J(coal_harvest)  P(5ms)
+    - $selecteditem==9? J(flint_harvest)  P(5ms)
+    - $selecteditem==10? J(sand_harvest)  P(5ms)
+    - $selecteditem==11? J(plank_harvest)  P(5ms)
+    - $selecteditem==12? J(stick_harvest)  P(5ms)
+    - $selecteditem==13? J(sword_harvest)  P(5ms)
+    - $selecteditem==14? J(woodpickaxe_harvest)  P(5ms)
+    - $selecteditem==15? J(stonepickaxe_harvest)  P(5ms)
+    - $selecteditem==16? J(iron_harvest)  P(5ms)
+    - $selecteditem==17? J(hearts_harvest)  P(5ms)
+    - $selecteditem==18? J(tnt_harvest)  P(5ms)
+    - $selecteditem==19? J(portal_harvest)  P(5ms)
+    - $selecteditem==20? J(crafting_table_harvest)  P(5ms)
+    - $gamemodus:=4 P(modus_harvest_selected)
+
+    eat_modus_script:
+    - $selecteditem==1? J(gunpowder_eat)  P(5ms)
+    - $selecteditem==2? J(goatmeat_eat)  P(5ms)
+    - $selecteditem==3? J(fish_eat)  P(5ms)
+    - $selecteditem==4? J(fishingrod_eat)  P(5ms)
+    - $selecteditem==5? J(ironore_eat)  P(5ms)
+    - $selecteditem==6? J(stone_eat)  P(5ms)
+    - $selecteditem==7? J(log_eat)  P(5ms)
+    - $selecteditem==8? J(coal_eat)  P(5ms)
+    - $selecteditem==9? J(flint_eat)  P(5ms)
+    - $selecteditem==10? J(sand_eat)  P(5ms)
+    - $selecteditem==11? J(plank_eat)  P(5ms)
+    - $selecteditem==12? J(stick_eat)  P(5ms)
+    - $selecteditem==13? J(sword_eat)  P(5ms)
+    - $selecteditem==14? J(woodpickaxe_eat)  P(5ms)
+    - $selecteditem==15? J(stonepickaxe_eat)  P(5ms)
+    - $selecteditem==16? J(iron_eat)  P(5ms)
+    - $selecteditem==17? J(hearts_eat)  P(5ms)
+    - $selecteditem==18? J(tnt_eat)  P(5ms)
+    - $selecteditem==19? J(portal_eat)  P(5ms)
+    - $selecteditem==20? J(crafting_table_eat)  P(5ms)
+    - $gamemodus:=5 P(modus_eat_selected)
+
+
+
+    cheat_inventory:
+        - $selecteditem==1? $inventory_gunpowder:=99  J(gunpowder_inventory)  P(5ms)
+        - $selecteditem==2? $inventory_goatmeat:=99  J(goatmeat_inventory)  P(5ms)
+        - $selecteditem==3? $inventory_fish:=99  J(fish_inventory)  P(5ms)
+        - $selecteditem==4? $inventory_fishingrod:=99  J(fishingrod_inventory)  P(5ms)
+        - $selecteditem==5? $inventory_ironore:=99  J(ironore_inventory)  P(5ms)
+        - $selecteditem==6? $inventory_stone:=99  J(stone_inventory)  P(5ms)
+        - $selecteditem==7? $inventory_log:=99  J(log_inventory)  P(5ms)
+        - $selecteditem==8? $inventory_coal:=99  J(coal_inventory)  P(5ms)
+        - $selecteditem==9? $inventory_flint:=99  J(flint_inventory)  P(5ms)
+        - $selecteditem==10? $inventory_sand:=99  J(sand_inventory)  P(5ms)
+        - $selecteditem==11? $inventory_plank:=99  J(plank_inventory)  P(5ms)
+        - $selecteditem==12? $inventory_stick:=99  J(stick_inventory)  P(5ms)
+        - $selecteditem==13? $inventory_sword:=99  J(sword_inventory)  P(5ms)
+        - $selecteditem==14? $inventory_woodpickaxe:=99  J(woodpickaxe_inventory)  P(5ms)
+        - $selecteditem==15? $inventory_stonepickaxe:=99  J(stonepickaxe_inventory)  P(5ms)
+        - $selecteditem==16? $inventory_iron:=99  J(iron_inventory)  P(5ms)
+        - $selecteditem==17? $inventory_hearts:=99  J(hearts_inventory)  P(5ms)
+        - $selecteditem==18? $inventory_tnt:=99  J(tnt_inventory)  P(5ms)
+        - $selecteditem==19? $inventory_portal:=99  J(portal_inventory)  P(5ms)
+        - $selecteditem==20? $inventory_crafting_table:=99  J(crafting_table_inventory)  P(5ms)
+    
+    random:
+    - $gamemodus:=99 $selecteditem:=99 J(random2)  P(5ms)
+
+    random2:
+    - T($r,65535) $rnd+=$r $rnd*=25173 $rnd+=13849 $wuerfel:=$rnd $wuerfel%=3 $wuerfel+=1
+
+language: de
+
+scriptcodes:
+
+# START QUANTITY SCRIPT LOOP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# END QUANTITY SCRIPT LOOP
+
+
+# START ITEMS SCRIPT LOOP
+
+    gunpowder_item_script: 9949.0
+    gunpowder_11_attack: 9849.0 
+    gunpowder_41_attack: 10017 
+    gunpowder_82_attack: 10218 
+    gunpowder_84_attack: 10220 
+    gunpowder_83_attack: 10219 
+    gunpowder_87001_attack: 10246 
+    gunpowder_87002_attack: 10247 
+
+
+    goatmeat_item_script: 9970.0
+    goatmeat_66_attack: 10149 
+
+
+    fish_item_script: 9950.0
+    fish_32_attack: 9973.0 
+
+
+    fishingrod_item_script: 8895
+
+
+    ironore_item_script: 10150
+    ironore_39_harvest: 9995.0 
+    ironore_45_harvest: 10022 
+
+
+    stone_item_script: 10151
+    stone_17_harvest: 9895.0 
+    stone_80_harvest: 10196 
+
+
+    log_item_script: 10303
+    log_16_harvest: 9893.0 
+    log_18_harvest: 9897.0 
+    log_19_harvest: 9896.0 
+
+
+    coal_item_script: 9894.0
+    coal_21_harvest: 9917.0 
+
+
+    flint_item_script: 9893.0
+    flint_15_harvest: 9874.0 
+
+
+    sand_item_script: 9923.0
+    sand_57_harvest: 10107 
+
+
+    plank_item_script: 9846.0
+
+
+    stick_item_script: 10320
+
+
+    sword_item_script: 9843.0
+
+
+    woodpickaxe_item_script: 9845.0
+
+
+    stonepickaxe_item_script: 10018
+
+
+    iron_item_script: 9951.0
+
+
+    hearts_item_script: 10169
+
+
+    tnt_item_script: 9850.0
+
+
+    portal_item_script: 8898
+    portal_61_attack: 10127 
+
+
+    crafting_table_item_script: 10171
+
+# END ITEMS SCRIPT LOOP
+
+    cheat_inventory: 9818.0
+    cheat_mode: 8899
+
+    game_info_info_script: 8890
+
+    attack_modus_script: 9924.0
+    craft_modus_script: 9922.0
+    info_modus_script: 10111
+    harvest_modus_script: 10019
+    eat_modus_script: 10194
+
+    script_goal_check: 10127
